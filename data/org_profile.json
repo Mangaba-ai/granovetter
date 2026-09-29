@@ -1,0 +1,59 @@
+{
+  "organization": "TechCorp Brasil",
+  "size": 350,
+  "founded": 2010,
+  "industry": "Software & Consulting",
+  "context": "Successful SaaS company. Pre-pandemic: 100% office. Post-pandemic: hybrid. Current: 70% office, 30% hybrid. Leadership divided on remote work. Some employees relocated during pandemic.",
+  "external_context": "Tech talent market is highly competitive. Remote work is becoming standard in industry. Some enterprise customers prefer in-person relationships.",
+  "culture": "Historically hierarchical, but trying to be more agile. Strong coffee-culture (office-based socializing). Some technical silos between teams.",
+  "groups": [
+    {
+      "name": "C-Suite & Directors",
+      "group": "Executive Leadership",
+      "population_percentage": 8,
+      "values": ["stability", "brand", "revenue", "control"],
+      "risk_profile": "low",
+      "typical_narrative": "We need to preserve our culture. Remote work might hurt collaboration with clients. We should stay in the office."
+    },
+    {
+      "name": "Senior Engineers",
+      "group": "Technical Leadership",
+      "population_percentage": 12,
+      "values": ["technical_excellence", "autonomy", "focus", "efficiency"],
+      "risk_profile": "medium",
+      "typical_narrative": "Remote work helps us focus, but we lose hallway conversations. Hybrid might be the answer. Full remote is risky."
+    },
+    {
+      "name": "Mid-level Managers",
+      "group": "Management",
+      "population_percentage": 15,
+      "values": ["productivity", "visibility", "team_cohesion", "results"],
+      "risk_profile": "medium",
+      "typical_narrative": "How do we manage remote teams? How do we know people are working? This is scary."
+    },
+    {
+      "name": "Individual Contributors (Junior)",
+      "group": "Junior Engineers",
+      "population_percentage": 25,
+      "values": ["growth", "flexibility", "work_life_balance", "autonomy"],
+      "risk_profile": "high",
+      "typical_narrative": "Remote work is great! We get to work from anywhere, no commute. This is what we want."
+    },
+    {
+      "name": "Operations & Support",
+      "group": "Operations",
+      "population_percentage": 18,
+      "values": ["stability", "routine", "community", "security"],
+      "risk_profile": "low",
+      "typical_narrative": "We depend on being in the office for our work. How does this apply to us? What about the office pets? Will we still have community?"
+    },
+    {
+      "name": "Sales & Account Managers",
+      "group": "Sales",
+      "population_percentage": 22,
+      "values": ["relationships", "flexibility", "autonomy", "travel"],
+      "risk_profile": "medium",
+      "typical_narrative": "We already work from the road and from client offices. Remote makes sense for us. But some clients like in-person meetings."
+    }
+  ]
+}
