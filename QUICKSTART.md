@@ -9,7 +9,7 @@
 ## 1. Install Dependencies
 
 ```bash
-cd syntheia
+cd granovetter
 pip install -r requirements.txt
 ```
 
@@ -86,7 +86,7 @@ Open `output/simulation_*.json` to see detailed round-by-round responses.
 ### C. Run Your Simulation
 
 ```python
-from syntheia import Simulation
+from granovetter import Simulation
 
 sim = Simulation.from_file(
     scenario="scenarios/my_decision.json",

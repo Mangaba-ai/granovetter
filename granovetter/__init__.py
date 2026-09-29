@@ -1,5 +1,6 @@
 """
-Syntheia — Behavioral Simulation Lab
+Granovetter — Behavioral Simulation Lab
+Based on Mark Granovetter's work on social thresholds and tipping points
 """
 
 __version__ = "0.1.0"

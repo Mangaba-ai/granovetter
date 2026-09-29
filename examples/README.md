@@ -32,7 +32,7 @@ This creates a custom scenario about a company facing restructuring and layoffs.
 Example template:
 
 ```python
-from syntheia import Simulation
+from granovetter import Simulation
 
 scenario = {
     "name": "Your Decision",

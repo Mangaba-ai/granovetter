@@ -1,6 +1,9 @@
-# Syntheia — Behavioral Simulation Lab
+# Granovetter — Behavioral Simulation Lab
 
-Simulador de comportamento organizacional usando IA generativa. Teste decisões antes de implementar.
+Simulador de dinâmica social e tipping points organizacionais usando IA generativa.
+Baseado na literatura de Mark Granovetter sobre limiares sociais e cascatas comportamentais.
+
+Teste decisões antes de implementar. Identifique tipping points e riscos emergentes.
 
 ```
 ENTRADA (Dados)  →  AGENTES SINTÉTICOS  →  SIMULAÇÃO (N rounds)  →  ANÁLISE PROBABILÍSTICA
@@ -30,10 +33,10 @@ python main.py
 ## 📁 Estrutura
 
 ```
-syntheia/
+granovetter/
 ├── main.py                 # Entry point
 ├── requirements.txt
-├── syntheia/
+├── granovetter/
 │   ├── __init__.py
 │   ├── agent.py           # Classe SyntheticAgent
 │   ├── simulation.py      # Orquestração
@@ -51,8 +54,8 @@ syntheia/
 ## 📊 Exemplo
 
 ```python
-from syntheia.simulation import Simulation
-from syntheia.agent import SyntheticAgent
+from granovetter.simulation import Simulation
+from granovetter.agent import SyntheticAgent
 
 # Carregar cenário e perfis
 simulation = Simulation.from_file(
@@ -83,4 +86,4 @@ LLM_BASE_URL=http://localhost:11434
 
 - [Agents as Behavioral Models](./docs/theory.md)
 - [Data Format Guide](./docs/data_format.md)
-- [Extending Syntheia](./docs/extending.md)
+- [Architecture](./ARCHITECTURE.md)

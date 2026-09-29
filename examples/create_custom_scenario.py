@@ -7,8 +7,8 @@ import json
 import sys
 sys.path.insert(0, '..')
 
-from syntheia import Simulation
-from syntheia.llm import LLMClient
+from granovetter import Simulation
+from granovetter.llm import LLMClient
 
 
 def create_scenario():

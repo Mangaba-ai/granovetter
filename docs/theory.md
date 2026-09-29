@@ -1,4 +1,4 @@
-# Syntheia Theory — Behavioral Simulation with AI
+# Granovetter Theory — Behavioral Simulation with AI
 
 ## Core Principles
 
@@ -100,7 +100,7 @@ Based on final stance vectors, estimate probability of:
 
 ## Validation Strategy
 
-To validate Syntheia against real data:
+To validate Granovetter against real data:
 
 1. Run simulation for a decision
 2. Get real survey/feedback from same organization

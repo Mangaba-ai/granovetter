@@ -1,4 +1,4 @@
-# Architecture — Syntheia
+# Architecture — Granovetter
 
 ## System Overview
 
@@ -34,8 +34,8 @@ OUTPUT LAYER
 ## File Structure
 
 ```
-syntheia/
-├── syntheia/              # Core library
+granovetter/
+├── granovetter/              # Core library
 │   ├── __init__.py
 │   ├── agent.py          # SyntheticAgent class
 │   ├── simulation.py      # Simulation orchestration
@@ -236,7 +236,7 @@ OUTPUT_FORMAT=json
 ### Add New LLM Provider
 
 ```python
-# syntheia/llm.py
+# granovetter/llm.py
 def _openai_generate(self, prompt, system):
     # Implement OpenAI API call
     pass
@@ -245,7 +245,7 @@ def _openai_generate(self, prompt, system):
 ### Add New Analysis Metric
 
 ```python
-# syntheia/analysis.py
+# granovetter/analysis.py
 def polarization_score(self) -> float:
     # Calculate polarization metric
     pass
@@ -275,7 +275,7 @@ Scales linearly with agents and rounds.
 
 ## Validation Strategy
 
-To validate Syntheia against real data:
+To validate Granovetter against real data:
 
 1. Run simulation
 2. Collect real survey/feedback

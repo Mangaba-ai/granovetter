@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 """
-Syntheia — Behavioral Simulation Lab
+Granovetter — Behavioral Simulation Lab
 Entry point for running a simulation
+Based on Mark Granovetter's work on social thresholds and tipping points
 """
 
 import os
 import sys
-from syntheia import Simulation
-from syntheia.llm import LLMClient
-from syntheia.utils import print_banner
+from granovetter import Simulation
+from granovetter.llm import LLMClient
+from granovetter.utils import print_banner
 
 
 def main():
     """Run simulation"""
 
-    print_banner("SYNTHEIA — Behavioral Simulation Lab v0.1.0")
+    print_banner("GRANOVETTER — Behavioral Simulation Lab v0.1.0")
 
     # Check LLM health
     print("🔍 Checking LLM connectivity...")
