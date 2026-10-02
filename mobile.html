@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<script>/* Roteamento de idioma e dispositivo. So roda no primeiro acesso.
+   Tres travas contra loop: (1) so age se o arquivo atual for um dos quatro
+   conhecidos, (2) compara nome sem .html, entao /index-en e /index-en.html sao
+   a mesma coisa, (3) no maximo um redirect por aba. */
+(function(){try{
+  var SELF={lang:"pt",dev:"mobile",entry:false};
+  var FILES={"pt|desktop":"/index.html","en|desktop":"/index-en.html","pt|mobile":"/mobile.html","en|mobile":"/mobile-en.html"};
+  var qs=location.search;
+  var q=/[?&]lang=(pt|en)\b/i.exec(qs);
+  var explicit=q?q[1].toLowerCase():null;
+  var saved=null;
+  try{ if(explicit){localStorage.setItem("synbe-lang",explicit);} else if(!SELF.entry){localStorage.setItem("synbe-lang",SELF.lang);} saved=localStorage.getItem("synbe-lang"); }catch(e){}
+
+  function base(p){ p=(p||"").split("?")[0].split("#")[0].split("/").pop()||""; return p.replace(/\.html$/i,"")||"index"; }
+  var here=base(location.pathname);
+  var KNOWN={index:1,"index-en":1,mobile:1,"mobile-en":1};
+  if(!KNOWN[here]){ return; }                       /* preview, subpasta, sandbox: nao mexe */
+  try{ if(sessionStorage.getItem("synbe-routed")){ return; } }catch(e){}
+
+  var nav=(navigator.language||navigator.userLanguage||"");
+  var lang=SELF.entry?(explicit||saved||(/^pt/i.test(nav)?"pt":"en")):(explicit||SELF.lang);
+  if(lang!=="pt"&&lang!=="en"){lang="pt";}
+  var isPhone=/Mobi|Android|iPhone|iPod|Windows Phone|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent||"");
+  var optOut=/[?&]desktop\b/.test(qs);
+  if(optOut){try{document.cookie="viewdesktop=1;path=/;max-age=86400";}catch(e){}}
+  var stay=optOut||/(?:^|;\s*)viewdesktop=1/.test(document.cookie);
+  var dev=(isPhone&&!stay)?"mobile":SELF.dev;
+  var want=FILES[lang+"|"+dev];
+  if(!want||here===base(want)){ return; }
+  try{ sessionStorage.setItem("synbe-routed","1"); }catch(e){}
+  location.replace(want+(optOut?"?desktop=1":""));
+}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0c">
+<title>syn.Be · Synthetic Behavioral Inference Lab</title>
+<meta name="description" content="Transformamos dados humanos em sociedades sintéticas para testar decisões antes da execução.">
+
+  <!-- Canonical aponta para o build principal: /mobile.html e a mesma pagina. -->
+  <link rel="canonical" href="https://syn.be/">
+  <link rel="alternate" hreflang="pt-BR" href="https://syn.be/"><link rel="alternate" hreflang="en" href="https://syn.be/index-en.html"><link rel="alternate" hreflang="x-default" href="https://syn.be/">
+
+  <!-- Open Graph. Payload identico ao index.html: quem compartilhar syn.be/mobile.html
+       (acontece, o phone e redirecionado e a URL da barra vira essa) ve o mesmo card. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://syn.be/">
+  <meta property="og:site_name" content="syn.Be">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="syn.Be · Synthetic Behavioral Inference Lab">
+  <meta property="og:description" content="O syn.Be transforma dados humanos em sociedades sintéticas para testar decisões antes da execução.">
+  <meta property="og:image" content="https://syn.be/assets/media/syn.be-og.png">
+  <meta property="og:image:secure_url" content="https://syn.be/assets/media/syn.be-og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="syn.Be · Synthetic Behavioral Inference Lab">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="syn.Be · Synthetic Behavioral Inference Lab">
+  <meta name="twitter:description" content="O syn.Be transforma dados humanos em sociedades sintéticas para testar decisões antes da execução.">
+  <meta name="twitter:image" content="https://syn.be/assets/media/syn.be-og.png">
+  <meta name="twitter:image:alt" content="syn.Be · Synthetic Behavioral Inference Lab">
+
+  <!-- Favicons: o build mobile nao tinha nenhum. Mesmos arquivos do index.html. -->
+  <link rel="icon" href="./assets/media/6a0b1f28dfa5dd7f5b6f93a1_syntropic3.png" media="(prefers-color-scheme: dark)" type="image/png">
+  <link rel="icon" href="./assets/media/6a0b1f32bd217b69827826fa_syntropic2.png" media="(prefers-color-scheme: light)" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/media/6a0b1ee3fbca19fcce3ea113_syntropic.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Barlow:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0c; --bg-soft:#141417; --ink:#ededee; --muted:#8e8e94; --faint:#5a5a60;
+    --line:#232327; --line-2:#33333a; --stroke:#b7b7b7;
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --body:"Barlow",system-ui,sans-serif;
+    --mono:"Space Mono",ui-monospace,monospace;
+    --pad:1.5rem; --maxw:34rem;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--body);
+    font-size:16px; line-height:1.6; letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  ::selection{background:var(--ink);color:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--stroke);outline-offset:3px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+  /* ===== top bar ===== */
+  .bar{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.85rem var(--pad);
+    background:rgba(11,11,12,.72);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .mark{display:flex;align-items:center}
+  .mark .logo{height:1.25rem;width:auto;display:block}
+  .bar .cta{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    border:1px solid var(--line-2);border-radius:999px;padding:.45rem .9rem;color:var(--ink)}
+  .bar .cta:active{background:var(--ink);color:var(--bg)}
+
+  /* ===== shared section rhythm ===== */
+  section{padding:4.5rem 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--faint);display:flex;align-items:center;gap:.7rem;margin-bottom:1.6rem}
+  .eyebrow b{color:var(--muted);font-weight:400}
+  .eyebrow .ln{flex:1;height:1px;background:var(--line)}
+  h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.02em;line-height:1.08;overflow-wrap:break-word}
+  p{color:#c9c9cd}
+  .lead{color:var(--ink)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .gif{display:block;width:100%;height:auto;margin:2rem 0;mix-blend-mode:screen}
+
+  /* ===== hero ===== */
+  .hero{padding-top:3.5rem;border-top:0}
+  .hero .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem}
+  .hero h1{font-size:clamp(1.7rem,8vw,2.5rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;text-transform:uppercase;overflow-wrap:break-word}
+  .hero h1 em{font-style:normal;color:var(--muted)}
+  .wave-frame{margin:2.4rem 0 1.6rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2rem 0}
+  canvas.wave{display:block;width:100%;height:128px}
+  .mantra{font-family:var(--mono);font-size:.82rem;color:var(--muted);letter-spacing:.02em;margin-top:.4rem}
+  .hero .punch{font-family:var(--display);font-weight:500;font-size:1.15rem;color:var(--ink);margin-top:1.8rem}
+
+  /* ===== generic content ===== */
+  h2{font-size:1.85rem;margin-bottom:1.1rem}
+  .body+.body{margin-top:1rem}
+  .callout{font-family:var(--display);font-weight:500;font-size:1.15rem;color:var(--ink);
+    margin-top:1.8rem;padding-left:1rem;border-left:2px solid var(--stroke)}
+
+  /* ===== lists (risks / steps) ===== */
+  .stack{margin-top:1.8rem;border-top:1px solid var(--line)}
+  .stack .row{padding:1.25rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+  .stack .num{font-family:var(--mono);font-size:.72rem;color:var(--faint);padding-top:.25rem;min-width:1.6rem}
+  .stack .row h3{font-size:1.1rem;font-weight:500;margin-bottom:.3rem}
+  .stack .row p{font-size:.95rem}
+
+  /* ===== flow (entrada/simulação/saída) ===== */
+  .flow-head{font-family:var(--mono);font-size:.95rem;letter-spacing:.04em;color:var(--ink);margin-top:.4rem;margin-bottom:1.4rem}
+
+  /* ===== people ===== */
+  .person{margin-top:1.8rem}
+  .person .photo{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;mix-blend-mode:screen}
+  .person .ph-fallback{width:100%;aspect-ratio:4/5;border:0;background:
+    radial-gradient(120% 80% at 50% 0%,#1b1b1f,transparent),var(--bg-soft);display:flex;align-items:flex-end;padding:1rem;
+    font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+  .person .who{margin-top:1.2rem}
+
+  /* ===== signup ===== */
+  #simular{background:var(--bg-soft)}
+  .form{margin-top:1.8rem}
+  .form .f{margin-bottom:1.5rem}
+  .form .f:last-of-type{margin-bottom:0}
+  .form label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:.6rem}
+  .form textarea{resize:vertical;min-height:5.6em;font:inherit;}
+  .form input,.form textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-2);color:var(--ink);
+    font-family:var(--body);font-size:1.1rem;padding:.7rem 0;outline:none;border-radius:0;-webkit-appearance:none}
+  .form input::placeholder{color:var(--faint)}
+  .form input:focus{border-color:var(--stroke)}
+  .form input.err{border-color:#a25b4c}
+  .form .ferr{display:none;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#a25b4c;margin:1.2rem 0 0}
+  .form .ferr.on{display:block}
+  .form button{margin-top:1.6rem;width:100%;background:var(--ink);color:var(--bg);border:0;border-radius:999px;
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem;cursor:pointer}
+  .form button:active{opacity:.85}
+  .form button[disabled]{opacity:.45}
+  .form .thanks{display:none;font-family:var(--display);font-size:1.2rem;color:var(--ink);margin-top:.4rem}
+  .form.done .fields{display:none} .form.done .thanks{display:block}
+
+  /* Seletor de idioma: dentro da barra do topo, ao lado do CTA. */
+  .baractions{display:flex;align-items:center;gap:.8rem}
+  #synbe-lang{
+    font-family:var(--mono);font-size:.72rem;line-height:1;letter-spacing:.14em;
+    text-transform:uppercase;text-decoration:none;white-space:nowrap;
+    color:var(--muted);padding:.45rem .2rem;
+  }
+  #synbe-lang:active{color:var(--ink)}
+
+  /* ===== newsletter embed (Substack) ===== */
+  #newsletter{background:var(--bg-soft)}
+  /* Janela recortada sobre o iframe do Substack (cross-origin: o texto legal nao
+     tem como ser escondido por CSS, entao fica fora da area visivel).
+     Campo do embed fica em y 0.5..40 dentro do iframe de 118px; legal em y 61..104. */
+  .nl-embed{--nl-win:72px;--nl-shift:16px;
+    position:relative;height:var(--nl-win);margin-top:1.8rem;overflow:hidden;
+    border:1px solid var(--line-2);border-radius:12px;background:var(--bg)}
+  .nl-embed iframe{position:absolute;top:var(--nl-shift);left:0;
+    width:100%;height:118px;border:0;display:block;background:transparent}
+
+  /* ===== popup newsletter ===== */
+  .nlpop-back{position:fixed;inset:0;z-index:200;background:rgba(6,6,7,.78);backdrop-filter:blur(6px);
+    display:none;align-items:flex-end;justify-content:center;padding:0}
+  .nlpop-back.open{display:flex}
+  .nlpop{width:100%;max-width:var(--maxw);background:var(--bg);border-top:1px solid var(--line-2);
+    border-radius:16px 16px 0 0;padding:2rem var(--pad) calc(2rem + env(safe-area-inset-bottom,0px));
+    transform:translateY(100%);transition:transform .32s cubic-bezier(.4,0,.2,1)}
+  .nlpop-back.open .nlpop{transform:none}
+  .nlpop .x{position:absolute;top:-2.6rem;right:.4rem;font-family:var(--mono);font-size:.72rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:0;cursor:pointer;padding:.5rem}
+  .nlpop .eyebrow{margin-bottom:1rem}
+  .nlpop h3{font-family:var(--display);font-weight:500;font-size:1.5rem;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+  .nlpop p{font-size:.95rem;color:var(--muted);margin-bottom:1.4rem}
+  .nlpop .nl-embed{margin-top:0}
+
+  /* ===== footer ===== */
+  footer{padding:3rem 0 5rem;border-top:1px solid var(--line)}
+  footer .flogo{height:1.9rem;width:auto;display:block}
+  footer .ftag{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:.5rem}
+  footer nav{display:flex;flex-wrap:wrap;gap:1.1rem;margin:1.8rem 0}
+  footer nav a{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+  footer nav a:active{color:var(--ink)}
+  footer .copy{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.06em}
+  .tstats{margin-top:2.6rem;padding-top:2rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:1.9rem}
+  .tnum{font-family:var(--mono);font-weight:700;font-size:2.7rem;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+  .tlabel{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink);margin:.7rem 0 .5rem}
+  .tdesc{font-size:.92rem;color:var(--muted)}
+  .tdesc a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+  .mfwrap{margin-top:2.4rem}
+  .mfembed{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000}
+  .mfembed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .mfembed .mfover{position:absolute;inset:0;z-index:2;cursor:pointer}
+  .mftabs{display:flex;gap:.7rem;margin-top:1rem}
+  .mftab{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:none;border:1px solid var(--line);border-radius:2rem;padding:.6rem 1.1rem;cursor:pointer;transition:color .2s,border-color .2s}
+  .mftab.active{color:var(--ink);border-color:var(--ink)}
+  .dashes{margin-top:2.4rem;display:flex;flex-direction:column;gap:1.2rem}
+  .dash{margin:0}
+  .dash img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
+  footer .fcontact{display:flex;flex-direction:column;gap:1rem;align-items:flex-start;margin:0 0 1.8rem}
+  footer .fmail{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;letter-spacing:.02em}
+  footer .fwa{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:2rem;padding:.75rem 1.3rem}
+  footer .fwa:active{border-color:var(--ink)}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none;opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- POPUP NEWSLETTER syn.Thesis -->
+<div class="nlpop-back" id="nlpop">
+  <div class="nlpop" role="dialog" aria-modal="true" aria-label="Assinar newsletter syn.Thesis">
+    <button class="x" id="nlpop-x" aria-label="Fechar">Fechar ✕</button>
+    <div class="eyebrow"><b>syn.Thesis</b><span class="ln"></span>Newsletter</div>
+    <h3>Antecipe o comportamento.</h3>
+    <p>Ciência comportamental, simulação e IA aplicada à decisão. Direto no seu email, sem ruído.</p>
+    <div class="nl-embed">
+      <iframe src="https://synthesisai.substack.com/embed" title="Assinar syn.Thesis" loading="lazy" scrolling="no"></iframe>
+    </div>
+  </div>
+</div>
+
+<header class="bar">
+  <a class="mark" href="#topo" aria-label="syn.Be início">
+    <img class="logo" src="./assets/media/inline-01-24321044db.png" alt="syn.Be">
+  </a>
+  <div class="baractions">
+    <a id="synbe-lang" href="/mobile-en.html?lang=en" hreflang="en" rel="alternate" data-taxi-ignore="">EN</a>
+    <a class="cta" href="#simular">Contato</a>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="kicker">Synthetic Behavioral Inference Lab</div>
+    <div class="wave-frame" aria-hidden="true">
+      <canvas class="wave" data-wave></canvas>
+    </div>
+    <h1>Transformamos dados humanos em sociedades sintéticas para testar decisões <em>antes da execução.</em></h1>
+  </section>
+
+  <!-- 02 IMERSÃO -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>02</b><span class="ln"></span>Imersão</div>
+    <h2>Um laboratório de simulação e inferência comportamental.</h2>
+      <img class="gif" src="./assets/media/m1.gif" alt="" loading="lazy" decoding="async">
+    <p class="body lead">Bem-vindo à era da simulação comportamental.</p>
+    <p class="body">O syn.Be transforma dados culturais, humanos e contextuais em sociedades organizacionais sintéticas — povoadas pelos nossos syns — criadas para testar como grupos reais reagem a decisões, crises, mudanças e tensões estratégicas.</p>
+    <p class="callout">Não simulamos indivíduos isolados. Simulamos sistemas humanos em interação.</p>
+  </section>
+
+  <!-- 03 O PROBLEMA -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>03</b><span class="ln"></span>O Problema</div>
+    <h2>Toda decisão desencadeia reações em um sistema humano antes de virar resultado.</h2>
+    <p class="body">Entre a intenção e a execução há pessoas. Há comportamento. O syn.Be simula esses comportamentos para antecipar resultados, mostrando quais cenários têm maior chance de gerar o melhor retorno e quais riscos podem comprometer tempo, dinheiro e confiança.</p>
+    <p class="callout">Simule cenários críticos antes que uma decisão custe caro demais.</p>
+  </section>
+
+  <!-- 04 A VIRADA -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>04</b><span class="ln"></span>A Virada</div>
+    <h2>O syn.Be reduz o custo de decidir errado.</h2>
+    <p class="body">Criamos o syn.protocol, um método de simulação comportamental baseado em inteligência artificial e ciência aplicada para transformar decisões estratégicas em cenários testáveis. Simular comportamento é apenas o meio. O fim é mostrar quais caminhos geram o melhor resultado antes que a decisão consuma tempo, dinheiro e confiança.</p>
+      <img class="gif" src="./assets/media/m2.gif" alt="" loading="lazy" decoding="async">
+    <div class="stack">
+      <div class="row"><div class="num">01</div><div><h3>Risco de decisão</h3><p>Qual caminho tende a funcionar melhor antes de implementar.</p></div></div>
+      <div class="row"><div class="num">02</div><div><h3>Risco de adesão</h3><p>Quem tende a comprar, resistir, distorcer ou ignorar a decisão.</p></div></div>
+      <div class="row"><div class="num">03</div><div><h3>Risco de execução</h3><p>O que pode comprometer produtividade, foco, colaboração e velocidade.</p></div></div>
+      <div class="row"><div class="num">04</div><div><h3>Risco cultural</h3><p>Se a decisão reforça ou enfraquece confiança, clima, pertencimento e abertura à mudança.</p></div></div>
+      <div class="row"><div class="num">05</div><div><h3>Risco reputacional</h3><p>Ruídos, cinismo, narrativas paralelas e desgaste da liderança.</p></div></div>
+    </div>
+    <div class="mfwrap">
+      <div class="mfembed"><iframe id="mfframe" src="https://www.youtube.com/embed/WIHcYxtnjLE" title="Manifesto" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="mfover" id="mfover"></div></div>
+      <div class="mftabs">
+        <button class="mftab active" data-vid="WIHcYxtnjLE">Manifesto 1</button>
+        <button class="mftab" data-vid="iFQ_NEjnO2I">Manifesto 2</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 A TESE -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>05</b><span class="ln"></span>A Tese</div>
+    <h2>Comportamento humano não é aleatório. É complexo, mas inferível.</h2>
+    <p class="body">Humanos seguem padrões. Grupos convergem, resistem, imitam, polarizam e se reorganizam. Em uma organização, o comportamento coletivo não é a soma de opiniões individuais. É uma dinâmica emergente, moldada por cultura, contexto, ambição, confiança, medo e pressão social.</p>
+    <p class="callout">É por isso que empresas podem ser simuladas: para antecipar padrões, tensões e riscos antes de chegarem à execução.</p>
+    <div class="tstats">
+      <div class="tstat"><div class="tnum">92%</div><div class="tlabel">Correspondência</div><p class="tdesc">Sobreposição média entre simulação sintética e pesquisa tradicional.</p></div>
+      <div class="tstat"><div class="tnum">29</div><div class="tlabel">Testes de aplicação</div><p class="tdesc">Comparações diretas validando a precisão da inferência sintética.</p></div>
+      <div class="tstat"><div class="tnum">15+</div><div class="tlabel">Base científica</div><p class="tdesc">Pesquisa de Stanford, Cambridge, Nature e mais. <a href="./fontes.html">Ver fontes e arcabouço.</a></p></div>
+    </div>
+    <div class="dashes">
+      <figure class="dash"><img src="./assets/media/dash1.png" alt="" loading="lazy"></figure>
+      <figure class="dash"><img src="./assets/media/dash2.png" alt="" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- 06 A CIÊNCIA -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>06</b><span class="ln"></span>A ciência</div>
+    <h2>AI Behavioral Science.</h2>
+    <p class="body lead">A convergência entre ciência comportamental, sistemas complexos e inteligência artificial generativa.</p>
+    <p class="body">Por décadas, a ciência mostrou que o comportamento humano não é aleatório. Pessoas interpretam riscos, respondem a incentivos, resistem a perdas, imitam grupos e mudam de posição sob pressão social.</p>
+    <p class="body">A descoberta recente é que modelos generativos fazem algo maior do que linguagem: reproduzem padrões de comportamento social em ambientes sintéticos, interagindo, adaptando e influenciando uns aos outros.</p>
+    <p class="callout">Quando ciência comportamental, agentes generativos e simulação se encontram, decisões deixam de ser apenas imaginadas. Passam a ser testadas.</p>
+  </section>
+
+  <!-- 07 AS PESSOAS -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>07</b><span class="ln"></span>As pessoas</div>
+    <div class="person">
+      <img class="photo" src="./assets/media/people2.png" alt="Douglas Conte" onerror="this.outerHTML='&lt;div class=&quot;ph-fallback&quot;&gt;Douglas Conte&lt;/div&gt;'">
+      <div class="who">
+        <h2>Me chamo Douglas Conte.</h2>
+        <p class="body">Sou fundador do syn.Be. Minha trajetória conecta economia comportamental aplicada, branding e cultura organizacional, ajudando marcas líderes a moldar comportamentos em imagem, cultura, decisão e performance.</p>
+        <p class="body">Criei a Qore, uma deep tech que sintetiza comportamento em dados. Desenvolvi o syn.protocol, uma arquitetura de ciência aplicada e inteligência artificial para simular sistemas humanos complexos, com o apoio de um Conselho Científico Consultivo, advisors acadêmicos, pesquisadores, professores e PhDs associados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 O MÉTODO -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>08</b><span class="ln"></span>O método</div>
+    <h2>O syn.protocol transforma decisões estratégicas em simulações comportamentais.</h2>
+    <div class="wave-frame" aria-hidden="true">
+      <canvas class="wave" data-wave></canvas>
+    </div>
+    <p class="body">Cada simulação começa com a construção de agentes sintéticos baseados em perfis reais da organização: cultura, contexto, demografia, território, histórico e tendências comportamentais. Depois, esses agentes são expostos a cenários críticos, decisões e variáveis estratégicas. Primeiro respondem individualmente. Depois interagem com o coletivo, ajustando posições, resistindo, aderindo ou amplificando narrativas.</p>
+    <p class="callout">O resultado não é uma previsão única. É uma distribuição de cenários, riscos e probabilidades para apoiar decisões antes da execução.</p>
+    <div class="stack">
+      <div class="row"><div class="num">01</div><div><h3>Agentes sintéticos</h3><p>Perfis representativos baseados em grupos reais da organização.</p></div></div>
+      <div class="row"><div class="num">02</div><div><h3>Ambiente organizacional</h3><p>Cultura, contexto externo, liderança, pressão social e momento da empresa.</p></div></div>
+      <div class="row"><div class="num">03</div><div><h3>Projeção individual</h3><p>Cada syn reage ao cenário antes de conhecer o grupo.</p></div></div>
+      <div class="row"><div class="num">04</div><div><h3>Interação coletiva</h3><p>Os agentes confrontam respostas, narrativas e pressões sociais.</p></div></div>
+      <div class="row"><div class="num">05</div><div><h3>Síntese probabilística</h3><p>O sistema revela cenários prováveis, riscos emergentes e caminhos de decisão.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 09 COMO FUNCIONA -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>09</b><span class="ln"></span>Como funciona</div>
+    <div class="flow-head">Entrada → Simulação → Saída</div>
+    <p class="body">O syn.Be recebe dados reais da organização, transforma decisões estratégicas em cenários simuláveis e entrega inferências comportamentais para apoiar a decisão antes da execução.</p>
+    <div class="stack">
+      <div class="row"><div class="num">01</div><div><h3>Entrada</h3><p>Dados culturais, perfis de grupos, contexto organizacional, ambiente externo e decisão a ser testada.</p></div></div>
+      <div class="row"><div class="num">02</div><div><h3>Simulação</h3><p>Agentes sintéticos interagem com cenários, pressões, narrativas e variáveis estratégicas.</p></div></div>
+      <div class="row"><div class="num">03</div><div><h3>Saída</h3><p>Cenários prováveis, riscos emergentes, tensões ocultas, padrões de adesão, resistência e recomendações para decisão.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 10 FECHAMENTO -->
+  <section class="wrap reveal">
+    <div class="eyebrow"><b>10</b><span class="ln"></span>Fechamento</div>
+    <h2>Uma ferramenta para decidir melhor.</h2>
+      <img class="gif" src="./assets/media/m3.gif" alt="" loading="lazy" decoding="async">
+    <p class="body">Somos uma pequena equipe trabalhando na vanguarda da simulação multiagente, modelagem comportamental e IA aplicada para resolver o maior problema da gestão de empresas: a falta de previsibilidade.</p>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="simular" class="reveal">
+    <div class="wrap">
+      <div class="eyebrow"><b>11</b><span class="ln"></span>Contato</div>
+      <h2>Qual futuro você quer simular?</h2>
+      <form class="form" id="signup" novalidate>
+        <div class="fields">
+          <div class="f">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required>
+          </div>
+          <div class="f">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@empresa.com" required>
+          </div>
+          <div class="f">
+            <label for="whatsapp">WhatsApp</label>
+            <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(51) 99999-9999" required>
+          </div>
+          <div class="f">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="3" placeholder="O que você quer simular? Marca, campanha, produto, preço, lançamento." required></textarea>
+          </div>
+          <p class="ferr" id="ferr"></p>
+          <button type="submit">Entre em contato</button>
+        </div>
+        <p class="thanks">Obrigado! Entraremos em contato em breve.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER syn.Thesis -->
+  <section id="newsletter" class="reveal">
+    <div class="wrap">
+      <div class="eyebrow"><b>12</b><span class="ln"></span>Newsletter</div>
+      <h2>syn.Thesis</h2>
+      <p class="body">Ciência comportamental, simulação e IA aplicada à decisão. Ideias, bastidores e casos direto no seu email. Sem ruído.</p>
+      <div class="nl-embed">
+        <iframe src="https://synthesisai.substack.com/embed" title="Assinar syn.Thesis" loading="lazy" scrolling="no"></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <img class="flogo" src="./assets/media/6a21711382055d747ac97107_logo.png" alt="syn.Be">
+  <div class="ftag">Synthetic Behavioral Inference Lab</div>
+  <nav>
+    <a href="#topo">Início</a>
+    <a href="#simular">Contato</a>
+    <a href="/?desktop=1">Versão desktop</a>
+  </nav>
+  <div class="fcontact">
+    <a class="fmail" href="mailto:hello@syn.be">hello@syn.be</a>
+    <a class="fwa" href="https://wa.me/5551993882928?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20syn.Be." target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+  <div class="copy">© 2026 SYN.BE</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- onda (eye-diagram) leve, canvas puro ---- */
+  function initWave(cv){
+    var ctx = cv.getContext("2d"), w=0, h=0, t0=null, raf=null, dpr=1;
+    function size(){
+      dpr = Math.min(window.devicePixelRatio||1, 2);
+      var r = cv.getBoundingClientRect();
+      w = r.width||cv.offsetWidth||320; h = r.height||128;
+      cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function field(nx,ny,t){
+      /* campo vetorial: soma de ondas que deforma no tempo -> fluxo organico */
+      return Math.sin(nx*6.2 + ny*1.6 + t*0.55)*1.15
+           + Math.cos(ny*5.0 - nx*2.1 - t*0.40 + 1.0)*0.95
+           + Math.sin((nx+ny)*4.2 + t*0.30)*0.70;
+    }
+    function draw(ts){
+      if(t0===null) t0=ts; var t=(ts-t0)*0.001;
+      ctx.clearRect(0,0,w,h);
+      ctx.lineCap="round"; ctx.lineWidth=1.3;
+      var GAP=9, LEN=12;
+      for(var y=GAP*0.6; y<h+GAP; y+=GAP){
+        for(var x=GAP*0.6; x<w+GAP; x+=GAP){
+          var a = field(x/w, y/h, t);
+          var br = 0.40 + 0.60*Math.abs(Math.sin(a*0.9 + t*0.18));   /* tracinhos com brilhos variados, como no gif */
+          var cs = Math.cos(a)*LEN*0.5, sn = Math.sin(a)*LEN*0.5;
+          ctx.strokeStyle = "rgba(237,237,238,"+br.toFixed(3)+")";
+          ctx.beginPath(); ctx.moveTo(x-cs,y-sn); ctx.lineTo(x+cs,y+sn); ctx.stroke();
+        }
+      }
+      if(!reduce) raf=requestAnimationFrame(draw);
+    }
+    size();
+    requestAnimationFrame(draw);
+    var rz; window.addEventListener("resize", function(){ clearTimeout(rz); rz=setTimeout(size,120); }, {passive:true});
+  }
+  var canvases = document.querySelectorAll("canvas[data-wave]");
+  for(var i=0;i<canvases.length;i++) initWave(canvases[i]);
+
+  /* ---- reveal no scroll ---- */
+  var reveals = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ---- form contato ----
+     Envia nome, email e WhatsApp via Web3Forms e mostra a confirmacao na pagina. */
+  var form = document.getElementById("signup");
+  if(form){
+    var WEB3FORMS_KEY = "a93d742a-ee5a-4c48-b5e6-c3528bf97b88";
+
+    var elNome  = document.getElementById("nome");
+    var elMail  = document.getElementById("email");
+    var elWhats = document.getElementById("whatsapp");
+    var elTexto = document.getElementById("mensagem");
+    var elErr   = document.getElementById("ferr");
+
+    function digits(v){ return (v||"").replace(/\D/g,""); }
+
+    /* mascara progressiva de telefone BR */
+    function maskBR(v){
+      var d = digits(v).slice(0,11);
+      if(!d.length) return "";
+      if(d.length <= 2)  return "(" + d;
+      if(d.length <= 6)  return "(" + d.slice(0,2) + ") " + d.slice(2);
+      if(d.length <= 10) return "(" + d.slice(0,2) + ") " + d.slice(2,6) + "-" + d.slice(6);
+      return "(" + d.slice(0,2) + ") " + d.slice(2,7) + "-" + d.slice(7);
+    }
+    if(elWhats){
+      elWhats.addEventListener("input", function(){
+        var pos = this.selectionStart === this.value.length;
+        this.value = maskBR(this.value);
+        if(pos){ try{ this.setSelectionRange(this.value.length, this.value.length); }catch(e){} }
+      });
+    }
+
+    [elNome, elMail, elWhats, elTexto].forEach(function(el){
+      if(!el) return;
+      el.addEventListener("input", function(){
+        el.classList.remove("err");
+        if(elErr) elErr.classList.remove("on");
+      });
+    });
+
+    function fail(el, msg){
+      if(el){ el.classList.add("err"); el.focus(); }
+      if(elErr){ elErr.textContent = msg; elErr.classList.add("on"); }
+    }
+
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+
+      var nome  = elNome  ? (elNome.value||"").trim()  : "";
+      var email = elMail  ? (elMail.value||"").trim()  : "";
+      var whats = elWhats ? (elWhats.value||"").trim() : "";
+      var texto = elTexto ? (elTexto.value||"").trim() : "";
+
+      [elNome, elMail, elWhats, elTexto].forEach(function(el){ if(el) el.classList.remove("err"); });
+
+      if(nome.length < 2){ fail(elNome, "Digite seu nome"); return; }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ fail(elMail, "Digite um email valido"); return; }
+      if(digits(whats).length < 10){ fail(elWhats, "Digite um WhatsApp com DDD"); return; }
+      if(texto.length < 10){ fail(elTexto, "Conte o que você quer simular"); return; }
+      if(elErr) elErr.classList.remove("on");
+
+      var btn = form.querySelector("button");
+      var label = btn ? btn.textContent : "";
+      if(btn){ btn.disabled = true; btn.textContent = "Enviando..."; }
+      function done(){ form.classList.add("done"); try { fetch("https://brand.syn.be/api/boasvindas", { method: "POST", headers: { "Content-Type": "text/plain" }, keepalive: true, body: JSON.stringify({ tipo: "contato", nome: nome, email: email, idioma: "pt", origem: "home mobile" }) }).catch(function () {}); } catch (e) {} }
+
+      if(!WEB3FORMS_KEY || WEB3FORMS_KEY.indexOf("COLE_") === 0){ done(); return; }
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "Novo contato pelo site syn.Be (mobile)",
+          from_name: "syn.Be",
+          name: nome,
+          email: email,
+          whatsapp: whats,
+          message: "Nome: " + nome + "\nEmail: " + email + "\nWhatsApp: " + whats + "\nMensagem: " + texto + "\nOrigem: mobile"
+        })
+      }).then(function(r){ return r.json(); })
+        .then(function(j){ if(j && j.success) done(); else erro(); })
+        .catch(erro);
+      function erro(){ if(btn){ btn.disabled = false; btn.textContent = label; } fail(null, "Não deu para enviar. Tente de novo ou escreva para hello@syn.be."); }
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.mftab'), frame=document.getElementById('mfframe'), over=document.getElementById('mfover');
+  if(!frame) return;
+  if(over){
+    over.addEventListener('click',function(){
+      var src=frame.getAttribute('src');
+      if(src.indexOf('autoplay=')<0){ frame.setAttribute('src', src+(src.indexOf('?')<0?'?':'&')+'autoplay=1'); }
+      over.style.display='none';
+    });
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      frame.src="https://www.youtube.com/embed/"+t.getAttribute('data-vid');
+      if(over) over.style.display='';
+    });
+  });
+})();
+</script>
+<script>
+/* Popup da newsletter: aparece uma vez por sessao, quando o usuario passa
+   da secao 03 (segunda de conteudo). Nao reaparece se ja foi mostrado,
+   assinado ou fechado. Usa variavel em memoria (sessao da aba). */
+(function(){
+  var shown = false;
+  var pop = document.getElementById('nlpop');
+  var closeBtn = document.getElementById('nlpop-x');
+  if(!pop) return;
+
+  function open(){
+    if(shown) return;
+    shown = true;
+    pop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    pop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  pop.addEventListener('click', function(e){ if(e.target === pop) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+
+  /* gatilho: quando o topo da secao 04 cruza a tela (ou seja, leu a 02 e 03) */
+  var trigger = document.querySelectorAll('section.wrap.reveal')[2]; /* 04 A Virada */
+  if('IntersectionObserver' in window && trigger){
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){ if(e.isIntersecting){ open(); io.disconnect(); } });
+    }, {threshold:0.2});
+    io.observe(trigger);
+  }
+})();
+</script>
+
+<!-- SELETOR DE IDIOMA -->
+<script>/* Navegacao dura: o site usa Taxi (data-taxi), que sequestra clique em link
+   e faz transicao por AJAX. Isso impedia a volta para PT. Aqui o clique e
+   capturado antes de qualquer listener e vira navegacao real. */
+(function(){var el=document.getElementById("synbe-lang");if(!el)return;
+el.addEventListener("click",function(e){
+  e.preventDefault();e.stopPropagation();
+  if(e.stopImmediatePropagation){e.stopImmediatePropagation();}
+  var url=el.getAttribute("href");
+  try{localStorage.setItem("synbe-lang",/-en\.html/.test(url)?"en":"pt");}catch(err){}
+  window.location.assign(url);
+},true);})();</script>
+</body>
+</html>

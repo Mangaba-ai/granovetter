@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>syn.Be · Fontes do arcabouço teórico</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0c; --ink:#ededee; --body:#c9c9cd; --muted:#9a9a9e; --faint:#6f6f73;
+    --line:rgba(255,255,255,.12); --line2:rgba(255,255,255,.07);
+    --mono:"Space Mono",monospace; --sans:"Barlow",system-ui,sans-serif; --disp:"Space Grotesk",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.55;
+       -webkit-font-smoothing:antialiased;padding:0 1.4rem}
+  .wrap{max-width:820px;margin:0 auto}
+  a{color:inherit}
+
+  header{padding:5rem 0 2.4rem;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+  h1{font-family:var(--disp);font-weight:600;color:var(--ink);font-size:clamp(2rem,6vw,3rem);line-height:1.05;
+     letter-spacing:-.01em;margin:1.1rem 0 1rem}
+  .sub{max-width:60ch;color:var(--body)}
+  .mantra{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-top:1.4rem;letter-spacing:.02em}
+
+  section{padding:3rem 0;border-bottom:1px solid var(--line2)}
+  .eyebrow{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.8rem}
+  .eyebrow b{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:.8rem;letter-spacing:.06em}
+  .eyebrow .t{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .eyebrow .ln{flex:1;height:1px;background:var(--line);align-self:center}
+  .lead{font-family:var(--disp);font-weight:500;color:var(--ink);font-size:1.35rem;line-height:1.25;margin-bottom:.4rem}
+  .note{color:var(--muted);font-size:.95rem;max-width:62ch;margin-bottom:1.4rem}
+
+  .item{padding:1.3rem 0;border-top:1px solid var(--line2);display:flex;flex-direction:column;gap:.5rem}
+  .item:first-of-type{border-top:0}
+  .ttl{font-weight:600;color:var(--ink);font-size:1.05rem;line-height:1.3}
+  .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint);letter-spacing:.02em}
+  .links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.3rem}
+  .btn{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.7rem;
+       text-transform:uppercase;letter-spacing:.06em;color:var(--ink);text-decoration:none;
+       border:1px solid var(--line);border-radius:2rem;padding:.5rem 1rem;transition:border-color .25s ease,background .25s ease}
+  .btn:hover{border-color:var(--ink)}
+  .btn.pri{background:var(--ink);color:#0b0b0c;border-color:var(--ink)}
+  .btn.pri:hover{background:#fff}
+  .btn.ghost{color:var(--muted)}
+
+  .doc{display:flex;flex-direction:column;gap:1rem;border:1px solid var(--line);border-radius:1rem;padding:1.6rem;margin-top:.4rem}
+  .doc .ttl{font-size:1.2rem}
+
+  footer{padding:3rem 0 5rem}
+  .copy{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.06em}
+  .copy a{color:var(--muted);text-decoration:none}
+
+  @media (max-width:560px){
+    header{padding-top:3.4rem}
+    section{padding:2.4rem 0}
+    .lead{font-size:1.2rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Synthetic Behavioral Inference Lab</div>
+    <h1>Fontes do arcabouço teórico</h1>
+    <p class="sub">Bibliografia de coluna, substrato e reservatório que sustentam o syn.Protocol, o método do syn.Be, e as suas três esferas de atuação: syn.Tropic (organizações), syn.Opsis (marcas e mercado) e syn.Polis (população e esfera pública). Link direto onde há PDF aberto, link de busca onde o acesso depende de assinatura.</p>
+    <p class="mantra">Reduzir a incerteza sobre o futuro, não prever.</p>
+  </header>
+
+  <!-- Documento base -->
+  <section>
+    <div class="eyebrow"><b>00</b><span class="t">Documento</span><span class="ln"></span></div>
+    <div class="doc">
+      <div class="ttl">Arcabouço Teórico · syn.Be</div>
+      <div class="meta">Fundamentação do syn.Protocol · versão 2 · 30/09/2026</div>
+      <div class="links">
+        <a class="btn pri" href="./syn-be_arcabouco_teorico.md" download>Baixar (.md)</a>
+        <a class="btn" href="./syn-be_arcabouco_teorico.md" target="_blank" rel="noopener">Ler</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Camada 1 -->
+  <section>
+    <div class="eyebrow"><b>01</b><span class="t">Camada 1</span><span class="ln"></span></div>
+    <p class="lead">Fidelidade individual</p>
+    <p class="note">Um modelo de linguagem reproduz o comportamento de uma pessoa específica com fidelidade usável, desde que ancorado em dados reais dela.</p>
+
+    <div class="item">
+      <div class="ttl">LLM Agents Grounded in Self-Reports Enable General-Purpose Simulation of Individuals</div>
+      <div class="meta">Park, J. S. et al. · Stanford · 2024 · arXiv:2411.10109</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2411.10109" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2411.10109" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Generative Agents: Interactive Simulacra of Human Behavior</div>
+      <div class="meta">Park, J. S. et al. · 2023 · arXiv:2304.03442</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2304.03442" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2304.03442" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Out of One, Many: Using Language Models to Simulate Human Samples</div>
+      <div class="meta">Argyle, L. P. et al. · Political Analysis 31(3) · 2023 · origem do termo silicon sampling</div>
+      <div class="links">
+        <a class="btn pri" href="https://static1.squarespace.com/static/56bf7bbc5559867615ddc81a/t/6155e3a5b1b71173080762f6/1633018790791/Out_of_Many_One_Argyle_etal_Combined2.pdf" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://doi.org/10.1017/pan.2023.2" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Camada 2 -->
+  <section>
+    <div class="eyebrow"><b>02</b><span class="t">Camada 2</span><span class="ln"></span></div>
+    <p class="lead">Emergência coletiva</p>
+    <p class="note">Conjuntos de agentes reproduzem dinâmica de grupo (homofilia, conformismo, formação de comunidade) sem serem instruídos a isso.</p>
+
+    <div class="item">
+      <div class="ttl">Artificial Intelligence Chatbots Mimic Human Collective Behaviour</div>
+      <div class="meta">He, J. K., Wallis, F. P. S., Gvirtz, A., Rathje, S. · British Journal of Psychology · 2026</div>
+      <div class="links">
+        <a class="btn pri" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13051051/" target="_blank" rel="noopener">Texto livre</a>
+        <a class="btn" href="https://doi.org/10.1111/bjop.12764" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Emergent Social Conventions and Collective Bias in LLM Populations</div>
+      <div class="meta">Ashery, A. et al. · 2025 · conferir referência final</div>
+      <div class="links">
+        <a class="btn" href="https://scholar.google.com/scholar?q=Ashery+emergent+social+conventions+collective+bias+LLM+populations" target="_blank" rel="noopener">Buscar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Camada 3 -->
+  <section>
+    <div class="eyebrow"><b>03</b><span class="t">Camada 3</span><span class="ln"></span></div>
+    <p class="lead">Interior da organização</p>
+    <p class="note">A simulação se estende para dentro de uma organização específica, não apenas para audiências externas genéricas. É a esfera syn.Tropic, a fronteira do método.</p>
+
+    <div class="item">
+      <div class="ttl">Generative Organizational Behavior Simulation using LLM-based Autonomous Agents: A Holacracy Perspective</div>
+      <div class="meta">Zhu, C. et al. · 2024 · arXiv:2408.11826</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2408.11826" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2408.11826" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Limites -->
+  <section>
+    <div class="eyebrow"><b>04</b><span class="t">Limites e validação</span><span class="ln"></span></div>
+    <p class="lead">O que ainda não está provado</p>
+    <p class="note">Atravessa todas as camadas. É a coluna que dá credibilidade ao lab diante de um conselho científico.</p>
+
+    <div class="item">
+      <div class="ttl">LLM Social Simulations Are a Promising Research Method</div>
+      <div class="meta">Anthis, J. R. et al. · ICML 2025 · arXiv:2504.02234 · os cinco desafios; recomenda fine-tuning com dados de ciência social</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2504.02234" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2504.02234" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">The PIMMUR Principles: Ensuring Validity in Collective Behavior of LLM Societies</div>
+      <div class="meta">2025 · arXiv:2509.18052 · auditoria de 39 trabalhos; crise de rigor metodológico</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2509.18052" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2509.18052" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">LLM-Based Social Simulations Require a Boundary</div>
+      <div class="meta">2025 · arXiv:2506.19806 · abordagem por fronteira de fidelidade</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2506.19806" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2506.19806" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Synthetic Replacements for Human Survey Data? The Perils of Large Language Models</div>
+      <div class="meta">Bisbee, J. et al. · Political Analysis 32(4) · 2024 · distribuições estreitas de opinião</div>
+      <div class="links">
+        <a class="btn" href="https://scholar.google.com/scholar?q=Bisbee+synthetic+replacements+human+survey+data+perils+large+language+models" target="_blank" rel="noopener">Buscar</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Limited Ability of LLMs to Simulate Human Psychological Behaviours: A Psychometric Analysis</div>
+      <div class="meta">Petrov, N. B., Serapio-García, G., Rentfrow, J. · 2024</div>
+      <div class="links">
+        <a class="btn" href="https://scholar.google.com/scholar?q=Petrov+Serapio-Garcia+Rentfrow+limited+ability+LLMs+simulate+human+psychological+psychometric" target="_blank" rel="noopener">Buscar</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Falha de LLMs em reproduzir distribuições humanas em jogos econômicos</div>
+      <div class="meta">Gao et al. · 2024 / 2025 · o caso do jogo do 11-20</div>
+      <div class="links">
+        <a class="btn" href="https://scholar.google.com/scholar?q=Gao+LLM+economic+games+11-20+human+distribution+behavior" target="_blank" rel="noopener">Buscar</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Instabilidade temporal e os limites da simulação social com LLMs</div>
+      <div class="meta">Wu et al. · 2025 · simulações mais defensáveis no coletivo que no individual</div>
+      <div class="links">
+        <a class="btn" href="https://scholar.google.com/scholar?q=Wu+2025+LLM+social+simulation+temporal+instability+collective+individual" target="_blank" rel="noopener">Buscar</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Limites de generalização de substitutos de IA para ciência social</div>
+      <div class="meta">Crockett, M. e Messeri, L. · 2025 · composição não representativa dos dados de treino</div>
+      <div class="links">
+        <a class="btn" href="https://scholar.google.com/scholar?q=Crockett+Messeri+2025+AI+surrogates+social+science+generalization+limits" target="_blank" rel="noopener">Buscar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarda-chuva -->
+  <section>
+    <div class="eyebrow"><b>05</b><span class="t">Camada 4 · Guarda-chuva</span><span class="ln"></span></div>
+    <p class="lead">AI Behavioral Science</p>
+    <p class="note">A identidade do lab: tratar os agentes como instrumentos de medição e o próprio modelo como objeto cujo comportamento precisa ser caracterizado.</p>
+
+    <div class="item">
+      <div class="ttl">AI Behavioral Science</div>
+      <div class="meta">CASBS · agosto de 2025 · arXiv:2509.13323</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2509.13323" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2509.13323" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">AI Agent Behavioral Science</div>
+      <div class="meta">2025 · arXiv:2506.06366 · linhagem do Machine Behaviour aplicada a agentes</div>
+      <div class="links">
+        <a class="btn pri" href="https://arxiv.org/pdf/2506.06366" target="_blank" rel="noopener">PDF</a>
+        <a class="btn" href="https://arxiv.org/abs/2506.06366" target="_blank" rel="noopener">arXiv</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="ttl">Machine Behaviour</div>
+      <div class="meta">Rahwan, I. et al. · Nature · 2019 · trata sistemas de IA como sujeitos empíricos de estudo</div>
+      <div class="links">
+        <a class="btn" href="https://doi.org/10.1038/s41586-019-1138-y" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substrato -->
+  <section>
+    <div class="eyebrow"><b>06</b><span class="t">Substrato</span><span class="ln"></span></div>
+    <p class="lead">Os livros, o porão conceitual</p>
+    <p class="note">Não são citações de autoridade. São o chão da Camada 0: comportamento é padronizado e modelável em distribuição.</p>
+
+    <div class="item">
+      <div class="ttl">Thinking, Fast and Slow</div>
+      <div class="meta">Daniel Kahneman · sistema dual, heurísticas e vieses</div>
+      <div class="links"><a class="btn ghost" href="https://books.google.com/books?q=Kahneman+Thinking+Fast+and+Slow" target="_blank" rel="noopener">Encontrar</a></div>
+    </div>
+    <div class="item">
+      <div class="ttl">Misbehaving / Nudge</div>
+      <div class="meta">Richard Thaler · racionalidade limitada, arquitetura de escolha</div>
+      <div class="links"><a class="btn ghost" href="https://books.google.com/books?q=Richard+Thaler+Misbehaving" target="_blank" rel="noopener">Encontrar</a></div>
+    </div>
+    <div class="item">
+      <div class="ttl">Determined / Behave</div>
+      <div class="meta">Robert Sapolsky · determinismo do comportamento</div>
+      <div class="links"><a class="btn ghost" href="https://books.google.com/books?q=Sapolsky+Determined" target="_blank" rel="noopener">Encontrar</a></div>
+    </div>
+    <div class="item">
+      <div class="ttl">The Culture Code</div>
+      <div class="meta">Daniel Coyle · cultura como padrão comportamental observável · ponte para a Camada 3</div>
+      <div class="links"><a class="btn ghost" href="https://books.google.com/books?q=Daniel+Coyle+The+Culture+Code" target="_blank" rel="noopener">Encontrar</a></div>
+    </div>
+    <div class="item">
+      <div class="ttl">Thinking in Systems</div>
+      <div class="meta">Donella Meadows · loops de feedback, emergência, pontos de alavancagem</div>
+      <div class="links"><a class="btn ghost" href="https://books.google.com/books?q=Donella+Meadows+Thinking+in+Systems" target="_blank" rel="noopener">Encontrar</a></div>
+    </div>
+    <div class="item">
+      <div class="ttl">Clear Thinking</div>
+      <div class="meta">Shane Parrish · decisão sob defaults · lado do produto</div>
+      <div class="links"><a class="btn ghost" href="https://books.google.com/books?q=Shane+Parrish+Clear+Thinking" target="_blank" rel="noopener">Encontrar</a></div>
+    </div>
+  </section>
+
+  <!-- Reservatório -->
+  <section>
+    <div class="eyebrow"><b>07</b><span class="t">Reservatório</span><span class="ln"></span></div>
+    <p class="lead">As duas listas, fundo de poço</p>
+    <p class="note">Não entram na espinha. São mineradas sob demanda: Social Science alimenta a Camada 2, Psychometrics alimenta a Camada 1.</p>
+
+    <div class="item">
+      <div class="ttl">Awesome-LLM-in-Social-Science</div>
+      <div class="meta">ValueByte-AI · reservatório da Camada 2</div>
+      <div class="links"><a class="btn" href="https://github.com/ValueByte-AI/Awesome-LLM-in-Social-Science" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+    <div class="item">
+      <div class="ttl">Awesome-LLM-Psychometrics</div>
+      <div class="meta">ValueByte-AI · reservatório da Camada 1</div>
+      <div class="links"><a class="btn" href="https://github.com/ValueByte-AI/Awesome-LLM-Psychometrics" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="copy">© 2026 SYN.BE · <a href="mailto:hello@syn.be">hello@syn.be</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
