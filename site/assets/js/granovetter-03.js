@@ -81,7 +81,7 @@
       vx += (ox - cx) * 0.022;
       vy += (oy - cy) * 0.022;
 
-      // Mouse repulsion — same model as syntropic.html
+      // Mouse repulsion — same model as the intro
       let hlt = 0;
       if (mouse.on) {
         const dx = cx - mouse.x;

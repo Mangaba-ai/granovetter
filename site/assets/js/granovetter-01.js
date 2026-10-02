@@ -12,8 +12,8 @@
   const CH_W   = 6, CH_H = 11;
   const THRESH = 220;
 
-  const vid = document.getElementById('synintro-vid');
-  const ac = document.getElementById('synintro-asc');
+  const vid = document.getElementById('granointro-vid');
+  const ac = document.getElementById('granointro-asc');
   const actx = ac.getContext('2d');
   const gc = document.createElement('canvas');
   const gctx = gc.getContext('2d');
@@ -74,7 +74,7 @@
 
   const logoImg = new Image();
   logoImg.crossOrigin = "anonymous";
-  logoImg.src = "https://cdn.prod.website-files.com/69d94fc81078b0ea07475606/6a21711382055d747ac97107_logo.png";
+  logoImg.src = "https://cdn.prod.website-files.com/69d94fc81078b0ea07475606/granovetter-logo.png";
   let logoGrid = null, logoCols = 0, logoRows = 0, logoOffX = 0, logoOffY = 0, logoPx = null;
 
   function buildLogoGrid() {
@@ -216,7 +216,7 @@
     if (phase !== 'idle') return;
     phase = 'spring';
     springElapsed = 0;
-    document.getElementById('synintro-hint')?.classList.remove('show');
+    document.getElementById('granointro-hint')?.classList.remove('show');
     spawnSpringParticles();
   }
 
@@ -226,21 +226,21 @@
     document.body.classList.add('granovetter-intro-revealing');
     ac.style.transition = 'opacity 2.0s ease';
     ac.style.opacity = '0';
-    const introBg = document.getElementById('synintro-bg');
+    const introBg = document.getElementById('granointro-bg');
     introBg.style.transition = 'opacity 1.6s ease';
     introBg.style.opacity = '0';
-    document.getElementById('synintro-ui').style.opacity = '0';
-    document.getElementById('synintro-hint').style.opacity = '0';
+    document.getElementById('granointro-ui').style.opacity = '0';
+    document.getElementById('granointro-hint').style.opacity = '0';
     setTimeout(() => {
       phase = 'reveal';
       document.body.style.overflow = '';
       document.body.style.cursor = 'auto';
       document.body.classList.add('granovetter-intro-done');
       ac.remove();
-      document.getElementById('synintro-bg')?.remove();
-      document.getElementById('synintro-ui')?.remove();
-      document.getElementById('synintro-hint')?.remove();
-      document.getElementById('synintro-vid')?.remove();
+      document.getElementById('granointro-bg')?.remove();
+      document.getElementById('granointro-ui')?.remove();
+      document.getElementById('granointro-hint')?.remove();
+      document.getElementById('granointro-vid')?.remove();
     }, 2800);
   }
 
@@ -258,7 +258,7 @@
       const rr = elapsed < RAIN_DUR ? Math.floor((elapsed / RAIN_DUR) * rows * 1.08) : undefined;
       renderAscii(vidAlpha, rr);
       if (elapsed > 4000) {
-        const cnt = document.getElementById('synintro-cnt');
+        const cnt = document.getElementById('granointro-cnt');
         if (cnt) cnt.textContent = String(Math.min(((elapsed - 4000) / 80) | 0, 100)).padStart(3, '0');
       }
       return;
@@ -274,7 +274,7 @@
         for (const p of springs) { p.x = p.tx; p.y = p.ty; p.settled = true; }
         setTimeout(() => {
           phase = 'fill'; fillElapsed = 0;
-          const bg = document.getElementById('synintro-bg');
+          const bg = document.getElementById('granointro-bg');
           if (bg) {
             bg.style.transition = 'background-color 1.4s ease';
             bg.style.backgroundColor = '#000';
@@ -312,13 +312,13 @@
   setTimeout(() => { clickReady = true; }, 1200);
   window.addEventListener('click', () => { if (clickReady) doExplode(); });
   window.addEventListener('touchstart', () => { if (clickReady) doExplode(); });
-  document.getElementById('synintro-btn')?.addEventListener('click', doExplode);
+  document.getElementById('granointro-btn')?.addEventListener('click', doExplode);
 
-  setTimeout(() => document.getElementById('synintro-logo')?.classList.add('show'), 2500);
+  setTimeout(() => document.getElementById('granointro-logo')?.classList.add('show'), 2500);
   setTimeout(() => {
-    document.getElementById('synintro-btn')?.classList.add('show');
-    document.getElementById('synintro-cnt')?.classList.add('show');
-    document.getElementById('synintro-hint')?.classList.add('show');
+    document.getElementById('granointro-btn')?.classList.add('show');
+    document.getElementById('granointro-cnt')?.classList.add('show');
+    document.getElementById('granointro-hint')?.classList.add('show');
   }, 4000);
 
   setTimeout(() => { if (phase === 'idle') doExplode(); }, 14000);

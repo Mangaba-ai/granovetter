@@ -1,23 +1,27 @@
-# syn-be-clone
+# Site do Granovetter
 
-Espelho local estático de https://syn.be/index-en, rebatizado como Granovetter (baixado em 01/10/2026).
+Site institucional do Granovetter, laboratório de simulação e inferência comportamental.
+HTML/CSS/JS estático, sem build.
 
-## Rodar
+## Rodar local
 
 ```bash
 npx -y serve -l 8765 site
 ```
 
-Abrir http://localhost:8765/index-en (EN) ou http://localhost:8765/ (PT).
-No painel do Claude Code o servidor se chama `syn-be` (em `~/Downloads/.claude/launch.json`).
-Lá, `python3 -m http.server` dá 404 em tudo (o Python do Xcode não tem acesso a ~/Downloads); use `serve`.
+- `index.html`: português
+- `index-en.html`: inglês
+- `mobile.html`: versão mobile (português)
+- `fontes.html`: bibliografia e arcabouço teórico (`granovetter_arcabouco_teorico.md`)
 
-## Conteúdo
+## Publicar
 
-- `index-en.html` — versão em inglês
-- `index.html` — versão em português
-- `mobile.html`, `fontes.html` — páginas auxiliares
-- `assets/css`, `assets/js`, `assets/media` — CSS, JS (Lottie etc.) e mídia originais
+```bash
+cd site && npx vercel --prod
+```
 
-Externos que continuam remotos: Google Fonts, embeds do YouTube e Substack.
-Rotas `/sequence/*` e `/images/*` citadas no JS dão 404 também no site original (código morto).
+## Notas
+
+- O formulário de contato envia pelo FormSubmit para dheiver.santos@mangaba.ia.br. No primeiro envio o FormSubmit manda um e-mail de ativação, que precisa ser confirmado uma vez.
+- O vídeo da intro (`assets/media/granovetter-intro.mp4`) é convertido em ASCII no canvas; foi gerado por script (cascata de limiares numa rede).
+- A simulação de exemplo citada no site vem de `scenarios/remote_work.json` e usa organização fictícia.

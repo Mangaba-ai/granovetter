@@ -9,6 +9,10 @@ Teste decisões antes de implementar. Identifique tipping points e riscos emerge
 ENTRADA (Dados)  →  AGENTES SINTÉTICOS  →  SIMULAÇÃO (N rounds)  →  ANÁLISE PROBABILÍSTICA
 ```
 
+## 🌐 Site
+
+O site institucional fica em [`site/`](./site) (HTML estático, publicado na Vercel). Veja [site/README.md](./site/README.md).
+
 ## 🎯 Features
 
 - ✅ Agentes sintéticos baseados em perfis reais

@@ -739,7 +739,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
 
 
 /* GRANOVETTER INTRO OVERLAY */
-#synintro-bg {
+#granointro-bg {
   position: fixed;
   inset: 0;
   z-index: 190;
@@ -748,7 +748,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   transition: opacity 1.6s ease 0.6s;
 }
 
-#synintro-asc {
+#granointro-asc {
   position: fixed;
   inset: 0;
   display: block;
@@ -756,7 +756,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   transition: opacity 1.4s ease;
 }
 
-.synintro-ui {
+.granointro-ui {
   position: fixed;
   inset: 0;
   z-index: 210;
@@ -770,7 +770,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   color: rgb(235,228,215);
 }
 
-.synintro-logo {
+.granointro-logo {
   height: 24px;
   width: auto;
   opacity: 0;
@@ -778,17 +778,17 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   filter: brightness(0) invert(1);
 }
 
-.synintro-logo.show {
+.granointro-logo.show {
   opacity: 0.55;
 }
 
-.synintro-bot {
+.granointro-bot {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
-.synintro-enter {
+.granointro-enter {
   font-size: 11px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -799,15 +799,15 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   transition: opacity 1.5s ease, color 0.2s;
 }
 
-.synintro-enter.show {
+.granointro-enter.show {
   opacity: 1;
 }
 
-.synintro-enter:hover {
+.granointro-enter:hover {
   color: rgba(235,228,215,0.95);
 }
 
-.synintro-cnt {
+.granointro-cnt {
   font-size: 11px;
   letter-spacing: 0.07em;
   font-family: 'Courier New', Courier, monospace;
@@ -816,11 +816,11 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   transition: opacity 1.5s ease;
 }
 
-.synintro-cnt.show {
+.granointro-cnt.show {
   opacity: 1;
 }
 
-#synintro-hint {
+#granointro-hint {
   position: fixed;
   bottom: 60px;
   left: 50%;
@@ -836,20 +836,20 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   font-family: 'Courier New', Courier, monospace;
 }
 
-#synintro-hint.show {
+#granointro-hint.show {
   opacity: 1;
 }
 
 @media (max-width: 768px) {
-  .synintro-ui {
+  .granointro-ui {
     padding: 22px 22px;
   }
 
-  .synintro-logo {
+  .granointro-logo {
     height: 20px;
   }
 
-  #synintro-hint {
+  #granointro-hint {
     bottom: 52px;
   }
 }
@@ -871,17 +871,17 @@ body:not(.granovetter-intro-revealing):not(.granovetter-intro-done)::before {
   z-index: 2147482500;
   pointer-events: none;
 }
-#synintro-bg {
+#granointro-bg {
   background: #000 !important;
   z-index: 2147482600 !important;
 }
-#synintro-asc {
+#granointro-asc {
   z-index: 2147482601 !important;
 }
-#synintro-ui {
+#granointro-ui {
   z-index: 2147482602 !important;
 }
-#synintro-hint {
+#granointro-hint {
   z-index: 2147482603 !important;
 }
 
