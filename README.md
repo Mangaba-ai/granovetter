@@ -5,10 +5,12 @@ Espelho local estático de https://syn.be/index-en (baixado em 01/10/2026).
 ## Rodar
 
 ```bash
-python3 -m http.server 8765
+npx -y serve -l 8765 .
 ```
 
-Abrir http://localhost:8765/index-en.html (EN) ou http://localhost:8765/ (PT).
+Abrir http://localhost:8765/index-en (EN) ou http://localhost:8765/ (PT).
+No painel do Claude Code o servidor se chama `syn-be` (em `~/Downloads/.claude/launch.json`).
+Lá, `python3 -m http.server` dá 404 em tudo (o Python do Xcode não tem acesso a ~/Downloads); use `serve`.
 
 ## Conteúdo
 
