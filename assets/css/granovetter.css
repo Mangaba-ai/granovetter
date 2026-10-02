@@ -37,7 +37,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
 
 /* ===== inline style 4 from original HTML ===== */
 
-@keyframes synbeHeroIn {
+@keyframes granovetterHeroIn {
   from { transform: translateY(105%); }
   to   { transform: translateY(0);    }
 }
@@ -46,17 +46,17 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
 
 /* ===== inline style 5 from original HTML ===== */
 
-.synbe-light {
+.granovetter-light {
     background:#d9d9d9;
     color:#000;
   }
 
-  .synbe-dark {
+  .granovetter-dark {
     background:#000;
     color:#b7b7b7;
   }
 
-  .synbe-topbar {
+  .granovetter-topbar {
     display:flex;
     align-items:center;
     gap:1.2rem;
@@ -64,7 +64,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     width:100%;
   }
 
-  .synbe-topbar span {
+  .granovetter-topbar span {
     font-family:"Courier New", monospace;
     font-size:1.2rem;
     letter-spacing:.12em;
@@ -72,7 +72,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     flex-shrink:0;
   }
 
-  .synbe-topbar .synbe-rule {
+  .granovetter-topbar .granovetter-rule {
     flex:1;
     height:1px;
     opacity:.45;
@@ -80,7 +80,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     display:block;
   }
 
-  .synbe-copy {
+  .granovetter-copy {
     font-family:"Courier New", monospace;
     font-size:1.35rem;
     line-height:1.78;
@@ -88,30 +88,30 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     letter-spacing:.01em;
   }
 
-  .synbe-copy p {
+  .granovetter-copy p {
     margin-bottom:1.4rem;
   }
 
-  .synbe-copy p:last-child {
+  .granovetter-copy p:last-child {
     margin-bottom:0;
   }
 
-  .synbe-muted {
+  .granovetter-muted {
     color:#5f5f5f;
   }
 
-  .synbe-dark .synbe-muted {
+  .granovetter-dark .granovetter-muted {
     color:#878787;
   }
 
-  .synbe-section-title {
+  .granovetter-section-title {
     max-width:74vw;
     margin-bottom:3.2rem;
     font-weight:500;
   }
 
-  .synbe-science-grid,
-  .synbe-method-grid {
+  .granovetter-science-grid,
+  .granovetter-method-grid {
     display:grid;
     grid-template-columns:minmax(0, 1.05fr) minmax(320px, .95fr);
     gap:6vw;
@@ -175,7 +175,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     display:block;
   }
 
-  #press .synbe-method-grid {
+  #press .granovetter-method-grid {
     margin-bottom:4rem;
   }
 
@@ -216,23 +216,23 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     display:none;
   }
 
-  .synbe-steps {
+  .granovetter-steps {
     display:grid;
     grid-template-columns:repeat(5, 1fr);
     border-top:1px solid rgba(0,0,0,.28);
     border-bottom:1px solid rgba(0,0,0,.28);
   }
 
-  .synbe-step {
+  .granovetter-step {
     padding:2rem 1.6rem;
     border-right:1px solid rgba(0,0,0,.28);
   }
 
-  .synbe-step:last-child {
+  .granovetter-step:last-child {
     border-right:0;
   }
 
-  .synbe-step-number {
+  .granovetter-step-number {
     display:block;
     font-family:"Courier New", monospace;
     font-size:1.1rem;
@@ -240,7 +240,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     margin-bottom:1rem;
   }
 
-  .synbe-step-title {
+  .granovetter-step-title {
     font-family:"Courier New", monospace;
     font-size:1.25rem;
     line-height:1.25;
@@ -248,7 +248,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     margin-bottom:1rem;
   }
 
-  .synbe-step-text {
+  .granovetter-step-text {
     font-family:"Courier New", monospace;
     font-size:1.15rem;
     line-height:1.65;
@@ -269,7 +269,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     margin-bottom:2.4rem;
   }
 
-  #feed .synbe-feed-intro {
+  #feed .granovetter-feed-intro {
     max-width:74rem;
     margin-bottom:4rem;
   }
@@ -317,7 +317,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     background:#ffc91d;
   }
 
-  #signup .synbe-topbar {
+  #signup .granovetter-topbar {
     position:absolute;
     top:1.6rem;
     left:1.6rem;
@@ -338,19 +338,19 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     margin-bottom:3rem;
   }
 
-  #signup .synbe-closing-grid {
+  #signup .granovetter-closing-grid {
     display:grid;
     grid-template-columns:minmax(0, 1.1fr) minmax(280px, .75fr);
     gap:6vw;
     align-items:start;
   }
 
-  #signup .synbe-closing-copy {
+  #signup .granovetter-closing-copy {
     color:#b7b7b7;
     max-width:68rem;
   }
 
-  #signup .synbe-closing-lines p {
+  #signup .granovetter-closing-lines p {
     font-family:"Courier New", monospace;
     font-size:1.6rem;
     line-height:1.7;
@@ -386,28 +386,28 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   }
 
   @media screen and (max-width:1024px) {
-    .synbe-science-grid,
-    .synbe-method-grid,
-    #signup .synbe-closing-grid {
+    .granovetter-science-grid,
+    .granovetter-method-grid,
+    #signup .granovetter-closing-grid {
       grid-template-columns:1fr;
       gap:4rem;
     }
 
     #company .company-title,
-    .synbe-section-title {
+    .granovetter-section-title {
       max-width:100%;
     }
 
-    .synbe-steps {
+    .granovetter-steps {
       grid-template-columns:1fr;
     }
 
-    .synbe-step {
+    .granovetter-step {
       border-right:0;
       border-bottom:1px solid rgba(0,0,0,.28);
     }
 
-    .synbe-step:last-child {
+    .granovetter-step:last-child {
       border-bottom:0;
     }
 
@@ -422,7 +422,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     }
   }
 
-#feed .synbe-flow-title {
+#feed .granovetter-flow-title {
     display:flex !important;
     align-items:baseline;
     justify-content:space-between;
@@ -437,13 +437,13 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     text-transform:none !important;
   }
 
-  #feed .synbe-flow-title span {
+  #feed .granovetter-flow-title span {
     display:block;
     flex:0 0 auto;
   }
 
-  #feed .synbe-flow-title span:nth-child(2),
-  #feed .synbe-flow-title span:nth-child(4) {
+  #feed .granovetter-flow-title span:nth-child(2),
+  #feed .granovetter-flow-title span:nth-child(4) {
     font-size:.58em;
     letter-spacing:0;
     transform:translateY(-.08em);
@@ -451,7 +451,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   }
 
   @media screen and (max-width:520px) {
-    #feed .synbe-flow-title {
+    #feed .granovetter-flow-title {
       gap:.55rem;
       font-size:clamp(1.95rem, 5.8vw, 2.5rem) !important;
       letter-spacing:-.065em !important;
@@ -459,7 +459,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   }
 
 
-.synbe-closing-section {
+.granovetter-closing-section {
     position:relative !important;
     display:block !important;
     min-height:100vh;
@@ -469,7 +469,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     overflow:hidden;
   }
 
-  .synbe-closing-tunnel-shell {
+  .granovetter-closing-tunnel-shell {
     position:relative;
     width:100%;
     min-height:calc(100vh - 11.1111111112vw);
@@ -479,20 +479,20 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     background:#000;
   }
 
-  .synbe-tunnel-background,
-  .synbe-tunnel-container,
-  .synbe-tunnel-gl {
+  .granovetter-tunnel-background,
+  .granovetter-tunnel-container,
+  .granovetter-tunnel-gl {
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
   }
 
-  .synbe-tunnel-container {
+  .granovetter-tunnel-container {
     overflow:hidden;
   }
 
-  .synbe-tunnel-lines {
+  .granovetter-tunnel-lines {
     position:absolute;
     inset:0;
     width:100%;
@@ -502,7 +502,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     pointer-events:none;
   }
 
-  .synbe-tunnel-bg {
+  .granovetter-tunnel-bg {
     position:absolute;
     inset:0;
     display:flex;
@@ -511,7 +511,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     pointer-events:none;
   }
 
-  .synbe-tunnel-bg-inner {
+  .granovetter-tunnel-bg-inner {
     width:50%;
     height:50%;
     background:#000;
@@ -519,7 +519,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     transform:scale(1.5);
   }
 
-  .synbe-tunnel-topbar {
+  .granovetter-tunnel-topbar {
     position: relative !important;
     z-index: 2;
     width: 100% !important;
@@ -533,13 +533,13 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
 
   /* Shell: subtrai a altura do topbar (~4.6rem) do cálculo */
   @media screen and (min-width:901px) {
-    .synbe-closing-tunnel-shell {
+    .granovetter-closing-tunnel-shell {
       height: calc(var(--vh, 100vh) - 11.1112vw - 4.6rem) !important;
       min-height: calc(100vh - 11.1112vw - 4.6rem) !important;
     }
   }
 
-  .synbe-tunnel-content {
+  .granovetter-tunnel-content {
     position:absolute;
     inset:0;
     z-index:1;
@@ -552,7 +552,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     pointer-events:none;
   }
 
-  .synbe-closing-title.synbe-tunnel-title {
+  .granovetter-closing-title.granovetter-tunnel-title {
     font-family:"PP Neue Montreal", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:clamp(3.2rem, 5.35vw, 9rem);
     font-weight:500;
@@ -566,7 +566,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     text-align:center;
   }
 
-  .synbe-closing-copy.synbe-tunnel-description {
+  .granovetter-closing-copy.granovetter-tunnel-description {
     font-family:"Berkeley Mono", "Space Mono", "Courier New", monospace;
     font-size:clamp(1rem, .98vw, 1.45rem);
     line-height:1.7;
@@ -580,28 +580,28 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
   }
 
   @media screen and (max-width:900px) {
-    .synbe-closing-section {
+    .granovetter-closing-section {
       padding:12vw 4.1025641026vw;
     }
 
-    .synbe-closing-tunnel-shell {
+    .granovetter-closing-tunnel-shell {
       min-height:74vh;
       height:74vh;
       max-height:none;
     }
 
-    .synbe-tunnel-content {
+    .granovetter-tunnel-content {
       padding:16vw 5vw 8vw;
     }
 
-    .synbe-closing-title.synbe-tunnel-title {
+    .granovetter-closing-title.granovetter-tunnel-title {
       font-size:clamp(3rem, 12vw, 6.8rem);
       width:88vw;
       margin-bottom:8vw;
       letter-spacing:-.045em;
     }
 
-    .synbe-closing-copy.synbe-tunnel-description {
+    .granovetter-closing-copy.granovetter-tunnel-description {
       width:84vw;
       font-size:1.05rem;
       line-height:1.65;
@@ -634,7 +634,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     margin-bottom: 3.2rem !important;
   }
 
-  #press .synbe-method-title {
+  #press .granovetter-method-title {
     display: block;
     font-family: "PP Neue Montreal", Arial, sans-serif;
     font-weight: 500;
@@ -644,7 +644,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     text-transform: none;
   }
 
-  #press .synbe-method-grid {
+  #press .granovetter-method-grid {
     grid-template-columns: minmax(0, .92fr) minmax(360px, 1.08fr);
     gap: 5vw;
     align-items: start;
@@ -689,7 +689,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     opacity: .22;
   }
 
-  #press .synbe-method-lottie {
+  #press .granovetter-method-lottie {
     position: absolute;
     inset: 8% 0 6%;
     display: block;
@@ -701,14 +701,14 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
     z-index: 2;
   }
 
-  #press .synbe-method-lottie svg,
-  #press .synbe-method-lottie canvas {
+  #press .granovetter-method-lottie svg,
+  #press .granovetter-method-lottie canvas {
     width: 100% !important;
     height: 100% !important;
     display: block;
   }
 
-  #press .article-excerpt.synbe-copy {
+  #press .article-excerpt.granovetter-copy {
     font-size: 1.25rem;
     line-height: 1.72;
   }
@@ -718,11 +718,11 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
       max-width: 100%;
     }
 
-    #press .synbe-method-title {
+    #press .granovetter-method-title {
       font-size: clamp(3rem, 10vw, 5.2rem);
     }
 
-    #press .synbe-method-grid {
+    #press .granovetter-method-grid {
       grid-template-columns: 1fr;
       gap: 3.2rem;
     }
@@ -738,7 +738,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
 /* ===== inline style 7 from original HTML ===== */
 
 
-/* SYN.BE INTRO OVERLAY */
+/* GRANOVETTER INTRO OVERLAY */
 #synintro-bg {
   position: fixed;
   inset: 0;
@@ -863,7 +863,7 @@ body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body
 html {
   background: #000 !important;
 }
-body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
+body:not(.granovetter-intro-revealing):not(.granovetter-intro-done)::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -1140,7 +1140,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
 /* ===== inline style 12 from original HTML ===== */
 
 /* 08 - Como funciona: GIFs sobre os cards originais */
-#feed .article-asset.synbe-gif-asset {
+#feed .article-asset.granovetter-gif-asset {
   background: #111;
   overflow: hidden;
   position: relative;
@@ -1149,7 +1149,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   margin-bottom: 2rem;
 }
 
-#feed .synbe-process-number {
+#feed .granovetter-process-number {
   position: absolute;
   left: 50%;
   bottom: 2.2rem;
@@ -1164,7 +1164,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   pointer-events: none;
 }
 
-#feed .synbe-process-gif {
+#feed .granovetter-process-gif {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1182,11 +1182,11 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
 }
 
 @media screen and (max-width:749px) {
-  #feed .article-asset.synbe-gif-asset {
+  #feed .article-asset.granovetter-gif-asset {
     padding-top: 72%;
   }
 
-  #feed .synbe-process-number {
+  #feed .granovetter-process-number {
     bottom: 1.6rem;
     font-size: 4.8rem;
   }
@@ -1217,7 +1217,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
    Ajuste fino: mexa em opacity (mais grao / menos grao) e em background-size
    (tile menor = grao mais fino). */
 .-noise { display: none !important; }
-#synbe-static {
+#granovetter-static {
   position: fixed;
   inset: 0;
   z-index: 5;
@@ -1230,8 +1230,8 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   opacity: 0.6;
 }
 
-/* ===== synbe-highlight: fundo branco / texto preto em spans selecionados ===== */
-.synbe-highlight {
+/* ===== granovetter-highlight: fundo branco / texto preto em spans selecionados ===== */
+.granovetter-highlight {
   background: #fff;
   color: #000;
   display: inline;
@@ -1357,7 +1357,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
     height: 50vw !important;
     min-height: 160px !important;
   }
-  .synbe-science-grid {
+  .granovetter-science-grid {
     grid-template-columns: 1fr !important;
     gap: 3rem !important;
   }
@@ -1367,7 +1367,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
     height: 50vw !important;
     min-height: 160px !important;
   }
-  .synbe-method-grid {
+  .granovetter-method-grid {
     grid-template-columns: 1fr !important;
     gap: 3rem !important;
   }
@@ -1415,18 +1415,18 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   }
 
   /* CLOSING (09) ---------------------------------------------------- */
-  .synbe-closing-tunnel-shell {
+  .granovetter-closing-tunnel-shell {
     height:     calc(74vh - 4.6rem) !important;
     min-height: calc(74vh - 4.6rem) !important;
   }
-  .synbe-tunnel-topbar {
+  .granovetter-tunnel-topbar {
     padding-left:  4.1025641026vw;
     padding-right: 4.1025641026vw;
   }
 }
 
-/* ===== syn.Be section 07: As pessoas ===== */
-.synbe-people-section {
+/* ===== Granovetter section 07: As pessoas ===== */
+.granovetter-people-section {
   position: relative !important;
   box-sizing: border-box;
   min-height: calc(var(--vh, 100vh) - 3.2rem);
@@ -1436,19 +1436,19 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   overflow: hidden;
 }
 
-.synbe-people-content {
+.granovetter-people-content {
   position: relative;
   min-height: calc(var(--vh, 100vh) - 3.2rem - 4.4444vw);
   z-index: 1;
 }
 
-.synbe-people-topbar {
+.granovetter-people-topbar {
   position: relative;
   z-index: 4;
   margin-bottom: 0;
 }
 
-.synbe-people-layout {
+.granovetter-people-layout {
   position: relative;
   min-height: calc(var(--vh, 100vh) - 3.2rem - 8.8888vw);
   display: grid;
@@ -1458,7 +1458,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   padding-top: 0;
 }
 
-.synbe-people-copy {
+.granovetter-people-copy {
   position: relative;
   z-index: 3;
   width: min(48rem, 37vw);
@@ -1466,7 +1466,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   padding-bottom: 0;
 }
 
-.synbe-people-title {
+.granovetter-people-title {
   margin: 0 0 3.2rem;
   font-family: "PP Neue Montreal", Barlow, Arial, sans-serif;
   font-size: clamp(3.2rem, 3.6vw, 5.2rem);
@@ -1479,13 +1479,13 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   white-space: normal;
 }
 
-.synbe-people-title span {
+.granovetter-people-title span {
   text-decoration: underline;
   text-decoration-thickness: .055em;
   text-underline-offset: .13em;
 }
 
-.synbe-people-text {
+.granovetter-people-text {
   width: min(37rem, 30vw);
   font-family: "Berkeley Mono", "Space Mono", "Courier New", monospace;
   font-size: clamp(1.22rem, .94vw, 1.44rem);
@@ -1495,27 +1495,27 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   color: #343434;
 }
 
-.synbe-people-text p {
+.granovetter-people-text p {
   margin: 0 0 2.15rem;
 }
 
-.synbe-people-text p:last-child {
+.granovetter-people-text p:last-child {
   margin-bottom: 0;
 }
 
-.synbe-people-text strong,
-.synbe-people-text span {
+.granovetter-people-text strong,
+.granovetter-people-text span {
   font-weight: 700;
   color: #343434;
 }
 
-.synbe-people-text span {
+.granovetter-people-text span {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: .16em;
 }
 
-.synbe-people-media {
+.granovetter-people-media {
   position: absolute;
   inset: 0 0 0 25.5vw;
   z-index: 1;
@@ -1525,7 +1525,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
   pointer-events: none;
 }
 
-.synbe-people-image {
+.granovetter-people-image {
   width: min(75vw, 112rem);
   height: calc(100% + 1.2vw);
   display: block;
@@ -1537,51 +1537,51 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
 }
 
 @media screen and (max-width:1280px) {
-  .synbe-people-layout {
+  .granovetter-people-layout {
     grid-template-columns: minmax(390px, 42vw) 1fr;
   }
 
-  .synbe-people-copy {
+  .granovetter-people-copy {
     width: min(45rem, 41vw);
     margin-left: 4.2vw;
   }
 
-  .synbe-people-text {
+  .granovetter-people-text {
     width: min(35rem, 34vw);
   }
 }
 
 @media screen and (max-width:1024px) {
-  .synbe-people-section {
+  .granovetter-people-section {
     min-height: auto;
     padding: 7.5vw 0 0;
   }
 
-  .synbe-people-content {
+  .granovetter-people-content {
     min-height: auto;
   }
 
-  .synbe-people-layout {
+  .granovetter-people-layout {
     grid-template-columns: 1fr;
     min-height: auto;
     padding-top: 3.6rem;
   }
 
-  .synbe-people-copy {
+  .granovetter-people-copy {
     width: min(48rem, 86vw);
     margin-left: 0;
     padding: 0;
   }
 
-  .synbe-people-title {
+  .granovetter-people-title {
     white-space: normal;
   }
 
-  .synbe-people-text {
+  .granovetter-people-text {
     width: min(38rem, 86vw);
   }
 
-  .synbe-people-media {
+  .granovetter-people-media {
     position: relative;
     inset: auto;
     height: 58vw;
@@ -1589,7 +1589,7 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
     margin-top: 1.8rem;
   }
 
-  .synbe-people-image {
+  .granovetter-people-image {
     width: 100%;
     height: 100%;
     object-position: center bottom;
@@ -1597,47 +1597,47 @@ body:not(.synbe-intro-revealing):not(.synbe-intro-done)::before {
 }
 
 @media screen and (max-width:749px) {
-  .synbe-people-section {
+  .granovetter-people-section {
     min-height: auto;
     padding: 21.5384615385vw 0 0;
   }
 
-  .synbe-people-content {
+  .granovetter-people-content {
     min-height: auto;
   }
 
-  .synbe-people-topbar {
+  .granovetter-people-topbar {
     margin-bottom: 0;
   }
 
-  .synbe-people-layout {
+  .granovetter-people-layout {
     padding-top: 2.4rem;
   }
 
-  .synbe-people-copy {
+  .granovetter-people-copy {
     width: 100%;
     max-width: 36rem;
     padding: 0;
   }
 
-  .synbe-people-title {
+  .granovetter-people-title {
     font-size: clamp(2.5rem, 7.2vw, 3.2rem);
     margin-bottom: 2.6rem;
     line-height: 1.02;
     white-space: normal;
   }
 
-  .synbe-people-text {
+  .granovetter-people-text {
     width: 100%;
     font-size: 1.28rem;
     line-height: 1.18;
   }
 
-  .synbe-people-text p {
+  .granovetter-people-text p {
     margin-bottom: 1.75rem;
   }
 
-  .synbe-people-media {
+  .granovetter-people-media {
     height: 76vw;
     min-height: 280px;
     margin-top: 1.4rem;

@@ -13,13 +13,13 @@
   var q=/[?&]lang=(pt|en)\b/i.exec(qs);
   var explicit=q?q[1].toLowerCase():null;
   var saved=null;
-  try{ if(explicit){localStorage.setItem("synbe-lang",explicit);} else if(!SELF.entry){localStorage.setItem("synbe-lang",SELF.lang);} saved=localStorage.getItem("synbe-lang"); }catch(e){}
+  try{ if(explicit){localStorage.setItem("granovetter-lang",explicit);} else if(!SELF.entry){localStorage.setItem("granovetter-lang",SELF.lang);} saved=localStorage.getItem("granovetter-lang"); }catch(e){}
 
   function base(p){ p=(p||"").split("?")[0].split("#")[0].split("/").pop()||""; return p.replace(/\.html$/i,"")||"index"; }
   var here=base(location.pathname);
   var KNOWN={index:1,"index-en":1,mobile:1,"mobile-en":1};
   if(!KNOWN[here]){ return; }                       /* preview, subpasta, sandbox: nao mexe */
-  try{ if(sessionStorage.getItem("synbe-routed")){ return; } }catch(e){}
+  try{ if(sessionStorage.getItem("granovetter-routed")){ return; } }catch(e){}
 
   var nav=(navigator.language||navigator.userLanguage||"");
   var lang=SELF.entry?(explicit||saved||(/^pt/i.test(nav)?"pt":"en")):(explicit||SELF.lang);
@@ -31,38 +31,38 @@
   var dev=(isPhone&&!stay)?"mobile":SELF.dev;
   var want=FILES[lang+"|"+dev];
   if(!want||here===base(want)){ return; }
-  try{ sessionStorage.setItem("synbe-routed","1"); }catch(e){}
+  try{ sessionStorage.setItem("granovetter-routed","1"); }catch(e){}
   location.replace(want+(optOut?"?desktop=1":""));
 }catch(e){}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0b0c">
-<title>syn.Be · Synthetic Behavioral Inference Lab</title>
+<title>Granovetter · Synthetic Behavioral Inference Lab</title>
 <meta name="description" content="Transformamos dados humanos em sociedades sintéticas para testar decisões antes da execução.">
 
   <!-- Canonical aponta para o build principal: /mobile.html e a mesma pagina. -->
-  <link rel="canonical" href="https://syn.be/">
-  <link rel="alternate" hreflang="pt-BR" href="https://syn.be/"><link rel="alternate" hreflang="en" href="https://syn.be/index-en.html"><link rel="alternate" hreflang="x-default" href="https://syn.be/">
+  <link rel="canonical" href="./">
+  <link rel="alternate" hreflang="pt-BR" href="./"><link rel="alternate" hreflang="en" href="./index-en.html"><link rel="alternate" hreflang="x-default" href="./">
 
-  <!-- Open Graph. Payload identico ao index.html: quem compartilhar syn.be/mobile.html
+  <!-- Open Graph. Payload identico ao index.html: quem compartilhar granovetter/mobile.html
        (acontece, o phone e redirecionado e a URL da barra vira essa) ve o mesmo card. -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://syn.be/">
-  <meta property="og:site_name" content="syn.Be">
+  <meta property="og:url" content="./">
+  <meta property="og:site_name" content="Granovetter">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="syn.Be · Synthetic Behavioral Inference Lab">
-  <meta property="og:description" content="O syn.Be transforma dados humanos em sociedades sintéticas para testar decisões antes da execução.">
-  <meta property="og:image" content="https://syn.be/assets/media/syn.be-og.png">
-  <meta property="og:image:secure_url" content="https://syn.be/assets/media/syn.be-og.png">
+  <meta property="og:title" content="Granovetter · Synthetic Behavioral Inference Lab">
+  <meta property="og:description" content="O Granovetter transforma dados humanos em sociedades sintéticas para testar decisões antes da execução.">
+  <meta property="og:image" content="./assets/media/granovetter-og.png">
+  <meta property="og:image:secure_url" content="./assets/media/granovetter-og.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="syn.Be · Synthetic Behavioral Inference Lab">
+  <meta property="og:image:alt" content="Granovetter · Synthetic Behavioral Inference Lab">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="syn.Be · Synthetic Behavioral Inference Lab">
-  <meta name="twitter:description" content="O syn.Be transforma dados humanos em sociedades sintéticas para testar decisões antes da execução.">
-  <meta name="twitter:image" content="https://syn.be/assets/media/syn.be-og.png">
-  <meta name="twitter:image:alt" content="syn.Be · Synthetic Behavioral Inference Lab">
+  <meta name="twitter:title" content="Granovetter · Synthetic Behavioral Inference Lab">
+  <meta name="twitter:description" content="O Granovetter transforma dados humanos em sociedades sintéticas para testar decisões antes da execução.">
+  <meta name="twitter:image" content="./assets/media/granovetter-og.png">
+  <meta name="twitter:image:alt" content="Granovetter · Synthetic Behavioral Inference Lab">
 
   <!-- Favicons: o build mobile nao tinha nenhum. Mesmos arquivos do index.html. -->
   <link rel="icon" href="./assets/media/6a0b1f28dfa5dd7f5b6f93a1_syntropic3.png" media="(prefers-color-scheme: dark)" type="image/png">
@@ -178,12 +178,12 @@
 
   /* Seletor de idioma: dentro da barra do topo, ao lado do CTA. */
   .baractions{display:flex;align-items:center;gap:.8rem}
-  #synbe-lang{
+  #granovetter-lang{
     font-family:var(--mono);font-size:.72rem;line-height:1;letter-spacing:.14em;
     text-transform:uppercase;text-decoration:none;white-space:nowrap;
     color:var(--muted);padding:.45rem .2rem;
   }
-  #synbe-lang:active{color:var(--ink)}
+  #granovetter-lang:active{color:var(--ink)}
 
   /* ===== newsletter embed (Substack) ===== */
   #newsletter{background:var(--bg-soft)}
@@ -260,11 +260,11 @@
 </div>
 
 <header class="bar">
-  <a class="mark" href="#topo" aria-label="syn.Be início">
-    <img class="logo" src="./assets/media/inline-01-24321044db.png" alt="syn.Be">
+  <a class="mark" href="#topo" aria-label="Granovetter início">
+    <img class="logo" src="./assets/media/inline-01-24321044db.png" alt="Granovetter">
   </a>
   <div class="baractions">
-    <a id="synbe-lang" href="/mobile-en.html?lang=en" hreflang="en" rel="alternate" data-taxi-ignore="">EN</a>
+    <a id="granovetter-lang" href="/mobile-en.html?lang=en" hreflang="en" rel="alternate" data-taxi-ignore="">EN</a>
     <a class="cta" href="#simular">Contato</a>
   </div>
 </header>
@@ -286,7 +286,7 @@
     <h2>Um laboratório de simulação e inferência comportamental.</h2>
       <img class="gif" src="./assets/media/m1.gif" alt="" loading="lazy" decoding="async">
     <p class="body lead">Bem-vindo à era da simulação comportamental.</p>
-    <p class="body">O syn.Be transforma dados culturais, humanos e contextuais em sociedades organizacionais sintéticas — povoadas pelos nossos syns — criadas para testar como grupos reais reagem a decisões, crises, mudanças e tensões estratégicas.</p>
+    <p class="body">O Granovetter transforma dados culturais, humanos e contextuais em sociedades organizacionais sintéticas — povoadas pelos nossos syns — criadas para testar como grupos reais reagem a decisões, crises, mudanças e tensões estratégicas.</p>
     <p class="callout">Não simulamos indivíduos isolados. Simulamos sistemas humanos em interação.</p>
   </section>
 
@@ -294,14 +294,14 @@
   <section class="wrap reveal">
     <div class="eyebrow"><b>03</b><span class="ln"></span>O Problema</div>
     <h2>Toda decisão desencadeia reações em um sistema humano antes de virar resultado.</h2>
-    <p class="body">Entre a intenção e a execução há pessoas. Há comportamento. O syn.Be simula esses comportamentos para antecipar resultados, mostrando quais cenários têm maior chance de gerar o melhor retorno e quais riscos podem comprometer tempo, dinheiro e confiança.</p>
+    <p class="body">Entre a intenção e a execução há pessoas. Há comportamento. O Granovetter simula esses comportamentos para antecipar resultados, mostrando quais cenários têm maior chance de gerar o melhor retorno e quais riscos podem comprometer tempo, dinheiro e confiança.</p>
     <p class="callout">Simule cenários críticos antes que uma decisão custe caro demais.</p>
   </section>
 
   <!-- 04 A VIRADA -->
   <section class="wrap reveal">
     <div class="eyebrow"><b>04</b><span class="ln"></span>A Virada</div>
-    <h2>O syn.Be reduz o custo de decidir errado.</h2>
+    <h2>O Granovetter reduz o custo de decidir errado.</h2>
     <p class="body">Criamos o syn.protocol, um método de simulação comportamental baseado em inteligência artificial e ciência aplicada para transformar decisões estratégicas em cenários testáveis. Simular comportamento é apenas o meio. O fim é mostrar quais caminhos geram o melhor resultado antes que a decisão consuma tempo, dinheiro e confiança.</p>
       <img class="gif" src="./assets/media/m2.gif" alt="" loading="lazy" decoding="async">
     <div class="stack">
@@ -354,7 +354,7 @@
       <img class="photo" src="./assets/media/people2.png" alt="Douglas Conte" onerror="this.outerHTML='&lt;div class=&quot;ph-fallback&quot;&gt;Douglas Conte&lt;/div&gt;'">
       <div class="who">
         <h2>Me chamo Douglas Conte.</h2>
-        <p class="body">Sou fundador do syn.Be. Minha trajetória conecta economia comportamental aplicada, branding e cultura organizacional, ajudando marcas líderes a moldar comportamentos em imagem, cultura, decisão e performance.</p>
+        <p class="body">Sou fundador do Granovetter. Minha trajetória conecta economia comportamental aplicada, branding e cultura organizacional, ajudando marcas líderes a moldar comportamentos em imagem, cultura, decisão e performance.</p>
         <p class="body">Criei a Qore, uma deep tech que sintetiza comportamento em dados. Desenvolvi o syn.protocol, uma arquitetura de ciência aplicada e inteligência artificial para simular sistemas humanos complexos, com o apoio de um Conselho Científico Consultivo, advisors acadêmicos, pesquisadores, professores e PhDs associados.</p>
       </div>
     </div>
@@ -382,7 +382,7 @@
   <section class="wrap reveal">
     <div class="eyebrow"><b>09</b><span class="ln"></span>Como funciona</div>
     <div class="flow-head">Entrada → Simulação → Saída</div>
-    <p class="body">O syn.Be recebe dados reais da organização, transforma decisões estratégicas em cenários simuláveis e entrega inferências comportamentais para apoiar a decisão antes da execução.</p>
+    <p class="body">O Granovetter recebe dados reais da organização, transforma decisões estratégicas em cenários simuláveis e entrega inferências comportamentais para apoiar a decisão antes da execução.</p>
     <div class="stack">
       <div class="row"><div class="num">01</div><div><h3>Entrada</h3><p>Dados culturais, perfis de grupos, contexto organizacional, ambiente externo e decisão a ser testada.</p></div></div>
       <div class="row"><div class="num">02</div><div><h3>Simulação</h3><p>Agentes sintéticos interagem com cenários, pressões, narrativas e variáveis estratégicas.</p></div></div>
@@ -444,7 +444,7 @@
 </main>
 
 <footer class="wrap">
-  <img class="flogo" src="./assets/media/6a21711382055d747ac97107_logo.png" alt="syn.Be">
+  <img class="flogo" src="./assets/media/6a21711382055d747ac97107_logo.png" alt="Granovetter">
   <div class="ftag">Synthetic Behavioral Inference Lab</div>
   <nav>
     <a href="#topo">Início</a>
@@ -452,10 +452,10 @@
     <a href="/?desktop=1">Versão desktop</a>
   </nav>
   <div class="fcontact">
-    <a class="fmail" href="mailto:hello@syn.be">hello@syn.be</a>
-    <a class="fwa" href="https://wa.me/5551993882928?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20syn.Be." target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="fmail" href="mailto:hello@granovetter.com">hello@granovetter.com</a>
+    <a class="fwa" href="https://wa.me/5551993882928?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Granovetter." target="_blank" rel="noopener">Falar no WhatsApp</a>
   </div>
-  <div class="copy">© 2026 SYN.BE</div>
+  <div class="copy">© 2026 GRANOVETTER</div>
 </footer>
 
 <script>
@@ -576,7 +576,7 @@
       var btn = form.querySelector("button");
       var label = btn ? btn.textContent : "";
       if(btn){ btn.disabled = true; btn.textContent = "Enviando..."; }
-      function done(){ form.classList.add("done"); try { fetch("https://brand.syn.be/api/boasvindas", { method: "POST", headers: { "Content-Type": "text/plain" }, keepalive: true, body: JSON.stringify({ tipo: "contato", nome: nome, email: email, idioma: "pt", origem: "home mobile" }) }).catch(function () {}); } catch (e) {} }
+      function done(){ form.classList.add("done"); try { /* envio externo desativado no clone */ } catch (e) {} }
 
       if(!WEB3FORMS_KEY || WEB3FORMS_KEY.indexOf("COLE_") === 0){ done(); return; }
 
@@ -585,8 +585,8 @@
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: "Novo contato pelo site syn.Be (mobile)",
-          from_name: "syn.Be",
+          subject: "Novo contato pelo site Granovetter (mobile)",
+          from_name: "Granovetter",
           name: nome,
           email: email,
           whatsapp: whats,
@@ -595,7 +595,7 @@
       }).then(function(r){ return r.json(); })
         .then(function(j){ if(j && j.success) done(); else erro(); })
         .catch(erro);
-      function erro(){ if(btn){ btn.disabled = false; btn.textContent = label; } fail(null, "Não deu para enviar. Tente de novo ou escreva para hello@syn.be."); }
+      function erro(){ if(btn){ btn.disabled = false; btn.textContent = label; } fail(null, "Não deu para enviar. Tente de novo ou escreva para hello@granovetter.com."); }
     });
   }
 })();
@@ -661,12 +661,12 @@
 <script>/* Navegacao dura: o site usa Taxi (data-taxi), que sequestra clique em link
    e faz transicao por AJAX. Isso impedia a volta para PT. Aqui o clique e
    capturado antes de qualquer listener e vira navegacao real. */
-(function(){var el=document.getElementById("synbe-lang");if(!el)return;
+(function(){var el=document.getElementById("granovetter-lang");if(!el)return;
 el.addEventListener("click",function(e){
   e.preventDefault();e.stopPropagation();
   if(e.stopImmediatePropagation){e.stopImmediatePropagation();}
   var url=el.getAttribute("href");
-  try{localStorage.setItem("synbe-lang",/-en\.html/.test(url)?"en":"pt");}catch(err){}
+  try{localStorage.setItem("granovetter-lang",/-en\.html/.test(url)?"en":"pt");}catch(err){}
   window.location.assign(url);
 },true);})();</script>
 </body>

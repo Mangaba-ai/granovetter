@@ -1,9 +1,9 @@
 
   (function () {
     function initTunnel(section) {
-      var canvas = section.querySelector('.synbe-tunnel-gl');
-      var container = section.querySelector('.synbe-tunnel-container');
-      var bgInner = section.querySelector('.synbe-tunnel-bg-inner');
+      var canvas = section.querySelector('.granovetter-tunnel-gl');
+      var container = section.querySelector('.granovetter-tunnel-container');
+      var bgInner = section.querySelector('.granovetter-tunnel-bg-inner');
       if (!canvas || !container || !bgInner) return;
 
       var ctx = canvas.getContext('2d');
@@ -98,7 +98,7 @@
     }
 
     function init() {
-      var sections = document.querySelectorAll('.synbe-closing-section');
+      var sections = document.querySelectorAll('.granovetter-closing-section');
       for (var i = 0; i < sections.length; i++) initTunnel(sections[i]);
     }
 

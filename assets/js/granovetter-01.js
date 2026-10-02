@@ -1,7 +1,7 @@
 
 (function () {
-  if (window.__synbeIntroLoaded) return;
-  window.__synbeIntroLoaded = true;
+  if (window.__granovetterIntroLoaded) return;
+  window.__granovetterIntroLoaded = true;
 
   window.scrollTo(0, 0);
   document.body.style.overflow = 'hidden';
@@ -223,7 +223,7 @@
   function startReveal() {
     if (revealDone) return;
     revealDone = true;
-    document.body.classList.add('synbe-intro-revealing');
+    document.body.classList.add('granovetter-intro-revealing');
     ac.style.transition = 'opacity 2.0s ease';
     ac.style.opacity = '0';
     const introBg = document.getElementById('synintro-bg');
@@ -235,7 +235,7 @@
       phase = 'reveal';
       document.body.style.overflow = '';
       document.body.style.cursor = 'auto';
-      document.body.classList.add('synbe-intro-done');
+      document.body.classList.add('granovetter-intro-done');
       ac.remove();
       document.getElementById('synintro-bg')?.remove();
       document.getElementById('synintro-ui')?.remove();

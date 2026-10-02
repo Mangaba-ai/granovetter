@@ -1,6 +1,6 @@
 # syn-be-clone
 
-Espelho local estático de https://syn.be/index-en (baixado em 01/10/2026).
+Espelho local estático de https://syn.be/index-en, rebatizado como Granovetter (baixado em 01/10/2026).
 
 ## Rodar
 

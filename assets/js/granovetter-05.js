@@ -1,7 +1,7 @@
 
 (function () {
   function core() {
-    return window.__synbeCore || null;
+    return window.__granovetterCore || null;
   }
 
   function scroller() {
