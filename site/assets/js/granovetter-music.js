@@ -1,7 +1,7 @@
 /* Mini player de música: Coldplay – Paradise (vídeo oficial no YouTube).
    Navegadores bloqueiam áudio automático, então o player começa no primeiro
    clique ou tecla do visitante (o "Enter site" da intro já conta) e repete
-   sem parar. Fica visível no canto, com botão de som e de fechar. */
+   sem parar. Fica recolhido numa pílula discreta no canto; abre ao passar o mouse. */
 (function () {
   var VIDEO = "1G4isv_Fylg";
   var LANG_EN = document.documentElement.lang && document.documentElement.lang.indexOf("en") === 0;
@@ -11,20 +11,30 @@
 
   var css = document.createElement("style");
   css.textContent =
-    "#gv-music{position:fixed;left:16px;bottom:16px;z-index:2147483000;width:220px;" +
-    "background:#0b0b0d;border:1px solid #33333a;border-radius:12px;overflow:hidden;" +
-    "font-family:'Space Mono',monospace;color:#ededee;box-shadow:0 10px 30px rgba(0,0,0,.45);" +
-    "opacity:0;transform:translateY(12px);transition:opacity .4s,transform .4s;pointer-events:none}" +
-    "#gv-music.on{opacity:1;transform:none;pointer-events:auto}" +
-    "#gv-music .gv-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}" +
+    "#gv-music{position:fixed;right:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;" +
+    "height:34px;padding:3px 8px 3px 3px;background:rgba(11,11,13,.72);border:1px solid rgba(255,255,255,.12);" +
+    "border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#ededee;" +
+    "font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;" +
+    "opacity:0;pointer-events:none;transition:opacity .4s,height .3s,border-radius .3s,padding .3s}" +
+    "#gv-music.on{opacity:.55;pointer-events:auto}" +
+    "#gv-music.on:hover,#gv-music.on.open,#gv-music.on:focus-within{opacity:1}" +
+    "#gv-music .gv-frame{position:relative;width:48px;height:27px;border-radius:999px;overflow:hidden;background:#000;" +
+    "flex:none;transition:width .3s,height .3s,border-radius .3s}" +
     "#gv-music .gv-frame>*{position:absolute;inset:0;width:100%;height:100%;border:0}" +
-    "#gv-music .gv-bar{display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:10px;" +
-    "letter-spacing:.08em;text-transform:uppercase}" +
-    "#gv-music .gv-t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#b7b7b7}" +
-    "#gv-music button{background:none;border:1px solid #33333a;border-radius:8px;color:#ededee;" +
-    "font:inherit;padding:4px 7px;cursor:pointer}" +
-    "#gv-music button:hover{border-color:#ededee}" +
-    "@media (max-width:600px){#gv-music{width:170px;left:12px;bottom:12px}}";
+    "#gv-music .gv-eq{display:flex;align-items:flex-end;gap:2px;height:12px}" +
+    "#gv-music .gv-eq i{width:2px;background:#ededee;animation:gvEq 1s ease-in-out infinite}" +
+    "#gv-music .gv-eq i:nth-child(2){animation-delay:-.3s}#gv-music .gv-eq i:nth-child(3){animation-delay:-.6s}" +
+    "#gv-music.muted .gv-eq i{animation:none;height:2px}" +
+    "@keyframes gvEq{0%,100%{height:3px}50%{height:12px}}" +
+    "#gv-music .gv-t{display:none;white-space:nowrap;color:#b7b7b7}" +
+    "#gv-music button{background:none;border:0;color:#ededee;font:inherit;font-size:12px;padding:2px 4px;cursor:pointer;line-height:1}" +
+    "#gv-music .gv-x{display:none}" +
+    /* aberto: mostra o vídeo maior, o título e o fechar */
+    "#gv-music.on:hover,#gv-music.open{height:auto;flex-wrap:wrap;width:200px;border-radius:12px;padding:6px}" +
+    "#gv-music.on:hover .gv-frame,#gv-music.open .gv-frame{width:100%;height:auto;aspect-ratio:16/9;border-radius:8px}" +
+    "#gv-music.on:hover .gv-t,#gv-music.open .gv-t{display:block;flex:1;overflow:hidden;text-overflow:ellipsis}" +
+    "#gv-music.on:hover .gv-x,#gv-music.open .gv-x{display:inline}" +
+    "@media (max-width:600px){#gv-music{right:10px;bottom:10px}}";
   document.head.appendChild(css);
 
   var box = document.createElement("div");
@@ -33,10 +43,16 @@
   box.setAttribute("aria-label", T.label + ": Coldplay – Paradise");
   box.innerHTML =
     '<div class="gv-frame"><div id="gv-music-player"></div></div>' +
-    '<div class="gv-bar"><span class="gv-t">♪ Coldplay – Paradise</span>' +
+    '<span class="gv-eq" aria-hidden="true"><i></i><i></i><i></i></span>' +
+    '<span class="gv-t">Coldplay – Paradise</span>' +
     '<button type="button" class="gv-mute" aria-label="' + T.mute + '">🔊</button>' +
-    '<button type="button" class="gv-x" aria-label="' + T.close + '">✕</button></div>';
+    '<button type="button" class="gv-x" aria-label="' + T.close + '">✕</button>';
   document.body.appendChild(box);
+  // no toque (sem hover), um toque na pílula abre/fecha
+  box.addEventListener("click", function (e) {
+    if (e.target.closest("button")) return;
+    if (!window.matchMedia("(hover: hover)").matches) box.classList.toggle("open");
+  });
 
   var player = null, ready = false, wantPlay = false, closed = false;
   var muteBtn = box.querySelector(".gv-mute");
@@ -51,8 +67,8 @@
   muteBtn.addEventListener("click", function (e) {
     e.stopPropagation();
     if (!ready) return;
-    if (player.isMuted()) { player.unMute(); muteBtn.textContent = "🔊"; muteBtn.setAttribute("aria-label", T.mute); }
-    else { player.mute(); muteBtn.textContent = "🔇"; muteBtn.setAttribute("aria-label", T.unmute); }
+    if (player.isMuted()) { player.unMute(); box.classList.remove("muted"); muteBtn.textContent = "🔊"; muteBtn.setAttribute("aria-label", T.mute); }
+    else { player.mute(); box.classList.add("muted"); muteBtn.textContent = "🔇"; muteBtn.setAttribute("aria-label", T.unmute); }
   });
   box.querySelector(".gv-x").addEventListener("click", function (e) {
     e.stopPropagation();
