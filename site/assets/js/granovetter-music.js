@@ -77,6 +77,26 @@
     box.remove();
   });
 
+  var resumeTimer = null;
+  function resumeSoon() {
+    if (!wantPlay || closed || !ready) return;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function () {
+      if (document.visibilityState !== "visible") return; // retoma ao voltar
+      var st = player.getPlayerState();
+      if (st === YT.PlayerState.PAUSED || st === YT.PlayerState.CUED) player.playVideo();
+    }, 400);
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") resumeSoon();
+  });
+  // rede de segurança: confere a cada 5 s se ainda está tocando
+  setInterval(function () {
+    if (!wantPlay || closed || !ready || document.visibilityState !== "visible") return;
+    var st = player.getPlayerState();
+    if (st === YT.PlayerState.PAUSED || st === YT.PlayerState.CUED || st === YT.PlayerState.ENDED) player.playVideo();
+  }, 5000);
+
   function firstGesture() {
     window.removeEventListener("pointerdown", firstGesture, true);
     window.removeEventListener("keydown", firstGesture, true);
@@ -97,6 +117,9 @@
         onStateChange: function (ev) {
           // reforço do loop: ao terminar, volta ao início
           if (ev.data === YT.PlayerState.ENDED) { player.seekTo(0); player.playVideo(); }
+          // o YouTube ou o navegador às vezes pausam sozinhos (aba em segundo
+          // plano, player pequeno); retoma enquanto o visitante quiser música
+          if (ev.data === YT.PlayerState.PAUSED) resumeSoon();
         }
       }
     });
