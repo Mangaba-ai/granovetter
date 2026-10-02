@@ -5,7 +5,7 @@ Espelho local estático de https://syn.be/index-en, rebatizado como Granovetter 
 ## Rodar
 
 ```bash
-npx -y serve -l 8765 .
+npx -y serve -l 8765 site
 ```
 
 Abrir http://localhost:8765/index-en (EN) ou http://localhost:8765/ (PT).
