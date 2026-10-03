@@ -1,6 +1,6 @@
 # Granovetter Design System v1.0
 
-Documentação da arquitetura de componentes reutilizáveis para o laboratório de simulação comportamental. Tema padrão: escuro, neon e vidro (tokens em `src/styles/tokens.css`, seção \"Tema futurista\").
+Documentação da arquitetura de componentes reutilizáveis para o laboratório de simulação comportamental. Tema padrão: escuro, neon e vidro (tokens em `src/styles/tokens.css`, seção "Tema futurista").
 
 ## Estrutura
 
