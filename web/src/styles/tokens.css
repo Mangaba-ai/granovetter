@@ -1,0 +1,153 @@
+/* Granovetter Design System Tokens v1.0
+   Paleta profissional para laboratório de simulação comportamental */
+
+:root {
+  /* ==================== COLORS ==================== */
+
+  /* Primary: Azul-escuro profundo (confiança, inteligência) */
+  --color-primary-50: #f0f4f9;
+  --color-primary-100: #d9e3f0;
+  --color-primary-200: #b3c6e1;
+  --color-primary-300: #8da9d2;
+  --color-primary-400: #668cc3;
+  --color-primary-500: #406fb4;
+  --color-primary-600: #305a94;
+  --color-primary-700: #1f3f74;
+  --color-primary-800: #0f172a;
+  --color-primary-900: #070d15;
+
+  /* Secondary: Laranja-queimado (urgência, ação) */
+  --color-secondary-50: #fff5f0;
+  --color-secondary-100: #ffe4d6;
+  --color-secondary-200: #ffc9ad;
+  --color-secondary-300: #ffae84;
+  --color-secondary-400: #ff935b;
+  --color-secondary-500: #ff6b35;
+  --color-secondary-600: #e6572b;
+  --color-secondary-700: #cc4321;
+  --color-secondary-800: #b32f17;
+  --color-secondary-900: #991b0d;
+
+  /* Tertiary: Verde laboratório (inovação, positividade) */
+  --color-tertiary-50: #f0fdf7;
+  --color-tertiary-100: #d9fbf0;
+  --color-tertiary-200: #b3f7e1;
+  --color-tertiary-300: #8df3d2;
+  --color-tertiary-400: #67efc3;
+  --color-tertiary-500: #00d084;
+  --color-tertiary-600: #00b86d;
+  --color-tertiary-700: #009856;
+  --color-tertiary-800: #00783f;
+  --color-tertiary-900: #005828;
+
+  /* Neutral: Grayscale */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+
+  /* Semantic colors */
+  --color-success: var(--color-tertiary-500);
+  --color-warning: var(--color-secondary-500);
+  --color-error: #ef4444;
+  --color-info: var(--color-primary-500);
+
+  /* ==================== TYPOGRAPHY ==================== */
+
+  /* Font families */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Fira Code', 'Courier New', monospace;
+
+  /* Font sizes: 4px base scale */
+  --font-xs: 0.75rem;    /* 12px */
+  --font-sm: 0.875rem;   /* 14px */
+  --font-base: 1rem;     /* 16px */
+  --font-lg: 1.125rem;   /* 18px */
+  --font-xl: 1.25rem;    /* 20px */
+  --font-2xl: 1.5rem;    /* 24px */
+  --font-3xl: 1.875rem;  /* 30px */
+  --font-4xl: 2.25rem;   /* 36px */
+  --font-5xl: 3rem;      /* 48px */
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+
+  /* ==================== SPACING ==================== */
+
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-16: 4rem;    /* 64px */
+  --spacing-20: 5rem;    /* 80px */
+
+  /* ==================== BORDER RADIUS ==================== */
+
+  --radius-none: 0;
+  --radius-sm: 0.25rem;  /* 4px */
+  --radius-base: 0.5rem; /* 8px */
+  --radius-md: 0.75rem;  /* 12px */
+  --radius-lg: 1rem;     /* 16px */
+  --radius-xl: 1.5rem;   /* 24px */
+  --radius-full: 9999px;
+
+  /* ==================== SHADOWS ==================== */
+
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* ==================== TRANSITIONS ==================== */
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ==================== Z-INDEX ==================== */
+
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* Dark mode (se necessário) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-neutral-0: #111827;
+    --color-neutral-50: #1f2937;
+    --color-neutral-900: #f9fafb;
+  }
+}

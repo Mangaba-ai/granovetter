@@ -1,0 +1,151 @@
+@import '@/styles/tokens.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.label {
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-700);
+  user-select: none;
+}
+
+.required {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  background-color: white;
+  color: var(--color-neutral-900);
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+/* Sizes */
+.sm {
+  padding: var(--spacing-2) var(--spacing-3);
+  height: 28px;
+  font-size: var(--font-xs);
+}
+
+.md {
+  padding: var(--spacing-3) var(--spacing-4);
+  height: 36px;
+}
+
+.lg {
+  padding: var(--spacing-4) var(--spacing-4);
+  height: 44px;
+  font-size: var(--font-base);
+}
+
+/* Adjust padding if icons are present */
+.input:has(+ .iconAfter) {
+  padding-right: var(--spacing-10);
+}
+
+.iconBefore ~ .input {
+  padding-left: var(--spacing-10);
+}
+
+/* Icons */
+.iconBefore,
+.iconAfter {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--color-neutral-500);
+  font-size: var(--font-base);
+}
+
+.iconBefore {
+  left: var(--spacing-3);
+}
+
+.iconAfter {
+  right: var(--spacing-3);
+}
+
+/* Focus state */
+.input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(64, 111, 180, 0.1);
+}
+
+/* Hover state */
+.input:hover:not(:disabled):not(.error) {
+  border-color: var(--color-neutral-400);
+  background-color: var(--color-neutral-50);
+}
+
+/* Error state */
+.input.error {
+  border-color: var(--color-error);
+  background-color: rgba(239, 68, 68, 0.02);
+}
+
+.input.error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Disabled state */
+.input:disabled {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Helper & Error text */
+.errorMessage,
+.helperText {
+  font-size: var(--font-xs);
+  line-height: var(--line-height-tight);
+}
+
+.errorMessage {
+  color: var(--color-error);
+}
+
+.helperText {
+  color: var(--color-neutral-500);
+}
+
+/* Placeholder */
+.input::placeholder {
+  color: var(--color-neutral-400);
+}
+
+/* Remove spinner from number inputs */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type='number'] {
+  -moz-appearance: textfield;
+}
