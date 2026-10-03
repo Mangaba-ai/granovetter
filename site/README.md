@@ -1,5 +1,7 @@
 # Site do Granovetter
 
+No ar em https://granovetters.com (domínio na Vercel; `granovetter.vercel.app` e `www` redirecionam para ele).
+
 Site institucional do Granovetter, laboratório de simulação e inferência comportamental.
 HTML/CSS/JS estático, sem build.
 

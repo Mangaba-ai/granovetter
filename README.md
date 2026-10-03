@@ -11,7 +11,7 @@ ENTRADA (Dados)  →  AGENTES SINTÉTICOS  →  SIMULAÇÃO (N rounds)  →  AN�
 
 ## 🌐 Site
 
-O site institucional fica em [`site/`](./site) (HTML estático, publicado na Vercel). Veja [site/README.md](./site/README.md).
+O site institucional fica em [`site/`](./site) (HTML estático), publicado em https://granovetters.com. Veja [site/README.md](./site/README.md).
 
 ## 🎯 Features
 
