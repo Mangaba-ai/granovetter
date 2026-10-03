@@ -11,8 +11,7 @@
 .heatmapWrapper {
   overflow-x: auto;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-  background-color: var(--bg-surface);
+  border: 1px solid var(--color-neutral-200);
 }
 
 .grid {
@@ -20,25 +19,25 @@
   gap: 0;
   width: fit-content;
   min-width: 100%;
-  font-family: var(--font-data);
+  font-family: var(--font-sans);
 }
 
 .cornerCell {
-  background-color: var(--bg-surface);
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background-color: var(--color-neutral-50);
+  border-right: 1px solid var(--color-neutral-200);
+  border-bottom: 1px solid var(--color-neutral-200);
   min-width: 120px;
   min-height: 40px;
 }
 
 .columnHeader {
-  background-color: var(--bg-surface);
-  border-right: 1px solid var(--line);
-  border-bottom: 2px solid var(--line-strong);
+  background-color: var(--color-neutral-50);
+  border-right: 1px solid var(--color-neutral-200);
+  border-bottom: 2px solid var(--color-neutral-300);
   padding: var(--spacing-3);
   font-size: var(--font-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--text-mid);
+  color: var(--color-neutral-900);
   text-align: center;
   min-width: 100px;
   min-height: 40px;
@@ -49,13 +48,13 @@
 }
 
 .rowHeader {
-  background-color: var(--bg-surface);
-  border-right: 2px solid var(--line-strong);
-  border-bottom: 1px solid var(--line);
+  background-color: var(--color-neutral-50);
+  border-right: 2px solid var(--color-neutral-300);
+  border-bottom: 1px solid var(--color-neutral-200);
   padding: var(--spacing-3);
   font-size: var(--font-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--text-mid);
+  color: var(--color-neutral-900);
   text-align: left;
   min-width: 120px;
   min-height: 40px;
@@ -70,33 +69,32 @@
   justify-content: center;
   min-width: 100px;
   min-height: 40px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--color-neutral-200);
+  border-bottom: 1px solid var(--color-neutral-200);
   cursor: pointer;
   transition: all var(--transition-fast);
   position: relative;
 }
 
 .cell:hover {
-  box-shadow: inset 0 0 0 2px var(--neon-cyan), 0 0 18px rgba(34, 229, 255, 0.35);
+  box-shadow: inset 0 0 0 2px var(--color-primary-700);
 }
 
 .cell:focus {
-  outline: 3px solid var(--neon-cyan);
+  outline: 2px solid var(--color-primary-500);
   outline-offset: -2px;
 }
 
 .cell.hovered {
-  filter: brightness(1.25);
+  filter: brightness(1.1);
 }
 
 .cellValue {
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-sm);
-  /* pastilha escura: garante 7:1 sobre qualquer cor da escala */
-  background: rgba(5, 6, 15, 0.86);
-  color: var(--text-hi) !important;
-  font-family: var(--font-data);
+  /* pastilha clara: garante 7:1 sobre qualquer cor da escala */
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--color-primary-800) !important;
   padding: 1px 6px;
   border-radius: var(--radius-full);
   transition: all var(--transition-fast);
@@ -111,7 +109,7 @@
   gap: var(--spacing-6);
   justify-content: center;
   padding: var(--spacing-4);
-  background-color: var(--bg-surface);
+  background-color: var(--color-neutral-50);
   border-radius: var(--radius-md);
 }
 
@@ -125,12 +123,12 @@
   width: 24px;
   height: 24px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--color-neutral-300);
 }
 
 .legendLabel {
   font-size: var(--font-sm);
-  color: var(--text-mid);
+  color: var(--color-neutral-700);
   font-weight: var(--font-weight-medium);
 }
 

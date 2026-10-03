@@ -1,59 +1,151 @@
 @import '@/styles/tokens.css';
 
-.wrapper { display: flex; flex-direction: column; gap: var(--spacing-2); }
-.fullWidth { width: 100%; }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.fullWidth {
+  width: 100%;
+}
 
 .label {
-  font-family: var(--font-data);
-  font-size: var(--font-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-mid);
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-700);
+  user-select: none;
 }
-.required { color: var(--neon-magenta); margin-left: 4px; }
 
-.inputWrapper { position: relative; display: flex; align-items: center; }
+.required {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
 .input {
   width: 100%;
   font-family: var(--font-sans);
-  color: var(--text-hi);
-  background-color: var(--bg-glass);
-  border: 1px solid var(--line-strong);
+  font-size: var(--font-sm);
+  border: 1px solid var(--color-neutral-300);
   border-radius: var(--radius-md);
-  backdrop-filter: var(--blur-glass);
+  background-color: white;
+  color: var(--color-neutral-900);
+  transition: var(--transition-fast);
   outline: none;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-base);
 }
-.sm { padding: var(--spacing-2) var(--spacing-3); min-height: 36px; font-size: var(--font-xs); }
-.md { padding: var(--spacing-3) var(--spacing-4); min-height: 44px; font-size: var(--font-sm); }
-.lg { padding: var(--spacing-4); min-height: 52px; font-size: var(--font-base); }
 
-.iconBefore ~ .input { padding-left: var(--spacing-10); }
-.iconBefore, .iconAfter {
+/* Sizes */
+.sm {
+  padding: var(--spacing-2) var(--spacing-3);
+  height: 28px;
+  font-size: var(--font-xs);
+}
+
+.md {
+  padding: var(--spacing-3) var(--spacing-4);
+  height: 36px;
+}
+
+.lg {
+  padding: var(--spacing-4) var(--spacing-4);
+  height: 44px;
+  font-size: var(--font-base);
+}
+
+/* Adjust padding if icons are present */
+.input:has(+ .iconAfter) {
+  padding-right: var(--spacing-10);
+}
+
+.iconBefore ~ .input {
+  padding-left: var(--spacing-10);
+}
+
+/* Icons */
+.iconBefore,
+.iconAfter {
   position: absolute;
   display: flex;
-  width: 20px;
-  height: 20px;
   align-items: center;
   justify-content: center;
-  color: var(--text-mid);
+  width: 20px;
+  height: 20px;
+  color: var(--color-neutral-700);
+  font-size: var(--font-base);
 }
-.iconBefore { left: var(--spacing-3); }
-.iconAfter { right: var(--spacing-3); }
 
-.input::placeholder { color: var(--text-low); }
-.input:hover:not(:disabled):not(.error) { border-color: var(--neon-violet); }
-.input:focus { border-color: var(--neon-cyan); box-shadow: var(--glow-cyan); }
+.iconBefore {
+  left: var(--spacing-3);
+}
 
-.input.error { border-color: var(--neon-red); }
-.input.error:focus { box-shadow: 0 0 0 1px var(--neon-red), 0 0 22px rgba(255, 138, 151, 0.3); }
+.iconAfter {
+  right: var(--spacing-3);
+}
 
-.input:disabled { opacity: 0.5; cursor: not-allowed; }
+/* Focus state */
+.input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(64, 111, 180, 0.1);
+}
 
-.errorMessage, .helperText { font-size: var(--font-xs); line-height: var(--line-height-normal); }
-.errorMessage { color: var(--neon-red); }
-.helperText { color: var(--text-low); }
+/* Hover state */
+.input:hover:not(:disabled):not(.error) {
+  border-color: var(--color-neutral-600);
+  background-color: var(--color-neutral-50);
+}
 
-.input::-webkit-outer-spin-button, .input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.input[type='number'] { -moz-appearance: textfield; }
+/* Error state */
+.input.error {
+  border-color: var(--color-error);
+  background-color: rgba(239, 68, 68, 0.02);
+}
+
+.input.error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Disabled state */
+.input:disabled {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-700);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Helper & Error text */
+.errorMessage,
+.helperText {
+  font-size: var(--font-xs);
+  line-height: var(--line-height-tight);
+}
+
+.errorMessage {
+  color: var(--color-error);
+}
+
+.helperText {
+  color: var(--color-neutral-700);
+}
+
+/* Placeholder */
+.input::placeholder {
+  color: var(--color-neutral-600);
+}
+
+/* Remove spinner from number inputs */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type='number'] {
+  -moz-appearance: textfield;
+}

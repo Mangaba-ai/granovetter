@@ -138,7 +138,7 @@ const SocialGraph = React.forwardRef<HTMLDivElement, SocialGraphProps>(
                     cy={pos.y}
                     r={nodeSize}
                     className={styles.node}
-                    fill={node.color || '#22e5ff'}
+                    fill={node.color || '#406fb4'}
                     style={{ cursor: draggable ? 'grab' : 'pointer' }}
                     onMouseDown={() => handleMouseDown(node.id)}
                     onClick={() => onNodeClick?.(node)}

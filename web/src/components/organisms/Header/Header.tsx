@@ -63,7 +63,7 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
 
           {/* Navigation */}
           {navLinks.length > 0 && (
-            <nav className={styles.nav} aria-label="Navegação principal">
+            <nav className={styles.nav} aria-label="Main navigation">
               <ul className={styles.navList}>
                 {navLinks.map((link) => (
                   <li key={link.href}>
@@ -71,11 +71,11 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
                       href={link.href}
                       className={[
                         styles.navLink,
-                        (link.active || activeNavLink === link.href) && styles.active,
+                        activeNavLink === link.href && styles.active,
                       ]
                         .filter(Boolean)
                         .join(' ')}
-                      aria-current={link.active || activeNavLink === link.href ? 'page' : undefined}
+                      aria-current={activeNavLink === link.href ? 'page' : undefined}
                     >
                       {link.label}
                     </a>

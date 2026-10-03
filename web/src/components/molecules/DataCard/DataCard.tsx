@@ -57,7 +57,7 @@ const DataCard = React.forwardRef<HTMLDivElement, DataCardProps>(
                   styles.change,
                   change.isPositive ? styles.positive : styles.negative,
                 ].join(' ')}
-                aria-label={`${change.isPositive ? 'alta de' : 'queda de'} ${Math.abs(change.value)}%`}
+                aria-label={`${change.isPositive ? 'increased' : 'decreased'} by ${Math.abs(change.value)}%`}
               >
                 {change.isPositive ? '↑' : '↓'} {Math.abs(change.value)}%
               </span>

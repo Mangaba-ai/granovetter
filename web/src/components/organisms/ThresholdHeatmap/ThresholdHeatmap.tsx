@@ -36,17 +36,21 @@ const ThresholdHeatmap = React.forwardRef<HTMLDivElement, ThresholdHeatmapProps>
       if (colorScheme === 'diverging') {
         if (value >= 0) {
           const intensity = value / 100;
-          return `rgba(198, 255, 74, ${0.12 + intensity * 0.7})`;
+          return `rgba(0, 208, 132, ${0.2 + intensity * 0.6})`;
         } else {
           const intensity = Math.abs(value) / 100;
-          return `rgba(255, 127, 225, ${0.12 + intensity * 0.7})`;
+          return `rgba(255, 107, 53, ${0.2 + intensity * 0.6})`;
         }
       } else {
         const intensity = value / 100;
-        return `rgba(34, 229, 255, ${0.08 + intensity * 0.72})`;
+        return `rgba(64, 111, 180, ${0.1 + intensity * 0.8})`;
       }
     };
 
+    const getTextColor = (value: number): string => {
+      const absValue = Math.abs(value);
+      return absValue > 50 ? 'white' : 'var(--color-neutral-900)';
+    };
 
     const containerClasses = [
       styles.container,
@@ -96,6 +100,7 @@ const ThresholdHeatmap = React.forwardRef<HTMLDivElement, ThresholdHeatmapProps>
                     >
                       <span
                         className={styles.cellValue}
+                        style={{ color: getTextColor(value) }}
                       >
                         {value}
                       </span>
@@ -110,15 +115,15 @@ const ThresholdHeatmap = React.forwardRef<HTMLDivElement, ThresholdHeatmapProps>
         {/* Legend */}
         <div className={styles.legend}>
           <div className={styles.legendItem}>
-            <div className={styles.legendColor} style={{ backgroundColor: 'rgba(34, 229, 255, 0.15)' }} />
+            <div className={styles.legendColor} style={{ backgroundColor: 'rgba(64, 111, 180, 0.1)' }} />
             <span className={styles.legendLabel}>Baixo</span>
           </div>
           <div className={styles.legendItem}>
-            <div className={styles.legendColor} style={{ backgroundColor: 'rgba(34, 229, 255, 0.45)' }} />
+            <div className={styles.legendColor} style={{ backgroundColor: 'rgba(64, 111, 180, 0.55)' }} />
             <span className={styles.legendLabel}>Médio</span>
           </div>
           <div className={styles.legendItem}>
-            <div className={styles.legendColor} style={{ backgroundColor: 'rgba(34, 229, 255, 0.8)' }} />
+            <div className={styles.legendColor} style={{ backgroundColor: 'rgba(64, 111, 180, 0.9)' }} />
             <span className={styles.legendLabel}>Alto</span>
           </div>
         </div>

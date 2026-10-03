@@ -1,60 +1,133 @@
 @import '@/styles/tokens.css';
 
 .wrapper {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  font-family: var(--font-sans);
+}
+
+.wrapper:has(input:focus-visible) {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-1);
+  margin: calc(var(--spacing-1) * -1);
+}
+
+.checkboxContainer {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  column-gap: var(--spacing-3);
-  row-gap: var(--spacing-1);
-  min-height: 44px;
-}
-
-.checkboxContainer { display: flex; align-items: center; justify-content: center; }
-
-/* O controle nativo é estilizado direto: mantém teclado e leitores de tela */
-.checkbox {
-  appearance: none;
-  -webkit-appearance: none;
-  margin: 0;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
-  border: 1.5px solid var(--line-strong);
+  margin: 0;
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+}
+
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-primary-700);
+  background-color: var(--color-neutral-0);
   border-radius: var(--radius-sm);
-  background-color: var(--bg-surface);
-  transition: box-shadow var(--transition-base), border-color var(--transition-fast), background-color var(--transition-fast);
-}
-.size-sm { width: 18px; height: 18px; }
-.size-md { width: 22px; height: 22px; }
-.size-lg { width: 26px; height: 26px; }
-
-.checkbox:hover:not(:disabled) { border-color: var(--neon-violet); }
-.checkbox:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 3px; }
-
-.checkbox:checked, .checkbox:indeterminate {
-  border-color: var(--neon-cyan);
-  box-shadow: var(--glow-cyan);
-  background-color: var(--neon-cyan);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M3.5 8.5l3 3 6-7%27 fill=%27none%27 stroke=%27%2305060f%27 stroke-width=%272.4%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
-  background-size: 80%;
-  background-position: center;
-  background-repeat: no-repeat;
+  transition: var(--transition-fast);
+  pointer-events: none;
 }
 
-.checkmark { display: none; }
+.size-sm .checkmark {
+  width: 16px;
+  height: 16px;
+  font-size: var(--font-xs);
+}
+
+.size-md .checkmark {
+  width: 20px;
+  height: 20px;
+  font-size: var(--font-sm);
+}
+
+.size-lg .checkmark {
+  width: 24px;
+  height: 24px;
+  font-size: var(--font-base);
+}
+
+/* Checked state */
+.checkbox:checked + .checkmark {
+  background-color: var(--color-primary-700);
+  color: white;
+  border-color: var(--color-primary-700);
+}
+
+.checkbox:checked + .checkmark::after {
+  content: '✓';
+}
+
+/* Indeterminate state */
+.checkbox:indeterminate + .checkmark {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  color: white;
+}
+
+.checkbox:indeterminate + .checkmark::after {
+  content: '−';
+}
+
+/* Hover */
+.checkbox:not(:disabled):hover + .checkmark {
+  border-color: var(--color-primary-700);
+  box-shadow: var(--shadow-sm);
+}
+
+.checkbox:not(:disabled):checked:hover + .checkmark {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+/* Disabled */
+.disabled .checkmark {
+  background-color: var(--color-neutral-100);
+  border-color: var(--color-neutral-300);
+  opacity: 0.5;
+}
+
+.checkbox:disabled + .checkmark {
+  cursor: not-allowed;
+}
 
 .label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
   font-size: var(--font-sm);
-  color: var(--text-hi);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-900);
   cursor: pointer;
   user-select: none;
 }
 
-.helperText {
-  grid-column: 2;
-  margin: 0;
-  font-size: var(--font-xs);
-  color: var(--text-low);
+.checkbox:disabled ~ .label {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.disabled { opacity: 0.5; }
-.disabled .checkbox, .disabled .label { cursor: not-allowed; }
+.helperText {
+  font-size: var(--font-xs);
+  color: var(--color-neutral-600);
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
