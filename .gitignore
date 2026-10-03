@@ -31,3 +31,7 @@ ENV/
 .vscode/
 
 output/*.json
+
+# configs locais do Claude Code e vídeos gerados
+.claude/
+video/
