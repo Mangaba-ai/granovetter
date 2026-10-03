@@ -1,0 +1,74 @@
+@import '@/styles/tokens.css';
+
+.card {
+  background-color: var(--color-neutral-0);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
+}
+
+/* Elevation */
+.elevation-none {
+  box-shadow: none;
+  border: 1px solid var(--color-neutral-200);
+}
+
+.elevation-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.elevation-md {
+  box-shadow: var(--shadow-md);
+}
+
+.elevation-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Padding */
+.padding-sm {
+  padding: var(--spacing-3);
+}
+
+.padding-md {
+  padding: var(--spacing-6);
+}
+
+.padding-lg {
+  padding: var(--spacing-8);
+}
+
+/* Variants */
+.variant-default {
+  background-color: var(--color-neutral-0);
+  color: var(--color-neutral-900);
+}
+
+.variant-highlight {
+  background-color: var(--color-primary-50);
+  border-left: 4px solid var(--color-primary-600);
+}
+
+.variant-success {
+  background-color: var(--color-tertiary-50);
+  border-left: 4px solid var(--color-success);
+}
+
+.variant-warning {
+  background-color: var(--color-secondary-50);
+  border-left: 4px solid var(--color-warning);
+}
+
+.variant-error {
+  background-color: #fef2f2;
+  border-left: 4px solid var(--color-error);
+}
+
+/* Hoverable */
+.hoverable {
+  cursor: pointer;
+}
+
+.hoverable:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}

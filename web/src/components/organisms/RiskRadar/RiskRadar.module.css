@@ -1,0 +1,78 @@
+@import '@/styles/tokens.css';
+
+.radar {
+  max-width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+.grid {
+  opacity: 0.3;
+}
+
+.gridCircle {
+  fill: none;
+  stroke: var(--color-neutral-400);
+  stroke-width: 0.5px;
+}
+
+.gridLine {
+  stroke: var(--color-neutral-300);
+  stroke-width: 0.5px;
+}
+
+.dataArea {
+  transition: opacity var(--transition-fast);
+}
+
+.dataArea:hover {
+  opacity: 0.4;
+}
+
+.dataPoint {
+  transition: all var(--transition-fast);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.dataPoint:hover,
+.dataPoint:focus {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  outline: 2px solid var(--color-primary-300);
+  outline-offset: 2px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-neutral-700);
+  pointer-events: none;
+  user-select: none;
+}
+
+.tooltip {
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  fill: white;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dataPoint,
+  .tooltip {
+    transition: none;
+    animation: none;
+  }
+}

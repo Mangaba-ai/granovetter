@@ -1,0 +1,97 @@
+@import '@/styles/tokens.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 100%;
+}
+
+.svg {
+  max-width: 100%;
+  height: auto;
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-neutral-200);
+  font-family: var(--font-sans);
+}
+
+.edges {
+  stroke: var(--color-primary-400);
+  fill: none;
+}
+
+.edge {
+  transition: stroke-opacity var(--transition-fast);
+}
+
+.edge:hover {
+  stroke-opacity: 0.8;
+  stroke-width: 3;
+}
+
+.nodes {
+  pointer-events: auto;
+}
+
+.nodeGroup {
+  transition: opacity var(--transition-fast);
+}
+
+.nodeGroup:hover {
+  opacity: 0.8;
+}
+
+.node {
+  transition: all var(--transition-fast);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.node:hover,
+.node:focus {
+  r: 12px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  outline: 2px solid var(--color-primary-300);
+  outline-offset: 2px;
+}
+
+.node:active {
+  cursor: grabbing;
+}
+
+.nodeLabel {
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-neutral-700);
+  pointer-events: none;
+  user-select: none;
+}
+
+.legend {
+  padding: var(--spacing-3);
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-200);
+}
+
+.legendTitle {
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  margin: 0 0 var(--spacing-1) 0;
+}
+
+.legendText {
+  font-size: var(--font-xs);
+  color: var(--color-neutral-600);
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node,
+  .edge,
+  .nodeGroup {
+    transition: none;
+  }
+}

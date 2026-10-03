@@ -1,0 +1,205 @@
+@import '@/styles/tokens.css';
+
+.header {
+  background-color: var(--color-neutral-0);
+  border-bottom: 1px solid var(--color-neutral-200);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: var(--font-sans);
+}
+
+.variant-default {
+  padding: var(--spacing-4) 0;
+}
+
+.variant-compact {
+  padding: var(--spacing-2) 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-6);
+  gap: var(--spacing-6);
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--spacing-3);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-lg);
+  color: var(--color-primary-600);
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-6);
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-bottom: 2px solid transparent;
+}
+
+.navLink:hover {
+  color: var(--color-primary-600);
+}
+
+.navLink.active {
+  color: var(--color-primary-600);
+  border-bottom-color: var(--color-primary-600);
+  font-weight: var(--font-weight-semibold);
+}
+
+.navLink:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 4px;
+}
+
+.userMenuContainer {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.userMenuButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: transparent;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+  color: var(--color-neutral-700);
+  font-weight: var(--font-weight-medium);
+}
+
+.userMenuButton:hover {
+  border-color: var(--color-primary-300);
+  background-color: var(--color-primary-50);
+}
+
+.userMenuButton:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-primary-600);
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-xs);
+}
+
+.userName {
+  display: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .userName {
+    display: inline;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--spacing-2);
+  background-color: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 200px;
+  z-index: 200;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.userInfo {
+  padding: var(--spacing-4);
+}
+
+.userEmail {
+  font-size: var(--font-xs);
+  color: var(--color-neutral-600);
+  margin: 0;
+}
+
+.divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--color-neutral-200);
+}
+
+.logoutButton {
+  width: 100%;
+  text-align: left;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-sm);
+  color: var(--color-error);
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.logoutButton:hover {
+  background-color: #fef2f2;
+}
+
+.logoutButton:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: -2px;
+}

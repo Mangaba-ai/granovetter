@@ -1,0 +1,56 @@
+@import '@/styles/tokens.css';
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  font-family: var(--font-sans);
+}
+
+/* Sizes */
+.size-sm {
+  font-size: var(--font-xs);
+  padding: var(--spacing-1) var(--spacing-2);
+  height: 20px;
+}
+
+.size-md {
+  font-size: var(--font-sm);
+  padding: var(--spacing-2) var(--spacing-3);
+  height: 24px;
+}
+
+.size-lg {
+  font-size: var(--font-base);
+  padding: var(--spacing-2) var(--spacing-4);
+  height: 28px;
+}
+
+/* Variants */
+.variant-default {
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-800);
+}
+
+.variant-success {
+  background-color: var(--color-tertiary-100);
+  color: var(--color-tertiary-700);
+}
+
+.variant-warning {
+  background-color: var(--color-secondary-100);
+  color: var(--color-secondary-700);
+}
+
+.variant-error {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.variant-info {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+}

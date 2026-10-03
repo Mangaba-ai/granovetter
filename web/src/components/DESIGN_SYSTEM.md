@@ -91,12 +91,168 @@ Todos os componentes usam tokens CSS definidos em `@/styles/tokens.css`:
 4. **Forwarding Ref**: todos os componentes devem suportar ref com `React.forwardRef`
 5. **ARIA**: adicionar atributos de acessibilidade (aria-invalid, aria-describedby, etc)
 
+## Componentes Molecules (Fase 2)
+
+### Card
+Container reutilizável com sombra, padding e rounded corners.
+
+```tsx
+import { Card } from '@/components/molecules';
+
+<Card elevation="md" padding="lg" variant="default" hoverable>
+  Conteúdo do card
+</Card>
+```
+
+**Props:**
+- `elevation`: 'none' | 'sm' | 'md' | 'lg'
+- `padding`: 'sm' | 'md' | 'lg'
+- `variant`: 'default' | 'highlight' | 'success' | 'warning' | 'error'
+- `hoverable`: boolean
+
+### Badge
+Label pequeno com cor semântica para status/categorias.
+
+```tsx
+import { Badge } from '@/components/molecules';
+
+<Badge variant="success" size="md">
+  Ativo
+</Badge>
+```
+
+**Props:**
+- `variant`: 'default' | 'success' | 'warning' | 'error' | 'info'
+- `size`: 'sm' | 'md' | 'lg'
+
+### FormGroup
+Agrupa Input + Label + helper text para formulários completos.
+
+```tsx
+import { FormGroup, Input } from '@/components/molecules';
+
+<FormGroup label="Email" helperText="Seu email corporativo" required>
+  <Input type="email" placeholder="seu@email.com" />
+</FormGroup>
+```
+
+**Props:**
+- `label`: string
+- `helperText`: string
+- `errorMessage`: string
+- `required`: boolean
+
+### DataCard
+Card com número/métrica para dashboards.
+
+```tsx
+import { DataCard } from '@/components/molecules';
+
+<DataCard 
+  value="2.543"
+  label="Simulações Ativas"
+  change={{ value: 12, isPositive: true }}
+  variant="success"
+/>
+```
+
+### Checkbox & Radio
+Componentes de seleção acessíveis com custom styling.
+
+```tsx
+import { Checkbox, Radio } from '@/components/molecules';
+
+<Checkbox label="Concordo com os termos" size="md" />
+<Radio label="Opção 1" name="options" size="md" />
+```
+
+## Componentes Organisms (Fase 3)
+
+### Header
+Cabeçalho com logo, navegação e menu de usuário.
+
+```tsx
+import { Header } from '@/components/organisms';
+
+<Header
+  logo={<YourLogo />}
+  navLinks={[
+    { label: 'Dashboard', href: '/dashboard', active: true },
+    { label: 'Simulações', href: '/simulations' }
+  ]}
+  userMenu={{
+    name: 'João Silva',
+    email: 'joao@company.com',
+    onLogout: handleLogout
+  }}
+/>
+```
+
+### RiskRadar
+Visualização SVG interativa de risco em radar.
+
+```tsx
+import { RiskRadar } from '@/components/organisms';
+
+<RiskRadar
+  dataPoints={[
+    { label: 'Risco A', value: 75 },
+    { label: 'Risco B', value: 45 }
+  ]}
+  showGrid={true}
+  showLabels={true}
+/>
+```
+
+### SocialGraph
+Grafo de rede social com drag-to-explore.
+
+```tsx
+import { SocialGraph } from '@/components/organisms';
+
+<SocialGraph
+  nodes={[...]}
+  edges={[...]}
+  draggable={true}
+  onNodeClick={handleNodeClick}
+/>
+```
+
+### ThresholdHeatmap
+Grid colorido de adoção/intensidade.
+
+```tsx
+import { ThresholdHeatmap } from '@/components/organisms';
+
+<ThresholdHeatmap
+  data={[...]}
+  rows={['Região A', 'Região B']}
+  columns={['Q1', 'Q2', 'Q3', 'Q4']}
+  colorScheme="sequential"
+/>
+```
+
+### Dashboard
+Layout principal com grid responsivo.
+
+```tsx
+import { Dashboard } from '@/components/organisms';
+
+<Dashboard
+  title="Simulações Comportamentais"
+  description="Análise de simulação em tempo real"
+  columns={3}
+  sections={[
+    { id: '1', title: 'Radar', content: <RiskRadar ... /> },
+    { id: '2', title: 'Heatmap', content: <ThresholdHeatmap ... />, colspan: 2 }
+  ]}
+/>
+```
+
 ## Próximas Fases
 
-- **Fase 2**: Componentes Molecules (Card, FormGroup, Badge)
-- **Fase 3**: Componentes Organisms (Header, Sidebar, Modal)
-- **Fase 4**: Storybook setup e testes com Vitest + Playwright
-- **Fase 5**: Acessibilidade WCAG AAA, performance Lighthouse 90+
+- **Fase 4**: Storybook setup, Vitest testes unitários, Lighthouse CI
+- **Fase 5**: Acessibilidade WCAG AAA, testes E2E com Playwright
 
 ## Suporte
 
