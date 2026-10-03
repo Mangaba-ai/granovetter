@@ -124,7 +124,14 @@
       }
     });
   };
-  var s = document.createElement("script");
-  s.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(s);
+  // a API do YouTube (~1 MB) só é baixada no primeiro gesto, para não pesar no carregamento
+  var apiLoaded = false;
+  function loadApi() {
+    if (apiLoaded) return; apiLoaded = true;
+    var s = document.createElement("script");
+    s.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(s);
+  }
+  window.addEventListener("pointerdown", loadApi, true);
+  window.addEventListener("keydown", loadApi, true);
 })();

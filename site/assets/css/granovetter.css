@@ -1222,7 +1222,7 @@ body:not(.granovetter-intro-revealing):not(.granovetter-intro-done)::before {
   inset: 0;
   z-index: 5;
   pointer-events: none;
-  background-image: url("../media/tv-static-fine-visible-50f.webp");
+  background-image: url("../media/granovetter-static.webp");
   background-position: center center;
   background-size: 480px 480px;
   background-repeat: repeat;

@@ -348,7 +348,7 @@
 <div id="granovetter-static"></div>
 <!-- GRANOVETTER INTRO OVERLAY -->
 <div id="granointro-bg"></div>
-<video crossorigin="anonymous" id="granointro-vid" loop="" muted="" playsinline="" preload="auto" src="./assets/media/granovetter-intro.mp4" style="position:fixed;opacity:0;pointer-events:none;width:1px;height:1px;"></video>
+<video crossorigin="anonymous" id="granointro-vid" loop="" muted="" playsinline="" preload="auto" src="./assets/media/granovetter-intro-640.mp4" style="position:fixed;opacity:0;pointer-events:none;width:1px;height:1px;"></video>
 <canvas id="granointro-asc"></canvas>
 <div class="granointro-ui" id="granointro-ui">
 <div>
@@ -427,8 +427,8 @@
 <div class="st"><div class="st-n">15+</div><div class="st-l">Base científica</div><p class="st-d">Pesquisa de Stanford, Cambridge, Nature e mais. <a href="./fontes.html">Ver fontes e arcabouço.</a></p></div>
 </div>
 <div class="granovetter-dashes">
-<figure class="granovetter-dash"><img src="./assets/media/dash1.png" alt=""></figure>
-<figure class="granovetter-dash"><img src="./assets/media/dash2.png" alt=""></figure>
+<figure class="granovetter-dash"><img src="./assets/media/dash1.webp" alt=""></figure>
+<figure class="granovetter-dash"><img src="./assets/media/dash2.webp" alt=""></figure>
 </div>
 </div>
 </section>
@@ -468,7 +468,7 @@
 </div>
 </div>
 <div class="granovetter-people-media" aria-hidden="true">
-<img class="granovetter-people-image" src="./assets/media/people.png" alt="" loading="lazy"/>
+<img class="granovetter-people-image" src="./assets/media/people.webp" alt="" loading="lazy"/>
 </div>
 </div>
 </div>
@@ -561,7 +561,7 @@
 <div class="feed-block block-1">
 <div class="feed-article">
 <div class="article-link">
-<div class="article-asset granovetter-gif-asset"><span class="granovetter-process-number">01</span><img alt="" class="granovetter-process-gif" loading="lazy" src="./assets/media/6a23243a250c0e063de3a523_12e8a6a547e317524121f7a5d6084036-ezgif.com-resize.gif"/></div>
+<div class="article-asset granovetter-gif-asset"><span class="granovetter-process-number">01</span><video class="granovetter-process-gif" src="./assets/media/6a23243a250c0e063de3a523_12e8a6a547e317524121f7a5d6084036-ezgif.com-resize.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
 <div class="article-content">
 <h3 class="article-title -p2" data-split="lines">Entrada</h3>
 <p class="article-date -p">Dados culturais, perfis de grupos, contexto organizacional, ambiente externo e decisão a ser testada.</p>
@@ -570,7 +570,7 @@
 </div>
 <div class="feed-article">
 <div class="article-link">
-<div class="article-asset granovetter-gif-asset"><span class="granovetter-process-number">02</span><img alt="" class="granovetter-process-gif" loading="lazy" src="./assets/media/6a2321d09f3bd9ac92c4adcd_268900b4688092795acb9dab54e64f75.gif"/></div>
+<div class="article-asset granovetter-gif-asset"><span class="granovetter-process-number">02</span><video class="granovetter-process-gif" src="./assets/media/6a2321d09f3bd9ac92c4adcd_268900b4688092795acb9dab54e64f75.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
 <div class="article-content">
 <h3 class="article-title -p2" data-split="lines">Simulação</h3>
 <p class="article-date -p">Agentes sintéticos interagem com cenários, pressões, narrativas e variáveis estratégicas.</p>
@@ -579,7 +579,7 @@
 </div>
 <div class="feed-article">
 <div class="article-link">
-<div class="article-asset granovetter-gif-asset"><span class="granovetter-process-number">03</span><img alt="" class="granovetter-process-gif" loading="lazy" src="./assets/media/6a2321d1a16af74907127458_6bd9c1f390e13830a6c8b00789b3078e.gif"/></div>
+<div class="article-asset granovetter-gif-asset"><span class="granovetter-process-number">03</span><video class="granovetter-process-gif" src="./assets/media/6a2321d1a16af74907127458_6bd9c1f390e13830a6c8b00789b3078e.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
 <div class="article-content">
 <h3 class="article-title -p2" data-split="lines">Saída</h3>
 <p class="article-date -p">Cenários prováveis, riscos emergentes, tensões ocultas, padrões de adesão, resistência e recomendações para decisão.</p>
@@ -609,7 +609,7 @@
 <div class="granovetter-tunnel-background">
 <div class="granovetter-tunnel-container">
 <canvas class="granovetter-tunnel-gl"></canvas>
-<img alt="" class="granovetter-tunnel-lines" src="./assets/media/inline-02-52844f89e5.png"/>
+<img alt="" class="granovetter-tunnel-lines" src="./assets/media/inline-02-52844f89e5.webp"/>
 <div class="granovetter-tunnel-bg">
 <div class="granovetter-tunnel-bg-inner"></div>
 </div>
@@ -859,5 +859,6 @@ el.addEventListener("click",function(e){
   if(img) img.addEventListener("load", place);
   setTimeout(place, 400); setTimeout(place, 1500);
 })();</script>
-<script src="./assets/js/granovetter-music.js?v=3" defer></script>
+<script src="./assets/js/granovetter-media.js?v=1" defer></script>
+<script src="./assets/js/granovetter-music.js?v=4" defer></script>
 </body></html>

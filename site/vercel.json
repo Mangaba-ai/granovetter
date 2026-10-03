@@ -3,15 +3,36 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "granovetter.vercel.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "granovetter.vercel.app"
+        }
+      ],
       "destination": "https://granovetters.com/$1",
       "permanent": true
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.granovetters.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.granovetters.com"
+        }
+      ],
       "destination": "https://granovetters.com/$1",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
     }
   ]
 }
