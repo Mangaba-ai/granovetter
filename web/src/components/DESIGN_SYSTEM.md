@@ -249,131 +249,13 @@ import { Dashboard } from '@/components/organisms';
 />
 ```
 
-## Fase 4: Interatividade & Performance ✅
-
-Setup completo de testes, documentação e tooling:
-
-- **Storybook 7**: Stories para todos os componentes
-- **Vitest**: Testes unitários com @testing-library
-- **Playwright**: Testes E2E com Axe accessibility
-- **Lighthouse CI**: Performance 85%+, Accessibility 90%+
-- **npm scripts**: `npm run storybook`, `npm run test`, `npm run e2e`, `npm run lighthouse`
-
-## Fase 5: Acessibilidade & Testes E2E ✅
-
-Conformidade completa com WCAG 2.1 Level AAA:
-
-### Acessibilidade
-
-Todos os componentes cumprem:
-- ✅ **WCAG AAA Level** conformidade
-- ✅ **Keyboard navigation** completa (Tab, Enter, Escape, Arrow keys)
-- ✅ **Screen reader** compatible (ARIA labels, roles, states)
-- ✅ **Color contrast** 7:1 ratio (AAA minimum)
-- ✅ **Focus indicators** visíveis (2px outline)
-- ✅ **Touch targets** mínimo 44x44px
-- ✅ **Sem keyboard traps** - Tab sempre funciona
-- ✅ **prefers-reduced-motion** respeitado
-- ✅ **Zoom 200%** funcional
-
-**Documentação**: Ver [ACCESSIBILITY.md](./ACCESSIBILITY.md)
-
-### Testes Automatizados
+## Testes e acessibilidade
 
 ```bash
-# Testes unitários com acessibilidade
-npm run test
-
-# Testes E2E com Axe DevTools
-npm run e2e
-
-# Lighthouse CI (performance + accessibility)
-npm run lighthouse
-
-# Storybook a11y addon
+npm test         # Vitest: 28 testes unitários
+npm run e2e      # Playwright + axe: 56 testes em 5 navegadores
 npm run storybook
-# Ir em Acessibilidade tab em cada story
 ```
 
-### Testes Manuais
-
-1. **Keyboard Navigation**: Tab através de toda interface
-2. **Screen Reader** (NVDA/JAWS/VoiceOver): Verificar anúncio correto
-3. **Color Contrast**: WebAIM Contrast Checker
-4. **Zoom 200%**: Verificar reflow e usabilidade
-5. **Mobile 375px**: Touch targets acessíveis
-
-### WCAG Checklist
-
-**Perceivable**
-- ✅ Color contrast 7:1 (text), 3:1 (UI components)
-- ✅ No reliance on color alone
-- ✅ Images têm alt text ou aria-label
-
-**Operable**
-- ✅ Keyboard accessible (Tab, Enter, Space, Arrow keys)
-- ✅ No keyboard traps
-- ✅ Focus visible e lógico (DOM order)
-- ✅ Operação sem mouse possível
-
-**Understandable**
-- ✅ Heading hierarchy correto (h1 → h2 → h3)
-- ✅ Labels visíveis para form inputs
-- ✅ Error messages claras e associadas
-- ✅ Instruções claras e contextuais
-
-**Robust**
-- ✅ Name, Role, Value determinados por AT
-- ✅ ARIA attributes válidos e bem-formados
-- ✅ Status updates anunciados
-- ✅ Semantic HTML onde possível
-
-### Recursos
-
-- [ACCESSIBILITY.md](./ACCESSIBILITY.md) - Guia detalhado por componente
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
-- [Inclusive Components](https://inclusive-components.design/)
-
-## Métricas de Sucesso
-
-**Fase 1-2**: ✅ Componentes Atoms + Molecules
-**Fase 3**: ✅ Componentes Organisms
-**Fase 4**: ✅ Storybook + Vitest + Playwright
-**Fase 5**: ✅ WCAG AAA + E2E + Documentação
-
-### Contínuo
-
-```bash
-# Antes de cada commit
-npm run lint
-npm run test
-npm run test:coverage
-
-# CI/CD (GitHub Actions)
-- npm run build
-- npm run test
-- npm run e2e
-- npm run lighthouse
-
-# Production
-- Lighthouse score: 90+ (all categories)
-- Zero accessibility violations
-- 100% test coverage para atoms/molecules
-```
-
-## Roadmap Futuro
-
-- **Tema Escuro**: CSS custom properties para dark mode
-- **Documentação Visual**: Figma Tokens integration
-- **Componentes Templates**: Layouts completos (Login, Dashboard)
-- **Internacionalização**: i18n para labels ARIA
-- **Performance**: <3s FCP, 90+ Lighthouse score
-
-## Suporte
-
-Para dúvidas sobre o design system:
-- Documentação: Este arquivo + ACCESSIBILITY.md
-- Código: Storybook stories (exemplos)
-- Issues: GitHub com tag `[Design System]`
-- Code review: PRs passam por design system audit
+Status verificado e regras de cor para novos componentes: [ACCESSIBILITY.md](./ACCESSIBILITY.md).
+Status geral do projeto: [DESIGN_SYSTEM_ROADMAP.md](../../DESIGN_SYSTEM_ROADMAP.md).

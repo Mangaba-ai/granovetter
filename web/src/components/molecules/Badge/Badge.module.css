@@ -37,17 +37,17 @@
 
 .variant-success {
   background-color: var(--color-tertiary-100);
-  color: var(--color-tertiary-700);
+  color: var(--color-success-text);
 }
 
 .variant-warning {
   background-color: var(--color-secondary-100);
-  color: var(--color-secondary-700);
+  color: var(--color-warning-text);
 }
 
 .variant-error {
   background-color: #fee2e2;
-  color: #991b1b;
+  color: var(--color-error-strong);
 }
 
 .variant-info {

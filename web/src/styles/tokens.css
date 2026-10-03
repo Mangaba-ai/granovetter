@@ -1,6 +1,10 @@
 /* Granovetter Design System Tokens v1.0
    Paleta profissional para laboratório de simulação comportamental */
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
   /* ==================== COLORS ==================== */
 
@@ -56,7 +60,11 @@
   /* Semantic colors */
   --color-success: var(--color-tertiary-500);
   --color-warning: var(--color-secondary-500);
-  --color-error: #ef4444;
+  --color-error: #991b1b;
+  --color-error-strong: #7f1d1d;
+  --color-success-text: #005828;
+  --color-warning-text: #7a1608;
+  --color-on-accent: #000000;
   --color-info: var(--color-primary-500);
 
   /* ==================== TYPOGRAPHY ==================== */
@@ -149,5 +157,14 @@
     --color-neutral-0: #111827;
     --color-neutral-50: #1f2937;
     --color-neutral-900: #f9fafb;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

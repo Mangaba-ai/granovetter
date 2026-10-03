@@ -65,18 +65,18 @@
 
 .positive {
   background-color: var(--color-tertiary-100);
-  color: var(--color-tertiary-700);
+  color: var(--color-success-text);
 }
 
 .negative {
   background-color: var(--color-secondary-100);
-  color: var(--color-secondary-700);
+  color: var(--color-warning-text);
 }
 
 /* Variants */
 .variant-default .iconWrapper {
   background-color: var(--color-primary-100);
-  color: var(--color-primary-600);
+  color: var(--color-primary-700);
 }
 
 .variant-success .iconWrapper {

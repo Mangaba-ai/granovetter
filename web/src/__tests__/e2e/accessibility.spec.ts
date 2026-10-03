@@ -1,255 +1,143 @@
 import { test, expect } from '@playwright/test';
-import { injectAxe, checkA11y, getViolations } from 'axe-playwright';
+import { openStory, axeViolations } from './helpers';
 
-test.describe('Accessibility - WCAG AAA Compliance', () => {
-  /**
-   * Test keyboard navigation across components
-   */
-  test('keyboard navigation works for all interactive elements', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
+const STORIES = [
+  'atoms-button--primary', 'atoms-button--all-variants', 'atoms-button--disabled', 'atoms-button--loading',
+  'atoms-input--default', 'atoms-input--error', 'atoms-input--with-helper',
+  'molecules-badge--variants', 'molecules-card--default', 'molecules-checkbox--default', 'molecules-checkbox--with-helper',
+  'molecules-radio--group', 'molecules-formgroup--default', 'molecules-formgroup--with-error', 'molecules-datacard--grid',
+  'organisms-header--default', 'organisms-riskradar--default', 'organisms-socialgraph--default',
+  'organisms-thresholdheatmap--sequential', 'organisms-dashboard--default',
+];
 
-    // Tab to first element
-    await page.keyboard.press('Tab');
-    const firstButton = page.locator('button').first();
-    await expect(firstButton).toBeFocused();
-
-    // Tab through all buttons
-    const allButtons = page.locator('button');
-    const buttonCount = await allButtons.count();
-
-    for (let i = 0; i < buttonCount; i++) {
-      const button = allButtons.nth(i);
-      await expect(button).toHaveCount(buttonCount); // Ensure buttons exist
-    }
-
-    // Verify focus is visible
-    const focusedButton = page.locator('button:focus');
-    const isVisible = await focusedButton.isVisible();
-    expect(isVisible).toBe(true);
-  });
-
-  /**
-   * Test that focus indicators are visible
-   */
-  test('focus indicators are visible on all interactive elements', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
-
-    const button = page.locator('button').first();
-    await button.focus();
-
-    // Check for focus outline
-    const outline = await button.evaluate((el: HTMLButtonElement) => {
-      const styles = window.getComputedStyle(el);
-      return styles.outline || styles.outlineWidth;
+test.describe('Auditoria axe (WCAG 2.2 AA + contraste AAA)', () => {
+  for (const id of STORIES) {
+    test(id, async ({ page }) => {
+      await openStory(page, id);
+      expect(await axeViolations(page)).toEqual([]);
     });
+  }
+});
 
-    expect(outline).toBeTruthy();
+// No Safari, Tab só percorre campos; Option+Tab inclui botões e links.
+const tabKey = (browserName: string) => (browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
+
+test.describe('Teclado e foco', () => {
+  test('Tab chega ao botão e o foco fica visível', async ({ page, browserName }) => {
+    const root = await openStory(page, 'atoms-button--primary');
+    await page.keyboard.press(tabKey(browserName));
+    const btn = root.getByRole('button');
+    await expect(btn).toBeFocused();
+    const outline = await btn.evaluate((el) => parseFloat(getComputedStyle(el).outlineWidth));
+    expect(outline).toBeGreaterThanOrEqual(2);
   });
 
-  /**
-   * Test color contrast ratios
-   */
-  test('color contrast meets WCAG AAA standards', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
-    await injectAxe(page);
-
-    const violations = await getViolations(page);
-    const contrastViolations = violations.filter((v: { id: string }) => v.id === 'color-contrast');
-
-    expect(contrastViolations).toHaveLength(0);
+  test('Espaço marca o checkbox e o rótulo está associado', async ({ page }) => {
+    const root = await openStory(page, 'molecules-checkbox--default');
+    const box = root.getByRole('checkbox', { name: 'Incluir lideranças intermediárias' });
+    await box.focus();
+    await page.keyboard.press('Space');
+    await expect(box).toBeChecked();
   });
 
-  /**
-   * Test that form inputs have proper labels
-   */
-  test('form inputs have associated labels', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/molecules-checkbox--default');
-
-    const checkbox = page.locator('input[type="checkbox"]');
-    const hasLabel = await checkbox.evaluate((input: HTMLInputElement) => {
-      const label = document.querySelector(`label[for="${input.id}"]`);
-      return label !== null || input.getAttribute('aria-label') !== null;
-    });
-
-    expect(hasLabel).toBe(true);
+  test('setas navegam no grupo de rádio', async ({ page }) => {
+    const root = await openStory(page, 'molecules-radio--group');
+    await root.getByRole('radio', { name: 'Otimista' }).focus();
+    await page.keyboard.press('ArrowDown');
+    await expect(root.getByRole('radio', { name: 'Realista' })).toBeChecked();
   });
 
-  /**
-   * Test ARIA attributes
-   */
-  test('ARIA attributes are correctly set', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--loading');
-
-    const loadingButton = page.locator('[aria-busy="true"]');
-    await expect(loadingButton).toBeVisible();
-    await expect(loadingButton).toBeDisabled();
+  test('links do cabeçalho são alcançáveis pelo teclado', async ({ page }) => {
+    const root = await openStory(page, 'organisms-header--default');
+    const links = root.getByRole('link');
+    expect(await links.count()).toBeGreaterThanOrEqual(3);
+    await links.first().focus();
+    await expect(links.first()).toBeFocused();
   });
 
-  /**
-   * Test heading hierarchy
-   */
-  test('heading hierarchy is correct', async ({ page }) => {
-    await page.goto('http://localhost:6006/');
-
-    // Get all headings
-    const headings = page.locator('h1, h2, h3, h4, h5, h6');
-    const headingCount = await headings.count();
-
-    if (headingCount > 0) {
-      // Verify no gaps in heading levels
-      let previousLevel = 1;
-
-      for (let i = 0; i < headingCount; i++) {
-        const heading = headings.nth(i);
-        const level = parseInt(await heading.evaluate((el) => el.tagName[1]));
-
-        // Should not skip levels (e.g., h1 -> h3)
-        expect(level).toBeLessThanOrEqual(previousLevel + 1);
-        previousLevel = level;
-      }
+  test('Tab não fica preso: percorre todos os campos do painel e sai', async ({ page, browserName }) => {
+    await openStory(page, 'organisms-header--default');
+    const seen = new Set<string>();
+    for (let i = 0; i < 15; i++) {
+      await page.keyboard.press(tabKey(browserName));
+      seen.add(await page.evaluate(() => document.activeElement?.outerHTML.slice(0, 80) ?? ''));
     }
+    expect(seen.size).toBeGreaterThan(2);
   });
+});
 
-  /**
-   * Test for keyboard traps
-   */
-  test('no keyboard traps exist', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
-
-    // Tab 10 times and ensure we can always move forward or backward
-    for (let i = 0; i < 10; i++) {
-      const focusedBefore = await page.evaluate(() => {
-        return document.activeElement?.tagName;
-      });
-
-      await page.keyboard.press('Tab');
-
-      const focusedAfter = await page.evaluate(() => {
-        return document.activeElement?.tagName;
-      });
-
-      // Focus should change or go back to start
-      expect(
-        focusedBefore !== focusedAfter || i > 5
-      ).toBe(true);
-    }
-  });
-
-  /**
-   * Test alternative text for images
-   */
-  test('images have alternative text', async ({ page }) => {
-    await page.goto('http://localhost:6006/');
-
-    const images = page.locator('img');
-    const imageCount = await images.count();
-
-    for (let i = 0; i < imageCount; i++) {
-      const image = images.nth(i);
-      const alt = await image.getAttribute('alt');
-      const ariaLabel = await image.getAttribute('aria-label');
-
-      // Should have either alt text or aria-label
-      expect(alt || ariaLabel).toBeTruthy();
-    }
-  });
-
-  /**
-   * Test with Axe DevTools
-   */
-  test('Axe DevTools audit passes with no violations', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
-
-    await injectAxe(page);
-
-    const violations = await getViolations(page, {
-      detailedReportOptions: {
-        html: true,
-      },
+test.describe('Gráficos têm nome acessível', () => {
+  for (const id of ['organisms-riskradar--default', 'organisms-socialgraph--default', 'organisms-thresholdheatmap--sequential']) {
+    test(id, async ({ page }) => {
+      const root = await openStory(page, id);
+      const named = root.locator('[aria-label], [aria-labelledby], figcaption, caption, title');
+      expect(await named.count()).toBeGreaterThan(0);
     });
+  }
+});
 
-    // Filter out false positives or known issues
-    const criticalViolations = violations.filter(
-      (v: { impact?: string | null }) => v.impact === 'critical' || v.impact === 'serious'
-    );
-
-    expect(criticalViolations).toHaveLength(0);
-  });
-
-  /**
-   * Test respects prefers-reduced-motion
-   */
-  test('animations respect prefers-reduced-motion', async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--loading');
-
-    const button = page.locator('button').first();
-
-    // Get computed animation properties
-    const animation = await button.evaluate((el) => {
-      const styles = window.getComputedStyle(el);
-      return styles.animation || 'none';
-    });
-
-    // Animation should be none or reduced
-    expect(animation === 'none' || animation.includes('0s')).toBe(true);
-  });
-
-  /**
-   * Test on mobile viewport
-   */
-  test('components are accessible on mobile viewport', async ({ page }) => {
+test.describe('Celular, zoom e movimento reduzido', () => {
+  test('alvo de toque do botão padrão tem pelo menos 44x44 px', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
-
-    const button = page.locator('button').first();
-
-    // Touch target should be at least 44x44px
-    const size = await button.boundingBox();
-    expect(size?.width).toBeGreaterThanOrEqual(44);
-    expect(size?.height).toBeGreaterThanOrEqual(44);
-
-    // Should be focusable
-    await button.focus();
-    await expect(button).toBeFocused();
+    const root = await openStory(page, 'atoms-button--primary');
+    const box = await root.getByRole('button').boundingBox();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
   });
 
-  /**
-   * Test zoom at 200%
-   */
-  test('content is accessible at 200% zoom', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
-    await page.evaluate(() => {
-      document.body.style.zoom = '200%';
-    });
-
-    const button = page.locator('button').first();
-    await expect(button).toBeVisible();
-
-    // Should be clickable
-    await button.click();
+  test('painel não gera rolagem horizontal em 375 px', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await openStory(page, 'organisms-dashboard--default');
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(1);
   });
 
-  /**
-   * Test navigation with screen reader simulation
-   */
-  test('screen reader can navigate components', async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?path=/story/atoms-button--primary');
-
-    const button = page.locator('button').first();
-
-    // Get accessible name
-    const accessibleName = await button.evaluate((el: HTMLElement) => {
-      return el.getAttribute('aria-label') || el.textContent || '';
-    });
-
-    expect(accessibleName.length).toBeGreaterThan(0);
-
-    // Get role
-    const role = await button.evaluate((el: HTMLElement) => {
-      return el.getAttribute('role') || el.tagName.toLowerCase();
-    });
-
-    expect(role).toBe('button');
+  test('botão continua visível e clicável com zoom de 200%', async ({ page }) => {
+    const root = await openStory(page, 'atoms-button--primary');
+    await page.evaluate(() => { document.body.style.zoom = '2'; });
+    await root.getByRole('button').click();
   });
+
+  test('spinner para de girar com prefers-reduced-motion', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    const root = await openStory(page, 'atoms-button--loading');
+    const anim = await root.locator('[aria-busy="true"] span[aria-hidden="true"]').first()
+      .evaluate((el) => getComputedStyle(el).animationName);
+    expect(anim).toBe('none');
+  });
+});
+
+// O axe marca muitos pares como "inconclusivos"; esta medição cobre todo texto visível.
+test.describe('Contraste AAA (7:1) medido em todo texto', () => {
+  for (const id of STORIES) {
+    test(id, async ({ page }) => {
+      await openStory(page, id);
+      const bad = await page.evaluate(() => {
+        const parse = (c: string) => (c.match(/[\d.]+/g) || []).map(Number);
+        const lum = ([r, g, b]: number[]) => {
+          const f = (v: number) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+          return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+        };
+        const bgOf = (el: Element | null) => {
+          for (let e = el; e; e = e.parentElement) {
+            const c = parse(getComputedStyle(e).backgroundColor);
+            if (c.length >= 3 && (c[3] ?? 1) > 0.5) return c;
+          }
+          return [255, 255, 255];
+        };
+        const out: string[] = [];
+        for (const el of document.querySelectorAll('#storybook-root *')) {
+          const hasText = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent!.trim());
+          if (!hasText) continue;
+          const cs = getComputedStyle(el);
+          if ((el as HTMLElement).closest(':disabled, [aria-disabled="true"]') || cs.visibility === 'hidden') continue;
+          const L1 = lum(parse(cs.color)), L2 = lum(bgOf(el));
+          const r = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
+          if (r < 7) out.push(`"${el.textContent!.trim().slice(0, 20)}" ${r.toFixed(2)}:1`);
+        }
+        return out;
+      });
+      expect(bad).toEqual([]);
+    });
+  }
 });

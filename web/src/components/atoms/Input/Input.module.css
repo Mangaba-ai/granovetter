@@ -76,7 +76,7 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: var(--color-neutral-500);
+  color: var(--color-neutral-700);
   font-size: var(--font-base);
 }
 
@@ -96,7 +96,7 @@
 
 /* Hover state */
 .input:hover:not(:disabled):not(.error) {
-  border-color: var(--color-neutral-400);
+  border-color: var(--color-neutral-600);
   background-color: var(--color-neutral-50);
 }
 
@@ -114,7 +114,7 @@
 /* Disabled state */
 .input:disabled {
   background-color: var(--color-neutral-100);
-  color: var(--color-neutral-500);
+  color: var(--color-neutral-700);
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -131,12 +131,12 @@
 }
 
 .helperText {
-  color: var(--color-neutral-500);
+  color: var(--color-neutral-700);
 }
 
 /* Placeholder */
 .input::placeholder {
-  color: var(--color-neutral-400);
+  color: var(--color-neutral-600);
 }
 
 /* Remove spinner from number inputs */

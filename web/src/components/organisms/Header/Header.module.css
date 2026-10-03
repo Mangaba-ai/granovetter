@@ -36,7 +36,7 @@
   gap: var(--spacing-3);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-lg);
-  color: var(--color-primary-600);
+  color: var(--color-primary-700);
 }
 
 .nav {
@@ -64,12 +64,12 @@
 }
 
 .navLink:hover {
-  color: var(--color-primary-600);
+  color: var(--color-primary-700);
 }
 
 .navLink.active {
-  color: var(--color-primary-600);
-  border-bottom-color: var(--color-primary-600);
+  color: var(--color-primary-700);
+  border-bottom-color: var(--color-primary-700);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -123,7 +123,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: var(--color-primary-600);
+  background-color: var(--color-primary-700);
   color: white;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-xs);

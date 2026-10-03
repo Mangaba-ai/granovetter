@@ -45,7 +45,7 @@
 
 .variant-highlight {
   background-color: var(--color-primary-50);
-  border-left: 4px solid var(--color-primary-600);
+  border-left: 4px solid var(--color-primary-700);
 }
 
 .variant-success {

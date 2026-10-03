@@ -54,7 +54,7 @@ const Dashboard = React.forwardRef<HTMLDivElement, DashboardProps>(
         <div
           className={styles.grid}
           style={{
-            gridTemplateColumns: `repeat(${columns}, 1fr)`,
+            gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
           }}
         >
           {sections.map((section) => (
