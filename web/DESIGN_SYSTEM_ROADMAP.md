@@ -9,8 +9,9 @@ Atualizado em 03/10/2026.
 | 1 | Tokens (`src/styles/tokens.css`), Button, Input |
 | 2 | Card, Badge, FormGroup, DataCard, Checkbox, Radio |
 | 3 | Header, RiskRadar, SocialGraph, ThresholdHeatmap, Dashboard |
-| 4 | Storybook 7 (52 histórias, todos os componentes), Vitest, Playwright, Lighthouse CI configurado |
+| 4 | Storybook 7 (todos os componentes), Vitest, Playwright, Lighthouse CI configurado |
 | 5 | Acessibilidade verificada por teste (ver `src/components/ACCESSIBILITY.md`) |
+| 6 | Tema futurista: escuro, neon, vidro e degradês; Space Grotesk e JetBrains Mono. Nova estrutura: `AppShell` (menu lateral + barra de comando) e `Dashboard` em grid bento |
 
 ## Verificação
 
@@ -19,8 +20,12 @@ Atualizado em 03/10/2026.
 | `npx tsc --noEmit` | 0 erros |
 | `npm run build` | passa |
 | `npm test` | 28/28 |
-| `npm run e2e` | 280/280 (56 testes × Chrome, Firefox, Safari, Chrome mobile, Safari mobile) |
+| `npm run e2e` | 290/290 (58 testes × Chrome, Firefox, Safari, Chrome mobile, Safari mobile) |
 | Lighthouse | configurado (`.lighthouserc.json`), **ainda não executado** |
+
+## Visual
+
+![Desktop](docs/design-system-desktop.png)
 
 ## Pendente
 

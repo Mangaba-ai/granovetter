@@ -30,10 +30,12 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
     className = '',
     ...props
   }, ref) => {
+    const gradId = React.useId().replace(/:/g, '');
     const [hoveredPoint, setHoveredPoint] = React.useState<number | null>(null);
 
     const center = size / 2;
-    const maxRadius = size / 2 - 30;
+    // margem para os rótulos ficarem dentro do SVG
+    const maxRadius = size / 2 - 64;
     const numLevels = 5;
 
     const handlePointHover = (index: number | null) => {
@@ -78,7 +80,7 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
         height={size}
         className={svgClasses}
         role="img"
-        aria-label="Risk Radar Chart"
+        aria-label={`Radar de riscos: ${dataPoints.map((d) => `${d.label} ${d.value}%`).join(", ")}`}
         {...props}
       >
         {/* Grid circles and lines */}
@@ -116,21 +118,35 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
           </g>
         )}
 
+        <defs>
+          <linearGradient id={`${gradId}-fill`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#22e5ff" stopOpacity={0.55} />
+            <stop offset="55%" stopColor="#b9a4ff" stopOpacity={0.35} />
+            <stop offset="100%" stopColor="#ff7fe1" stopOpacity={0.5} />
+          </linearGradient>
+          <filter id={`${gradId}-glow`} x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+
         {/* Data polygon */}
         <path
           d={pathData}
           className={styles.dataArea}
-          fill="#406fb4"
-          fillOpacity={0.3}
-          stroke="#406fb4"
+          fill={`url(#${gradId}-fill)`}
+          stroke="#22e5ff"
           strokeWidth={2}
+          filter={`url(#${gradId}-glow)`}
         />
 
         {/* Data points and labels */}
         {dataPoints.map((point, i) => {
           const coords = getCoordinates(i, point.value);
           const labelAngle = angleSlice * i - Math.PI / 2;
-          const labelRadius = maxRadius + 40;
+          const labelRadius = maxRadius + 18;
+          const cos = Math.cos(labelAngle);
+          const anchor = cos > 0.3 ? 'start' : cos < -0.3 ? 'end' : 'middle';
           const labelX = center + labelRadius * Math.cos(labelAngle);
           const labelY = center + labelRadius * Math.sin(labelAngle);
 
@@ -144,7 +160,7 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
                 cy={coords.y}
                 r={isHovered ? 8 : 5}
                 className={styles.dataPoint}
-                fill={point.color || '#406fb4'}
+                fill={point.color || '#22e5ff'}
                 style={{ cursor: 'pointer' }}
                 onMouseEnter={() => handlePointHover(i)}
                 onMouseLeave={() => handlePointHover(null)}
@@ -160,7 +176,7 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
                 <text
                   x={labelX}
                   y={labelY}
-                  textAnchor="middle"
+                  textAnchor={anchor}
                   className={styles.label}
                   opacity={isHovered ? 1 : 0.8}
                 >

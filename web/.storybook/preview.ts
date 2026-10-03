@@ -3,6 +3,8 @@ import '../src/styles/tokens.css';
 
 const preview: Preview = {
   parameters: {
+    backgrounds: { disable: true },
+    layout: 'padded',
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {

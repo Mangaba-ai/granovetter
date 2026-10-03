@@ -3,22 +3,24 @@
 .radar {
   max-width: 100%;
   height: auto;
-  font-family: var(--font-sans);
+  font-family: var(--font-data);
+  overflow: visible;
 }
 
 .grid {
-  opacity: 0.3;
+  opacity: 1;
 }
 
 .gridCircle {
   fill: none;
-  stroke: var(--color-neutral-400);
-  stroke-width: 0.5px;
+  stroke: rgba(150, 168, 255, 0.22);
+  stroke-width: 1px;
+  stroke-dasharray: 2 4;
 }
 
 .gridLine {
-  stroke: var(--color-neutral-300);
-  stroke-width: 0.5px;
+  stroke: rgba(150, 168, 255, 0.18);
+  stroke-width: 1px;
 }
 
 .dataArea {
@@ -26,25 +28,29 @@
 }
 
 .dataArea:hover {
-  opacity: 0.4;
+  opacity: 0.85;
 }
 
 .dataPoint {
   transition: all var(--transition-fast);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 0 6px rgba(34, 229, 255, 0.9));
+  stroke: #05060f;
+  stroke-width: 2px;
 }
 
 .dataPoint:hover,
 .dataPoint:focus {
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-  outline: 2px solid var(--color-primary-300);
+  filter: drop-shadow(0 0 10px rgba(255, 127, 225, 0.9));
+  outline: 3px solid var(--neon-cyan);
   outline-offset: 2px;
 }
 
 .label {
   font-size: 12px;
   font-weight: var(--font-weight-medium);
-  fill: var(--color-neutral-700);
+  fill: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   pointer-events: none;
   user-select: none;
 }
@@ -52,7 +58,7 @@
 .tooltip {
   font-size: 14px;
   font-weight: var(--font-weight-semibold);
-  fill: white;
+  fill: var(--text-hi);
   pointer-events: none;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   animation: fadeIn 0.2s ease-out;

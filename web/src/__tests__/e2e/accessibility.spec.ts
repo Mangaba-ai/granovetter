@@ -7,7 +7,7 @@ const STORIES = [
   'molecules-badge--variants', 'molecules-card--default', 'molecules-checkbox--default', 'molecules-checkbox--with-helper',
   'molecules-radio--group', 'molecules-formgroup--default', 'molecules-formgroup--with-error', 'molecules-datacard--grid',
   'organisms-header--default', 'organisms-riskradar--default', 'organisms-socialgraph--default',
-  'organisms-thresholdheatmap--sequential', 'organisms-dashboard--default',
+  'organisms-thresholdheatmap--sequential', 'organisms-dashboard--default', 'organisms-appshell--application',
 ];
 
 test.describe('Auditoria axe (WCAG 2.2 AA + contraste AAA)', () => {

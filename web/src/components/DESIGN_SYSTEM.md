@@ -1,6 +1,6 @@
 # Granovetter Design System v1.0
 
-Documentação da arquitetura de componentes reutilizáveis para o laboratório de simulação comportamental.
+Documentação da arquitetura de componentes reutilizáveis para o laboratório de simulação comportamental. Tema padrão: escuro, neon e vidro (tokens em `src/styles/tokens.css`, seção \"Tema futurista\").
 
 ## Estrutura
 
@@ -232,21 +232,42 @@ import { ThresholdHeatmap } from '@/components/organisms';
 />
 ```
 
-### Dashboard
-Layout principal com grid responsivo.
+### Dashboard (grid bento)
+Blocos de tamanhos variados num grid de 6 colunas; no celular vira uma coluna.
 
 ```tsx
-import { Dashboard } from '@/components/organisms';
-
 <Dashboard
-  title="Simulações Comportamentais"
-  description="Análise de simulação em tempo real"
-  columns={3}
+  status="Simulação ao vivo"
+  title="Retorno ao escritório"
+  description="1.200 agentes sintéticos"
+  actions={<Button>Nova simulação</Button>}
   sections={[
-    { id: '1', title: 'Radar', content: <RiskRadar ... /> },
-    { id: '2', title: 'Heatmap', content: <ThresholdHeatmap ... />, colspan: 2 }
+    { id: 'rede', kicker: 'Módulo 01', title: 'Rede de influência', size: 'hero', accent: 'cyan', content: <SocialGraph … /> },
+    { id: 'adesao', title: 'Adesão', size: 'sm', accent: 'lime', content: <DataCard … /> },
+    { id: 'radar', title: 'Riscos', size: 'tall', accent: 'violet', content: <RiskRadar … /> },
+    { id: 'heat', title: 'Adoção', size: 'wide', content: <ThresholdHeatmap … /> },
   ]}
 />
+```
+
+- `size`: `sm` | `md` (2 colunas) · `wide` (4) · `tall` (2 colunas × 2 linhas) · `hero` (4 × 2)
+- `accent`: `aurora` | `cyan` | `violet` | `magenta` | `lime` | `amber` (cor do halo)
+- `colspan`/`rowspan` antigos continuam aceitos.
+
+### AppShell
+Casca do aplicativo: menu lateral, barra de comando com busca e área de conteúdo. No celular o menu vira uma barra horizontal.
+
+```tsx
+<AppShell
+  brand={<span>granovetter.</span>}
+  nav={[{ label: 'Painel', href: '#painel', icon: '◈', active: true }, { label: 'Simulações', href: '#sim', badge: 3 }]}
+  footerNav={[{ label: 'Configurações', href: '#config' }]}
+  systemStatus="Motor online"
+  user={{ name: 'Maria Oliveira', role: 'Diretora de Pessoas' }}
+  onSearch={(q) => …}
+>
+  <Dashboard … />
+</AppShell>
 ```
 
 ## Testes e acessibilidade

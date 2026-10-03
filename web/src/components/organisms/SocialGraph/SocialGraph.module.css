@@ -8,16 +8,18 @@
 }
 
 .svg {
+  width: 100%;
   max-width: 100%;
   height: auto;
-  background-color: var(--color-neutral-50);
+  background-color: var(--bg-surface);
+  background-image: radial-gradient(circle at 50% 50%, rgba(185, 164, 255, 0.12), transparent 70%);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-neutral-200);
-  font-family: var(--font-sans);
+  border: 1px solid var(--line);
+  font-family: var(--font-data);
 }
 
 .edges {
-  stroke: var(--color-primary-400);
+  stroke: var(--neon-violet);
   fill: none;
 }
 
@@ -44,14 +46,16 @@
 
 .node {
   transition: all var(--transition-fast);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 0 8px rgba(34, 229, 255, 0.85));
+  stroke: #05060f;
+  stroke-width: 2px;
 }
 
 .node:hover,
 .node:focus {
   r: 12px;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-  outline: 2px solid var(--color-primary-300);
+  filter: drop-shadow(0 0 12px rgba(255, 127, 225, 0.95));
+  outline: 3px solid var(--neon-cyan);
   outline-offset: 2px;
 }
 
@@ -62,28 +66,28 @@
 .nodeLabel {
   font-size: 12px;
   font-weight: var(--font-weight-medium);
-  fill: var(--color-neutral-700);
+  fill: var(--text-mid);
   pointer-events: none;
   user-select: none;
 }
 
 .legend {
   padding: var(--spacing-3);
-  background-color: var(--color-neutral-50);
+  background-color: var(--bg-surface);
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-neutral-200);
+  border: 1px solid var(--line);
 }
 
 .legendTitle {
   font-size: var(--font-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-neutral-900);
+  color: var(--text-hi);
   margin: 0 0 var(--spacing-1) 0;
 }
 
 .legendText {
   font-size: var(--font-xs);
-  color: var(--color-neutral-600);
+  color: var(--text-low);
   margin: 0;
   font-weight: var(--font-weight-regular);
 }
