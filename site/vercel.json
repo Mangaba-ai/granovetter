@@ -2,15 +2,15 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "granovetter.vercel.app" }],
-      "destination": "https://granovetters.com/:path*",
+      "destination": "https://granovetters.com/$1",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.granovetters.com" }],
-      "destination": "https://granovetters.com/:path*",
+      "destination": "https://granovetters.com/$1",
       "permanent": true
     }
   ]
