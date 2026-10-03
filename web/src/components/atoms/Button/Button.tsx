@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Button appearance variant */
   variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
   /** Button size */

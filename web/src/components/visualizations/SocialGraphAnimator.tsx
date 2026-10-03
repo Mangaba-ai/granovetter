@@ -9,7 +9,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-interface Person {
+interface Person extends d3.SimulationNodeDatum {
   id: string;
   name: string;
   group: string;
@@ -100,7 +100,7 @@ export const SocialGraphAnimator: React.FC<SocialGraphProps> = ({
       .attr('stroke-width', 2)
       .style('cursor', 'pointer')
       .on('mouseover', function (event, d) {
-        d3.select(this).attr('r', (d) => getNodeRadius(d.influence) + 3);
+        d3.select<SVGCircleElement, Person>(this).attr('r', (d) => getNodeRadius(d.influence) + 3);
         svg
           .selectAll('text')
           .filter((t: any) => t.id === d.id)
@@ -108,7 +108,7 @@ export const SocialGraphAnimator: React.FC<SocialGraphProps> = ({
           .style('font-weight', 'bold');
       })
       .on('mouseout', function (event, d) {
-        d3.select(this).attr('r', (d) => getNodeRadius(d.influence));
+        d3.select<SVGCircleElement, Person>(this).attr('r', (d) => getNodeRadius(d.influence));
         svg
           .selectAll('text')
           .filter((t: any) => t.id === d.id)

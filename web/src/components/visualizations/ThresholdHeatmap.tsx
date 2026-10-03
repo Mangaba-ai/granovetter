@@ -75,7 +75,7 @@ export const ThresholdHeatmap: React.FC<ThresholdHeatmapProps> = ({ groups, onIn
           <YAxis domain={[0, 100]} />
           <Tooltip
             contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }}
-            formatter={(value) => `${value.toFixed(0)}%`}
+            formatter={(value) => `${Number(value).toFixed(0)}%`}
           />
           <Legend />
           <Bar dataKey="adoption" fill="#3b82f6" name="Adoção Atual" />
@@ -149,7 +149,7 @@ export const ThresholdHeatmap: React.FC<ThresholdHeatmapProps> = ({ groups, onIn
 
             {/* Status de risco */}
             <div className="mb-4 text-sm">
-              <span className={getRiskLabel(group.risk)}</span>
+              <span>{getRiskLabel(group.risk)}</span>
             </div>
 
             {/* Painel de intervenção (expandido) */}

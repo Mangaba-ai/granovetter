@@ -35,3 +35,9 @@ output/*.json
 # configs locais do Claude Code e vídeos gerados
 .claude/
 video/
+
+# web (Next.js)
+web/node_modules/
+web/.next/
+web/test-results/
+web/playwright-report/

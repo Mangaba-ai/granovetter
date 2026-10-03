@@ -1,4 +1,4 @@
-import type { StorybookConfig } from '@storybook/react';
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: [
@@ -8,16 +8,20 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
-    '@storybook/addon-coverage',
   ],
   framework: {
-    name: '@storybook/react',
+    name: '@storybook/react-vite',
     options: {
       strictMode: true,
     },
+  },
+  viteFinal: async (cfg) => {
+    const path = await import('path');
+    cfg.resolve = cfg.resolve || {};
+    cfg.resolve.alias = { ...(cfg.resolve.alias || {}), '@': path.resolve(__dirname, '../src') };
+    return cfg;
   },
   docs: {
     autodocs: 'tag',

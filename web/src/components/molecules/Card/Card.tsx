@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Card.module.css';
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Card shadow elevation level */
   elevation?: 'none' | 'sm' | 'md' | 'lg';
   /** Card padding size */

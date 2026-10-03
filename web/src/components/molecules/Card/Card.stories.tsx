@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from './Card';
+import Card from './Card';
 
 const meta = {
   title: 'Molecules/Card',
@@ -23,6 +23,7 @@ export const Default: Story = {
 };
 
 export const WithElevation: Story = {
+  args: { children: null },
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
       <Card elevation="none">No Shadow</Card>
@@ -34,6 +35,7 @@ export const WithElevation: Story = {
 };
 
 export const WithPadding: Story = {
+  args: { children: null },
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
       <Card padding="sm">Small Padding</Card>
@@ -44,6 +46,7 @@ export const WithPadding: Story = {
 };
 
 export const Variants: Story = {
+  args: { children: null },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <Card variant="default">Default Variant</Card>
@@ -76,6 +79,7 @@ export const WithContent: Story = {
 };
 
 export const Interactive: Story = {
+  args: { children: null },
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
       <Card hoverable elevation="sm">

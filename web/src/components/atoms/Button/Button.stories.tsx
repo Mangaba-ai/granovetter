@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import Button from './Button';
 
 const meta = {
   title: 'Atoms/Button',
@@ -81,6 +81,7 @@ export const FullWidth: Story = {
 };
 
 export const AllVariants: Story = {
+  args: { children: null },
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
       <Button variant="primary">Primary</Button>
@@ -92,6 +93,7 @@ export const AllVariants: Story = {
 };
 
 export const AllSizes: Story = {
+  args: { children: null },
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
       <Button size="sm">Small</Button>

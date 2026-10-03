@@ -14,7 +14,7 @@ interface UserMenuProps {
   onLogout?: () => void;
 }
 
-interface HeaderProps extends React.HTMLAttributes<HTMLHeaderElement> {
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   /** App logo */
   logo?: React.ReactNode;
   /** Navigation links */
@@ -27,7 +27,7 @@ interface HeaderProps extends React.HTMLAttributes<HTMLHeaderElement> {
   variant?: 'default' | 'compact';
 }
 
-const Header = React.forwardRef<HTMLHeaderElement, HeaderProps>(
+const Header = React.forwardRef<HTMLElement, HeaderProps>(
   ({
     logo,
     navLinks = [],

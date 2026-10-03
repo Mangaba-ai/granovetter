@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -67,12 +68,12 @@ describe('Checkbox Component', () => {
     checkbox.focus();
     expect(checkbox).toHaveFocus();
 
-    await userEvent.keyboard('{Space}');
+    await userEvent.keyboard(' ');
     expect((checkbox as HTMLInputElement).checked).toBe(true);
   });
 
   it('supports indeterminate state', () => {
-    const ref = { current: null };
+    const ref = React.createRef<HTMLInputElement>();
     render(<Checkbox ref={ref} indeterminate={true} />);
     expect((ref.current as HTMLInputElement).indeterminate).toBe(true);
   });

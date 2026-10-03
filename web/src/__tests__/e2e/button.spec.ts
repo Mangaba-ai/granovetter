@@ -47,7 +47,7 @@ test.describe('Button Component E2E', () => {
 
   test('should have proper accessibility attributes', async ({ page }) => {
     await injectAxe(page);
-    await checkA11y(page, null, {
+    await checkA11y(page, undefined, {
       detailedReport: true,
       detailedReportOptions: {
         html: true,

@@ -54,7 +54,7 @@ test.describe('Accessibility - WCAG AAA Compliance', () => {
     await injectAxe(page);
 
     const violations = await getViolations(page);
-    const contrastViolations = violations.filter((v) => v.id === 'color-contrast');
+    const contrastViolations = violations.filter((v: { id: string }) => v.id === 'color-contrast');
 
     expect(contrastViolations).toHaveLength(0);
   });
@@ -170,7 +170,7 @@ test.describe('Accessibility - WCAG AAA Compliance', () => {
 
     // Filter out false positives or known issues
     const criticalViolations = violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: { impact?: string | null }) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     expect(criticalViolations).toHaveLength(0);
