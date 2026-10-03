@@ -20,6 +20,9 @@ interface RiskRadarProps extends React.SVGAttributes<SVGSVGElement> {
   onPointHover?: (point: RiskDataPoint | null) => void;
 }
 
+// espaço lateral para rótulos longos ("Engajamento", "Reputação")
+const LABEL_GUTTER = 64;
+
 const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
   ({
     dataPoints,
@@ -33,7 +36,7 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
     const [hoveredPoint, setHoveredPoint] = React.useState<number | null>(null);
 
     const center = size / 2;
-    const maxRadius = size / 2 - 30;
+    const maxRadius = size / 2 - 40;
     const numLevels = 5;
 
     const handlePointHover = (index: number | null) => {
@@ -73,12 +76,12 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
     return (
       <svg
         ref={ref}
-        viewBox={`0 0 ${size} ${size}`}
-        width={size}
+        viewBox={`${-LABEL_GUTTER} 0 ${size + 2 * LABEL_GUTTER} ${size}`}
+        width={size + 2 * LABEL_GUTTER}
         height={size}
         className={svgClasses}
         role="img"
-        aria-label="Risk Radar Chart"
+        aria-label="Radar de riscos"
         {...props}
       >
         {/* Grid circles and lines */}
@@ -130,7 +133,7 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
         {dataPoints.map((point, i) => {
           const coords = getCoordinates(i, point.value);
           const labelAngle = angleSlice * i - Math.PI / 2;
-          const labelRadius = maxRadius + 40;
+          const labelRadius = maxRadius + 14;
           const labelX = center + labelRadius * Math.cos(labelAngle);
           const labelY = center + labelRadius * Math.sin(labelAngle);
 
@@ -160,7 +163,8 @@ const RiskRadar = React.forwardRef<SVGSVGElement, RiskRadarProps>(
                 <text
                   x={labelX}
                   y={labelY}
-                  textAnchor="middle"
+                  textAnchor={Math.cos(labelAngle) > 0.3 ? 'start' : Math.cos(labelAngle) < -0.3 ? 'end' : 'middle'}
+                  dominantBaseline={Math.sin(labelAngle) > 0.3 ? 'hanging' : Math.sin(labelAngle) < -0.3 ? 'auto' : 'middle'}
                   className={styles.label}
                   opacity={isHovered ? 1 : 0.8}
                 >

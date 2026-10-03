@@ -1,4 +1,5 @@
 import React from 'react';
+import * as d3 from 'd3';
 import styles from './SocialGraph.module.css';
 
 interface Node {
@@ -27,6 +28,35 @@ interface SocialGraphProps extends React.HTMLAttributes<HTMLDivElement> {
   draggable?: boolean;
 }
 
+const PAD = 48;
+// grafo em retângulo 16:10 para ocupar a largura sem ficar alto demais
+const ASPECT = 1.6;
+const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+
+// Layout de forças determinístico: nós começam num círculo e a simulação roda síncrona.
+function layoutGraph(nodes: Node[], edges: Edge[], size: number) {
+  const W = size * ASPECT;
+  type SimNode = d3.SimulationNodeDatum & { id: string };
+  const r0 = size / 3;
+  const simNodes: SimNode[] = nodes.map((n, i) => ({
+    id: n.id,
+    x: W / 2 + r0 * ASPECT * Math.cos((2 * Math.PI * i) / nodes.length),
+    y: size / 2 + r0 * Math.sin((2 * Math.PI * i) / nodes.length),
+  }));
+  const links = edges.map((e) => ({ source: e.source, target: e.target, strength: e.strength ?? 0.5 }));
+  const sim = d3
+    .forceSimulation(simNodes)
+    .force('link', d3.forceLink<SimNode, (typeof links)[number] & d3.SimulationLinkDatum<SimNode>>(links).id((d) => d.id).distance(size / 4).strength((l) => 0.2 + l.strength * 0.6))
+    .force('charge', d3.forceManyBody().strength(-size / 1.5))
+    .force('center', d3.forceCenter(W / 2, size / 2))
+    .force('x', d3.forceX(W / 2).strength(0.02))
+    .force('y', d3.forceY(size / 2).strength(0.08))
+    .force('collide', d3.forceCollide(44))
+    .stop();
+  for (let i = 0; i < 300; i++) sim.tick();
+  return new Map(simNodes.map((n) => [n.id, { x: clamp(n.x ?? W / 2, PAD, W - PAD), y: clamp(n.y ?? size / 2, PAD, size - PAD) }]));
+}
+
 const SocialGraph = React.forwardRef<HTMLDivElement, SocialGraphProps>(
   ({
     nodes,
@@ -38,12 +68,9 @@ const SocialGraph = React.forwardRef<HTMLDivElement, SocialGraphProps>(
     ...props
   }, ref) => {
     const svgRef = React.useRef<SVGSVGElement>(null);
-    const [positions, setPositions] = React.useState<Map<string, { x: number; y: number }>>(
-      new Map(nodes.map((n) => [n.id, {
-        x: Math.random() * size,
-        y: Math.random() * size,
-      }]))
-    );
+    const initialPositions = React.useMemo(() => layoutGraph(nodes, edges, size), [nodes, edges, size]);
+    const [positions, setPositions] = React.useState(initialPositions);
+    React.useEffect(() => setPositions(initialPositions), [initialPositions]);
 
     const [draggedNode, setDraggedNode] = React.useState<string | null>(null);
 
@@ -55,8 +82,8 @@ const SocialGraph = React.forwardRef<HTMLDivElement, SocialGraphProps>(
       if (!draggedNode || !svgRef.current) return;
 
       const rect = svgRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const x = clamp(((e.clientX - rect.left) / rect.width) * size * ASPECT, PAD, size * ASPECT - PAD);
+      const y = clamp(((e.clientY - rect.top) / rect.height) * size, PAD, size - PAD);
 
       setPositions((prev) => {
         const newPositions = new Map(prev);
@@ -84,9 +111,9 @@ const SocialGraph = React.forwardRef<HTMLDivElement, SocialGraphProps>(
       >
         <svg
           ref={svgRef}
-          viewBox={`0 0 ${size} ${size}`}
-          width={size}
-          height={size}
+          viewBox={`0 0 ${size * ASPECT} ${size}`}
+          width="100%"
+          style={{ height: 'auto', display: 'block' }}
           className={styles.svg}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}

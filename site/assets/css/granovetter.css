@@ -1645,3 +1645,48 @@ body:not(.granovetter-intro-revealing):not(.granovetter-intro-done)::before {
     margin-right: -2.0512820513vw;
   }
 }
+
+/* ===== UI 2026-10: barra do menu, CTA e legibilidade ===== */
+@media screen and (min-width:750px){
+  .header{padding-top:0;padding-bottom:0}
+  .header::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:rgba(8,8,10,.86);
+    -webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+    border-bottom:1px solid rgba(255,255,255,.08)}
+  .header .menu-link{color:#ededed !important}
+  .header .header-logo img{filter:brightness(0) invert(1) !important}
+  .header .granovetter-cta{background:#f2efe9;color:#0a0a0a}
+  .header .granovetter-cta:focus-visible{outline-color:#f2efe9}
+  .header .header-content{align-items:center;min-height:7.2rem}
+  .header .header-logo{height:3.2rem;width:14.4rem}
+  .header .menu{align-items:center}
+  .header .menu-nav{margin-right:4rem;width:auto}
+  .header .menu-list{display:flex;gap:3.2rem;align-items:center}
+  .header .menu-link{font-size:1.5rem;letter-spacing:.04em;white-space:nowrap}
+  .header .menu-cta{width:auto}
+}
+.granovetter-cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 2rem;
+  border-radius:999px;background:var(--textPositive);color:var(--background);font-family:"Berkeley Mono",monospace;
+  font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap;
+  transition:transform .2s ease,opacity .2s ease}
+.granovetter-cta:hover{transform:translateY(-1px);opacity:.9}
+.granovetter-cta:focus-visible{outline:3px solid var(--textPositive);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.granovetter-cta{transition:none}}
+
+/* corpo de texto legível: mínimo de 15 px e contraste alto nas seções escuras e claras */
+@media screen and (min-width:750px){
+  #problema p, #virada p, #feed p:not([style*="Space Mono"]), #tese p, #closing p{
+    color:#d2d2d2 !important; font-size:15px !important; line-height:1.65 !important; letter-spacing:0 !important}
+  #press p, #company p, #people p{
+    color:#262626 !important; font-size:15px !important; line-height:1.65 !important; letter-spacing:0 !important}
+  #feed .article-date{color:#d2d2d2 !important}
+}
+/* formulário aparece mais cedo (era 300vh de rolagem até abrir) */
+@media screen and (min-width:750px){ .signup{height:160vh} }
+/* quatro etapas em "Como funciona" */
+@media screen and (min-width:750px){
+  #feed .feed-block{grid-template-columns:repeat(4,minmax(0,1fr)) !important}
+  #feed .granovetter-flow-title{font-size:clamp(2.2rem,4.7vw,7rem) !important}
+}
+#feed .granovetter-flow-title span:nth-child(6){font-size:.58em;letter-spacing:0;transform:translateY(-.08em);opacity:.72}
+@media screen and (max-width:749px){ #feed .granovetter-flow-title{flex-wrap:wrap;white-space:normal !important;row-gap:.6rem} }

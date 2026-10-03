@@ -9,7 +9,7 @@ Atualizado em 03/10/2026.
 | 1 | Tokens (`src/styles/tokens.css`), Button, Input |
 | 2 | Card, Badge, FormGroup, DataCard, Checkbox, Radio |
 | 3 | Header, RiskRadar, SocialGraph, ThresholdHeatmap, Dashboard |
-| 4 | Storybook 7 (52 histórias, todos os componentes), Vitest, Playwright, Lighthouse CI configurado |
+| 4 | Storybook 7 (53 histórias, todos os componentes), Vitest, Playwright, Lighthouse CI configurado |
 | 5 | Acessibilidade verificada por teste (ver `src/components/ACCESSIBILITY.md`) |
 
 ## Verificação
