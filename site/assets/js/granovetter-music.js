@@ -6,8 +6,8 @@
   var VIDEO = "1G4isv_Fylg";
   var LANG_EN = document.documentElement.lang && document.documentElement.lang.indexOf("en") === 0;
   var T = LANG_EN
-    ? { mute: "Mute", unmute: "Unmute", close: "Close player", label: "Now playing" }
-    : { mute: "Silenciar", unmute: "Ativar som", close: "Fechar player", label: "Tocando agora" };
+    ? { mute: "Mute", unmute: "Unmute", close: "Close player", label: "Now playing", tap: "▶ Tap play to listen" }
+    : { mute: "Silenciar", unmute: "Ativar som", close: "Fechar player", label: "Tocando agora", tap: "▶ Toque no play para ouvir" };
 
   var css = document.createElement("style");
   css.textContent =
@@ -34,6 +34,13 @@
     "#gv-music.on:hover .gv-frame,#gv-music.open .gv-frame{width:100%;height:auto;aspect-ratio:16/9;border-radius:8px}" +
     "#gv-music.on:hover .gv-t,#gv-music.open .gv-t{display:block;flex:1;overflow:hidden;text-overflow:ellipsis}" +
     "#gv-music.on:hover .gv-x,#gv-music.open .gv-x{display:inline}" +
+    "#gv-music .gv-hint{display:none;width:100%;font-size:11px;letter-spacing:.02em;color:#ededee;padding:2px 2px 0}" +
+    "#gv-music.on.needs-tap{opacity:1;height:auto;flex-wrap:wrap;width:240px;border-radius:12px;padding:6px;border-color:rgba(233,74,18,.7)}" +
+    "#gv-music.on.needs-tap .gv-frame{width:100%;height:auto;aspect-ratio:16/9;border-radius:8px}" +
+    "#gv-music.on.needs-tap .gv-t{display:block;flex:1;overflow:hidden;text-overflow:ellipsis}" +
+    "#gv-music.on.needs-tap .gv-x{display:inline}" +
+    "#gv-music.on.needs-tap .gv-hint{display:block;order:-1;animation:gvPulse 1.6s ease-in-out infinite}" +
+    "@keyframes gvPulse{0%,100%{opacity:1}50%{opacity:.55}}" +
     "@media (max-width:600px){#gv-music{right:10px;bottom:10px}}";
   document.head.appendChild(css);
 
@@ -42,6 +49,7 @@
   box.setAttribute("role", "region");
   box.setAttribute("aria-label", T.label + ": Coldplay – Paradise");
   box.innerHTML =
+    '<span class="gv-hint">' + T.tap + '</span>' +
     '<div class="gv-frame"><div id="gv-music-player"></div></div>' +
     '<span class="gv-eq" aria-hidden="true"><i></i><i></i><i></i></span>' +
     '<span class="gv-t">Coldplay – Paradise</span>' +
@@ -57,18 +65,37 @@
   var player = null, ready = false, wantPlay = false, closed = false;
   var muteBtn = box.querySelector(".gv-mute");
 
+  var playing = false, fallbackTimer = null, blocked = false;
+  function setMutedUI(m) {
+    box.classList.toggle("muted", m);
+    muteBtn.textContent = m ? "🔇" : "🔊";
+    muteBtn.setAttribute("aria-label", m ? T.unmute : T.mute);
+  }
+  // chamada sempre dentro de um clique/toque/tecla do visitante: é o que libera o som
   function play() {
     if (closed) return;
     wantPlay = true;
     box.classList.add("on");
-    if (ready) { player.unMute(); player.playVideo(); }
+    if (!ready) return;
+    player.unMute(); setMutedUI(false); player.playVideo();
+    clearTimeout(fallbackTimer);
+    // plano B: se o navegador bloquear o som, toca mudo e a pílula mostra 🔇
+    fallbackTimer = setTimeout(function () {
+      if (closed || playing) return;
+      // o navegador bloqueou o som: deixa o player aberto e parado, com o botão de
+      // play do YouTube à vista; um toque nele (dentro do player) libera o áudio
+      blocked = true;
+      player.unMute(); setMutedUI(false);
+      box.classList.add("needs-tap");
+    }, 2500);
   }
 
   muteBtn.addEventListener("click", function (e) {
     e.stopPropagation();
     if (!ready) return;
-    if (player.isMuted()) { player.unMute(); box.classList.remove("muted"); muteBtn.textContent = "🔊"; muteBtn.setAttribute("aria-label", T.mute); }
-    else { player.mute(); box.classList.add("muted"); muteBtn.textContent = "🔇"; muteBtn.setAttribute("aria-label", T.unmute); }
+    if (blocked) { box.classList.add("needs-tap"); return; }
+    if (player.isMuted()) { player.unMute(); setMutedUI(false); if (!playing) player.playVideo(); }
+    else { player.mute(); setMutedUI(true); }
   });
   box.querySelector(".gv-x").addEventListener("click", function (e) {
     e.stopPropagation();
@@ -79,7 +106,7 @@
 
   var resumeTimer = null;
   function resumeSoon() {
-    if (!wantPlay || closed || !ready) return;
+    if (!wantPlay || closed || !ready || blocked) return;
     clearTimeout(resumeTimer);
     resumeTimer = setTimeout(function () {
       if (document.visibilityState !== "visible") return; // retoma ao voltar
@@ -90,20 +117,28 @@
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "visible") resumeSoon();
   });
+  // quando o visitante toca no vídeo e o som liga, volta à pílula discreta
+  setInterval(function () {
+    if (!ready || closed || !blocked) return;
+    if (playing && !player.isMuted()) { blocked = false; box.classList.remove("needs-tap", "open"); setMutedUI(false); }
+  }, 500);
   // rede de segurança: confere a cada 5 s se ainda está tocando
   setInterval(function () {
-    if (!wantPlay || closed || !ready || document.visibilityState !== "visible") return;
+    if (!wantPlay || closed || !ready || blocked || document.visibilityState !== "visible") return;
     var st = player.getPlayerState();
     if (st === YT.PlayerState.PAUSED || st === YT.PlayerState.CUED || st === YT.PlayerState.ENDED) player.playVideo();
   }, 5000);
 
-  function firstGesture() {
-    window.removeEventListener("pointerdown", firstGesture, true);
-    window.removeEventListener("keydown", firstGesture, true);
-    play();
+  // a cada interação, até a música estar tocando com som, tenta de novo dentro do gesto
+  function onGesture(e) {
+    if (closed) return;
+    if (e && e.target && e.target.closest && e.target.closest("#gv-music")) return; // botões da pílula cuidam disso
+    if (blocked) return;
+    if (!playing || (ready && player.isMuted() && !userMuted)) play();
   }
-  window.addEventListener("pointerdown", firstGesture, true);
-  window.addEventListener("keydown", firstGesture, true);
+  var userMuted = false;
+  muteBtn.addEventListener("click", function () { userMuted = ready && player.isMuted(); });
+  ["pointerdown", "keydown", "touchend"].forEach(function (ev) { window.addEventListener(ev, onGesture, true); });
 
   var prev = window.onYouTubeIframeAPIReady;
   window.onYouTubeIframeAPIReady = function () {
@@ -115,6 +150,7 @@
       events: {
         onReady: function () { ready = true; if (wantPlay) play(); },
         onStateChange: function (ev) {
+          playing = ev.data === YT.PlayerState.PLAYING || ev.data === YT.PlayerState.BUFFERING;
           // reforço do loop: ao terminar, volta ao início
           if (ev.data === YT.PlayerState.ENDED) { player.seekTo(0); player.playVideo(); }
           // o YouTube ou o navegador às vezes pausam sozinhos (aba em segundo
@@ -124,7 +160,8 @@
       }
     });
   };
-  // a API do YouTube (~1 MB) só é baixada no primeiro gesto, para não pesar no carregamento
+  // a API do YouTube (~1 MB) carrega depois que a página termina de abrir (não pesa no
+  // carregamento inicial) e já está pronta quando o visitante clicar para entrar
   var apiLoaded = false;
   function loadApi() {
     if (apiLoaded) return; apiLoaded = true;
@@ -132,6 +169,8 @@
     s.src = "https://www.youtube.com/iframe_api";
     document.head.appendChild(s);
   }
+  if (document.readyState === "complete") setTimeout(loadApi, 800);
+  else window.addEventListener("load", function () { setTimeout(loadApi, 800); });
   window.addEventListener("pointerdown", loadApi, true);
   window.addEventListener("keydown", loadApi, true);
 })();
