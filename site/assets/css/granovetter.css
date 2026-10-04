@@ -1744,3 +1744,66 @@ body:not(.granovetter-intro-revealing):not(.granovetter-intro-done)::before {
 .granovetter-creds{display:grid;grid-template-columns:repeat(5,auto);justify-content:start;gap:1.6rem 2.8rem}
 .granovetter-creds dt{font-size:clamp(2.4rem,2.2vw,3.4rem)}
 @media screen and (max-width:1100px){.granovetter-creds{grid-template-columns:repeat(3,auto)}}
+/* barra de progresso, voltar ao topo, sugestão de idioma (desktop e mobile) */
+.gv-progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:2147483000;pointer-events:none;background:transparent}
+.gv-progress span{display:block;height:100%;background:#E94A12;transform-origin:0 50%;transform:scaleX(0)}
+.gv-top{position:fixed;right:18px;bottom:84px;z-index:2147482000;width:48px;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(12,12,14,.86);color:#f2efe9;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .25s ease,transform .25s ease;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.gv-top.on{opacity:1;transform:none;pointer-events:auto}
+.gv-top:hover{border-color:#E94A12;color:#E94A12}
+.gv-top:focus-visible{outline:3px solid #E94A12;outline-offset:3px}
+.gv-lang{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:2147482500;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  max-width:calc(100% - 32px);background:#141417;color:#ededee;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px 12px 10px 16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.5);font-family:"Barlow",system-ui,sans-serif;font-size:15px}
+.gv-lang p{margin:0}
+.gv-lang a{color:#000;background:#E94A12;border-radius:999px;padding:8px 14px;text-decoration:none;font-weight:600;min-height:36px;display:inline-flex;align-items:center}
+.gv-lang button{background:transparent;color:#ededee;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px;cursor:pointer;font:inherit;min-height:36px}
+.gv-lang a:focus-visible,.gv-lang button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.gv-top{transition:none}}
+
+/* pular para o conteúdo */
+.granovetter-skip{position:fixed;left:16px;top:-80px;z-index:2147483600;background:#E94A12;color:#000;padding:12px 18px;border-radius:999px;
+  font-family:"Barlow",system-ui,sans-serif;font-weight:600;font-size:16px;text-decoration:none;transition:top .15s ease}
+.granovetter-skip:focus{top:16px;outline:3px solid #fff;outline-offset:2px}
+
+/* faixa de novidade no hero */
+.granovetter-pill{position:relative;z-index:2;display:inline-flex;align-items:center;gap:1rem;align-self:center;margin:0 auto 2.4rem;padding:.6rem 1.4rem .6rem .6rem;
+  border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(20,20,23,.7);color:#ededee;text-decoration:none;
+  font-family:"Barlow",system-ui,sans-serif;font-size:15px;line-height:1.2;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:border-color .2s ease}
+.granovetter-pill:hover{border-color:#E94A12}
+.granovetter-pill:focus-visible{outline:3px solid #E94A12;outline-offset:3px}
+.granovetter-pill-tag{background:#E94A12;color:#000;border-radius:999px;padding:.3rem .9rem;font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+#hero .hero-content{display:flex;flex-direction:column}
+
+/* para quem é */
+.granovetter-who{padding:7rem 0 8rem}
+.granovetter-who-grid{list-style:none;margin:4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(0,0,0,.25)}
+.granovetter-who-item{padding:2.4rem 2.4rem 2.4rem 0;border-right:1px solid rgba(0,0,0,.18)}
+.granovetter-who-item + .granovetter-who-item{padding-left:2.4rem}
+.granovetter-who-item:last-child{border-right:0}
+.granovetter-who-item h3{margin:0 0 1.2rem;font-family:"Barlow",system-ui,sans-serif;font-weight:600;font-size:22px;color:#0a0a0a}
+.granovetter-who-item h3::before{content:"";display:block;width:28px;height:3px;background:var(--accent);margin-bottom:1.6rem}
+.granovetter-who-item p{margin:0;font-family:"Barlow",system-ui,sans-serif;font-size:17px;line-height:1.55;color:#262626}
+@media screen and (max-width:1000px){.granovetter-who-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.granovetter-who-item:nth-child(2){border-right:0}.granovetter-who-item:nth-child(3){padding-left:0}}
+
+/* perguntas frequentes */
+.granovetter-faq{padding:7rem 0 8rem}
+.granovetter-faq-title{font-family:"Barlow",system-ui,sans-serif;font-weight:500;font-size:clamp(3rem,4.2vw,6.2rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 4rem;color:#ededee}
+.granovetter-faq-list{max-width:96rem;border-top:1px solid rgba(255,255,255,.16)}
+.granovetter-faq-item{border-bottom:1px solid rgba(255,255,255,.16)}
+.granovetter-faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:2rem;padding:2.4rem 0;
+  font-family:"Barlow",system-ui,sans-serif;font-weight:500;font-size:22px;color:#ededee}
+.granovetter-faq-item summary::-webkit-details-marker{display:none}
+.granovetter-faq-item summary::after{content:"+";font-size:28px;line-height:1;color:var(--accent);transition:transform .2s ease;flex-shrink:0}
+.granovetter-faq-item[open] summary::after{transform:rotate(45deg)}
+.granovetter-faq-item summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.granovetter-faq-item p{margin:0 0 2.4rem;max-width:72ch;font-family:"Barlow",system-ui,sans-serif;font-size:18px;line-height:1.6;color:#d2d2d2}
+
+/* botões no fechamento */
+.granovetter-closing-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin-top:3.2rem;position:relative;z-index:3;pointer-events:auto}
+.granovetter-closing-ctas .granovetter-cta{min-height:48px;padding:0 2.4rem;font-size:1.4rem}
+.granovetter-cta-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 2.4rem;border-radius:999px;border:1px solid rgba(255,255,255,.4);
+  color:#f2efe9;font-family:"Berkeley Mono",monospace;font-size:1.4rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.granovetter-cta-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.granovetter-cta-ghost:focus-visible{outline:3px solid var(--accent);outline-offset:3px}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-t-top="Voltar ao topo" data-t-progress="Progresso de leitura" data-t-toast="This page is also available in English." data-t-go="Read in English" data-t-close="Close">
 <head>
 <meta charset="utf-8">
 <script>/* Roteamento de idioma e dispositivo. So roda no primeiro acesso.
@@ -283,9 +283,55 @@
     text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.45);min-height:44px}
   .wa-fab:focus-visible{outline:3px solid #fff;outline-offset:2px}
   @media (prefers-reduced-motion:reduce){.mnav summary span{transition:none}}
+/* barra de progresso, voltar ao topo, sugestão de idioma (desktop e mobile) */
+.gv-progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:2147483000;pointer-events:none;background:transparent}
+.gv-progress span{display:block;height:100%;background:#E94A12;transform-origin:0 50%;transform:scaleX(0)}
+.gv-top{position:fixed;right:18px;bottom:84px;z-index:2147482000;width:48px;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(12,12,14,.86);color:#f2efe9;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .25s ease,transform .25s ease;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.gv-top.on{opacity:1;transform:none;pointer-events:auto}
+.gv-top:hover{border-color:#E94A12;color:#E94A12}
+.gv-top:focus-visible{outline:3px solid #E94A12;outline-offset:3px}
+.gv-lang{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:2147482500;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  max-width:calc(100% - 32px);background:#141417;color:#ededee;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px 12px 10px 16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.5);font-family:"Barlow",system-ui,sans-serif;font-size:15px}
+.gv-lang p{margin:0}
+.gv-lang a{color:#000;background:#E94A12;border-radius:999px;padding:8px 14px;text-decoration:none;font-weight:600;min-height:36px;display:inline-flex;align-items:center}
+.gv-lang button{background:transparent;color:#ededee;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px;cursor:pointer;font:inherit;min-height:36px}
+.gv-lang a:focus-visible,.gv-lang button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.gv-top{transition:none}}
+
+  .skip{position:fixed;left:12px;top:-80px;z-index:2147483600;background:var(--accent);color:#000;padding:12px 16px;border-radius:999px;font-weight:600;text-decoration:none}
+  .skip:focus{top:12px;outline:3px solid #fff;outline-offset:2px}
+  .pill{display:inline-flex;align-items:center;gap:.6rem;margin:0 0 1.2rem;padding:.4rem .9rem .4rem .4rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;
+    color:var(--ink);text-decoration:none;font-size:.86rem;line-height:1.25;background:rgba(20,20,23,.7)}
+  .pill b{background:var(--accent);color:#000;border-radius:999px;padding:.2rem .6rem;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase}
+  .who{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:1.1rem}
+  .who li{border-top:1px solid rgba(255,255,255,.12);padding-top:1rem}
+  .who h3{font-size:1.15rem;margin:0 0 .4rem}
+  .who h3::before{content:"";display:block;width:24px;height:3px;background:var(--accent);margin-bottom:.7rem}
+  .who p{margin:0;color:var(--muted)}
+  .faq{margin-top:1.2rem;border-top:1px solid rgba(255,255,255,.12)}
+  .faq details{border-bottom:1px solid rgba(255,255,255,.12)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;padding:1.05rem 0;font-weight:500;font-size:1.05rem;color:var(--ink)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1;transition:transform .2s ease;flex-shrink:0}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .faq p{margin:0 0 1.1rem;color:var(--muted)}
+  .ctas{display:flex;flex-direction:column;gap:.7rem;margin-top:1.6rem}
+  .ctas a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+  .ctas .c1{background:var(--accent);color:#000;font-weight:700}
+  .ctas .c2{border:1px solid rgba(255,255,255,.35);color:var(--ink)}
+  .gv-top{bottom:78px;right:14px}
+  .gv-has-toast .gv-top{bottom:146px}
+  .gv-lang{left:12px;right:12px;bottom:72px;transform:none;max-width:none;flex-wrap:nowrap;gap:8px;padding:10px;font-size:14px}
+  .gv-lang p{flex:1;line-height:1.3}
+  .gv-lang a{white-space:nowrap;padding:8px 12px}
 </style>
 </head>
 <body>
+<a class="skip" href="#problema">Pular para o conteúdo</a>
 
 <!-- POPUP NEWSLETTER grano.Thesis -->
 <header class="bar">
@@ -294,7 +340,7 @@
   </a>
   <div class="baractions">
     <a id="granovetter-lang" href="/mobile-en.html?lang=en" hreflang="en" rel="alternate" data-taxi-ignore="">EN</a>
-    <details class="mnav"><summary aria-label="Menu"><span></span><span></span></summary><nav><a href="#como-funciona">Como funciona</a><a href="#caso">Caso</a><a href="#ciencia">Ciência</a><a href="#pessoas">Pessoas</a><a href="./fontes.html" data-taxi-ignore>Artigos</a><a href="#simular">Contato</a></nav></details> <a class="cta" href="#simular">Contato</a>
+    <details class="mnav"><summary aria-label="Menu"><span></span><span></span></summary><nav><a href="#como-funciona">Como funciona</a><a href="#caso">Caso</a><a href="#ciencia">Ciência</a><a href="#pessoas">Pessoas</a><a href="#faq">Perguntas</a><a href="./fontes.html" data-taxi-ignore>Artigos</a><a href="#simular">Contato</a></nav></details> <a class="cta" href="#simular">Contato</a>
   </div>
 </header>
 
@@ -302,6 +348,7 @@
 
   <!-- HERO -->
   <section class="hero wrap">
+    <a class="pill" href="./fontes.html"><b>Novo</b><span>Bibliografia do grano.protocol, com os artigos que fundamentam o método →</span></a>
     <div class="kicker">Inteligência Comportamental para Decisões</div>
     <div class="wave-frame" aria-hidden="true">
       <canvas class="wave" data-wave></canvas>
@@ -357,9 +404,16 @@
     <p class="note">Simulação não é previsão: é apoio à decisão, a validar com dados reais da organização.</p>
   </section>
 
+  <!-- PARA QUEM É -->
+  <section class="wrap reveal" id="para-quem">
+    <div class="eyebrow"><b>05</b><span class="ln"></span>Para quem é</div>
+    <h2>Quem decide sobre pessoas.</h2>
+    <ul class="who"><li><h3>Diretoria e conselho</h3><p>Reestruturações, fusões, mudanças de modelo de negócio e de liderança.</p></li><li><h3>RH e Pessoas</h3><p>Modelo de trabalho, políticas, benefícios, cultura e clima.</p></li><li><h3>Comercial</h3><p>Comissionamento, metas, territórios e incentivos de vendas.</p></li><li><h3>Comunicação interna</h3><p>Como, quando e para quem anunciar uma mudança, com a mensagem certa para cada grupo.</p></li></ul>
+  </section>
+
   <!-- 06 A CIÊNCIA -->
   <section class="wrap reveal" id="ciencia">
-    <div class="eyebrow"><b>05</b><span class="ln"></span>A ciência</div>
+    <div class="eyebrow"><b>06</b><span class="ln"></span>A ciência</div>
     <h2>AI Behavioral Science.</h2>
     <p class="body lead">A convergência entre ciência comportamental, sistemas complexos e inteligência artificial generativa.</p>
     <p class="body">Por décadas, a ciência mostrou que o comportamento humano não é aleatório. Pessoas interpretam riscos, respondem a incentivos, resistem a perdas, imitam grupos e mudam de posição sob pressão social.</p>
@@ -370,7 +424,7 @@
 
   <!-- 07 AS PESSOAS -->
   <section class="wrap reveal" id="pessoas">
-    <div class="eyebrow"><b>06</b><span class="ln"></span>As pessoas</div>
+    <div class="eyebrow"><b>07</b><span class="ln"></span>As pessoas</div>
     <div class="person">
       <img class="photo" src="./assets/media/people2.webp" alt="Dheiver Santos, PhD" onerror="this.outerHTML='&lt;div class=&quot;ph-fallback&quot;&gt;Dheiver Santos, PhD&lt;/div&gt;'">
       <div class="who">
@@ -381,18 +435,26 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="wrap reveal" id="faq">
+    <div class="eyebrow"><b>08</b><span class="ln"></span>Perguntas frequentes</div>
+    <h2>Perguntas frequentes.</h2>
+    <div class="faq"><details><summary>O que é uma sociedade sintética?</summary><p>Um conjunto de agentes de IA, cada um representando um grupo real da organização, com valores, tolerância a risco e narrativa próprios. Os agentes reagem à decisão e, depois, uns aos outros.</p></details><details><summary>A simulação substitui pesquisa com pessoas?</summary><p>Não. Simulação não é previsão: é apoio à decisão. Ela ajuda a antecipar padrões, tensões e riscos, e deve ser validada com dados reais da organização.</p></details><details><summary>Que tipo de decisão dá para simular?</summary><p>Mudanças cujo resultado depende da reação das pessoas: modelo de trabalho, políticas de remuneração e comissão, reestruturações, fusões e a forma de comunicar cada uma delas.</p></details><details><summary>De que dados o Granovetter precisa?</summary><p>Perfis dos grupos envolvidos, dados culturais, o contexto da organização e do ambiente externo, e a decisão a ser testada.</p></details><details><summary>O que eu recebo no fim?</summary><p>Cenários prováveis, riscos emergentes, padrões de adesão e resistência por grupo, o ponto de virada e recomendações, além do teste de intervenções antes de agir.</p></details><details><summary>O motor é aberto?</summary><p>Sim. O motor de simulação é open source, e a bibliografia que fundamenta o método está na página de artigos.</p></details></div>
+  </section>
+
   <!-- 10 FECHAMENTO -->
   <section class="wrap reveal" id="fechamento">
-    <div class="eyebrow"><b>07</b><span class="ln"></span>Fechamento</div>
+    <div class="eyebrow"><b>09</b><span class="ln"></span>Fechamento</div>
     <h2>Uma ferramenta para decidir melhor.</h2>
       <video class="gif" src="./assets/media/m3.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
     <p class="body">Somos uma pequena equipe trabalhando na vanguarda da simulação multiagente, modelagem comportamental e IA aplicada para resolver o maior problema da gestão de empresas: a falta de previsibilidade.</p>
+  <div class="ctas"><a class="c1" href="#simular">Simular uma decisão</a><a class="c2" href="https://wa.me/5551989889898?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Granovetter." target="_blank" rel="noopener">Falar no WhatsApp</a></div>
   </section>
 
   <!-- CONTATO -->
   <section id="simular" class="reveal">
     <div class="wrap">
-      <div class="eyebrow"><b>08</b><span class="ln"></span>Contato</div>
+      <div class="eyebrow"><b>10</b><span class="ln"></span>Contato</div>
       <h2>Qual futuro você quer simular?</h2>
       <form class="form" id="signup" novalidate>
         <div class="fields">
@@ -423,7 +485,7 @@
   <!-- NEWSLETTER grano.Thesis -->
   <section id="opensource" class="reveal">
     <div class="wrap">
-      <div class="eyebrow"><b>09</b><span class="ln"></span>Open source</div>
+      <div class="eyebrow"><b>11</b><span class="ln"></span>Open source</div>
       <h2>Simule você mesmo.</h2>
       <p class="body">O motor de simulação do Granovetter é aberto. Rode os cenários de exemplo, adapte ao perfil da sua organização e acompanhe o desenvolvimento.</p>
       <p class="body"><a href="https://github.com/Mangaba-ai/granovetter" target="_blank" rel="noopener" style="color:inherit;">github.com/Mangaba-ai/granovetter →</a></p>
@@ -666,6 +728,7 @@ el.addEventListener("click",function(e){
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && d.open){ d.open=false; d.querySelector('summary').focus(); } });
 })();
 </script>
+<script src="./assets/js/granovetter-extras.js?v=2" defer></script>
 <a class="wa-fab" href="https://wa.me/5551989889898?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Granovetter." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3z"/></svg><span>Falar no WhatsApp</span></a>
 </body>
 </html>

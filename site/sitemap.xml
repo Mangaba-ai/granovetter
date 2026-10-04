@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://granovetters.com/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://granovetters.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://granovetters.com/index-en"/>
+  </url>
+  <url>
+    <loc>https://granovetters.com/index-en</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://granovetters.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://granovetters.com/index-en"/>
+  </url>
+  <url>
+    <loc>https://granovetters.com/fontes</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://granovetters.com/fontes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://granovetters.com/fontes-en"/>
+  </url>
+  <url>
+    <loc>https://granovetters.com/fontes-en</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://granovetters.com/fontes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://granovetters.com/fontes-en"/>
+  </url>
+</urlset>
