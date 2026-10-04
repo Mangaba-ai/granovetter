@@ -1859,10 +1859,6 @@ html body, h1, h2, h3, h4,
 .granovetter-process-number, .granovetter-label, .granovetter-submit, .granovetter-highlight,
 .granovetter-input, #feed .granovetter-opensource h3, .granovetter-closing-ctas a{font-family:"Space Mono",ui-monospace,monospace !important}
 #feed .granovetter-opensource h3{font-size:clamp(2rem,2vw,2.6rem) !important;line-height:1.15 !important}
-/* telas reais do produto em Como funciona */
-#feed .article-asset.granovetter-gif-asset{background:var(--cream) !important;border-radius:12px;padding-top:67.5% !important}
-#feed .granovetter-process-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-#feed .granovetter-gif-asset .granovetter-process-number{display:none}
 
 /* ===== Espaçamento 2026-10 ===== */
 @media screen and (min-width:750px){
