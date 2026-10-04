@@ -1807,3 +1807,44 @@ body:not(.granovetter-intro-revealing):not(.granovetter-intro-done)::before {
   color:#f2efe9;font-family:"Berkeley Mono",monospace;font-size:1.4rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
 .granovetter-cta-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .granovetter-cta-ghost:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* ===== Paleta 2026-10: laranja (ação), azul (dados), verde (adesão), azul-noite e creme ===== */
+:root{
+  --navy:#0B0F1A; --navy-2:#121A2E; --cream:#F4F1EA;
+  --blue:#60A5FA; --blue-ink:#1D4ED8;
+  --green:#34D399; --green-ink:#047857;
+}
+html{background-color:#070A12}
+/* fundos */
+.granovetter-dark, section.module[data-bg="dark"], section.module[data-bg="black"], #hero, #closing{background-color:var(--navy) !important}
+.granovetter-light, section.module[data-bg="light"]:not(#signup){background-color:var(--cream) !important}
+@media screen and (min-width:750px){ .header::before{background:rgba(11,15,26,.86) !important} }
+.gv-top, .granovetter-pill{background:rgba(18,26,46,.86) !important}
+.gv-lang{background:var(--navy-2) !important}
+/* progresso: laranja → azul */
+.gv-progress span{background:linear-gradient(90deg,#E94A12,#60A5FA) !important}
+/* caso: cada número com o significado da cor */
+.granovetter-case-stat:nth-child(1) .granovetter-case-n{color:var(--blue-ink) !important}
+.granovetter-case-stat:nth-child(2) .granovetter-case-n{color:var(--green-ink) !important}
+.granovetter-case-stat:nth-child(3) .granovetter-case-n{color:var(--accent-ink) !important}
+.granovetter-case-stat:nth-child(4) .granovetter-case-n{color:var(--blue-ink) !important}
+.granovetter-case-stat:nth-child(1){box-shadow:inset 0 3px 0 var(--blue-ink)}
+.granovetter-case-stat:nth-child(2){box-shadow:inset 0 3px 0 var(--green-ink)}
+.granovetter-case-stat:nth-child(3){box-shadow:inset 0 3px 0 var(--accent-ink)}
+.granovetter-case-stat:nth-child(4){box-shadow:inset 0 3px 0 var(--blue-ink)}
+/* credenciais em azul */
+.granovetter-creds dt{color:var(--blue-ink) !important}
+/* para quem é: marcadores alternados */
+.granovetter-who-item:nth-child(4n+1) h3::before{background:var(--accent)}
+.granovetter-who-item:nth-child(4n+2) h3::before{background:var(--blue-ink)}
+.granovetter-who-item:nth-child(4n+3) h3::before{background:var(--green-ink)}
+.granovetter-who-item:nth-child(4n+4) h3::before{background:var(--blue-ink)}
+/* como funciona: números das etapas em azul; setas seguem em laranja */
+#feed .granovetter-process-number{color:var(--blue) !important}
+/* perguntas: + em azul, laranja quando aberta */
+.granovetter-faq-item summary::after{color:var(--blue) !important}
+.granovetter-faq-item[open] summary::after{color:var(--accent) !important}
+.granovetter-faq-item[open] summary{color:#fff}
+/* links de texto */
+.granovetter-dark p a, #feed p a, #faq p a{color:var(--blue) !important}
+.granovetter-light p a, #people p a, #company p a{color:var(--blue-ink) !important}
