@@ -242,6 +242,47 @@
   @media (prefers-reduced-motion: reduce){
     .reveal{transition:none;opacity:1;transform:none}
   }
+
+  /* ===== UI 2026-10 (2) ===== */
+  :root{--accent:#E94A12;--accent-ink:#9E300A}
+  .cta{background:var(--accent);border-color:var(--accent);color:#000;font-weight:700}
+  .form button{background:var(--accent);color:#000}
+  .eyebrow b{color:var(--accent)}
+  .flow-head{color:var(--ink)}
+  .hl, .highlight{background:var(--accent);color:#000}
+  /* menu hambúrguer */
+  .mnav{position:relative}
+  .mnav summary{list-style:none;cursor:pointer;width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;border-radius:999px}
+  .mnav summary::-webkit-details-marker{display:none}
+  .mnav summary span{display:block;width:20px;height:2px;background:var(--ink);transition:transform .2s ease,opacity .2s ease}
+  .mnav[open] summary span:first-child{transform:translateY(4px) rotate(45deg)}
+  .mnav[open] summary span:last-child{transform:translateY(-4px) rotate(-45deg)}
+  .mnav summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .mnav nav{position:absolute;right:0;top:calc(100% + .6rem);min-width:15rem;display:flex;flex-direction:column;
+    background:#141417;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:.5rem;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+  .mnav nav a{font-family:var(--body);font-size:1.05rem;color:var(--ink);padding:.8rem .9rem;border-radius:10px;text-decoration:none}
+  .mnav nav a:hover,.mnav nav a:focus-visible{background:rgba(233,74,18,.16);outline:none}
+  /* caso: bloco claro */
+  .case{background:#ecebe7;color:#0b0b0c;border-radius:20px;margin:2.4rem var(--pad);padding:2.4rem 1.4rem !important}
+  .case .eyebrow{color:#3a3a3a}
+  .case .eyebrow b{color:var(--accent-ink)}
+  .case h2{color:#0b0b0c}
+  .case .body{color:#262626}
+  .casegrid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 1rem;margin-top:1.8rem;border-top:1px solid rgba(0,0,0,.2);padding-top:1.4rem}
+  .cstat{display:flex;flex-direction:column;gap:.35rem}
+  .cn{font-family:var(--display);font-weight:700;font-size:2.1rem;line-height:1;color:var(--accent-ink)}
+  .cl{font-size:.92rem;line-height:1.35;color:#1a1a1a}
+  .case .note{margin-top:1.6rem;font-size:.85rem;color:#3a3a3a}
+  /* credenciais */
+  .creds{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:1rem 1.6rem;margin:1.2rem 0 .4rem;padding:1rem 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+  .creds dt{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1;color:var(--accent)}
+  .creds dd{margin:.25rem 0 0;font-size:.82rem;color:var(--muted)}
+  /* WhatsApp fixo (o player de música fica à direita) */
+  .wa-fab{position:fixed;left:14px;bottom:14px;z-index:60;display:inline-flex;align-items:center;gap:.5rem;
+    background:#25D366;color:#0b0b0c;border-radius:999px;padding:.6rem 1rem .6rem .7rem;font-family:var(--body);font-weight:600;font-size:.92rem;
+    text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.45);min-height:44px}
+  .wa-fab:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){.mnav summary span{transition:none}}
 </style>
 </head>
 <body>
@@ -253,7 +294,7 @@
   </a>
   <div class="baractions">
     <a id="granovetter-lang" href="/mobile.html?lang=pt" hreflang="pt-BR" rel="alternate" data-taxi-ignore="">PT</a>
-    <a class="cta" href="#simular">Contact</a>
+    <details class="mnav"><summary aria-label="Menu"><span></span><span></span></summary><nav><a href="#como-funciona">How it works</a><a href="#caso">Case</a><a href="#ciencia">Science</a><a href="#pessoas">People</a><a href="./fontes-en.html" data-taxi-ignore>Research</a><a href="#simular">Contact</a></nav></details> <a class="cta" href="#simular">Contact</a>
   </div>
 </header>
 
@@ -268,27 +309,17 @@
     <h1>We turn human data into synthetic societies to test decisions <em>before execution.</em></h1>
   </section>
 
-  <!-- 02 IMERSÃO -->
-  <section class="wrap reveal">
-    <div class="eyebrow"><b>02</b><span class="ln"></span>Immersion</div>
-    <h2>A behavioral simulation and inference lab.</h2>
-      <video class="gif" src="./assets/media/m1.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
-    <p class="body lead">Welcome to the age of behavioral simulation.</p>
-    <p class="body">Granovetter turns cultural, human and contextual data into synthetic organizational societies — populated by our synthetic agents — built to test how real groups react to decisions, crises, changes and strategic tensions.</p>
-    <p class="callout">We do not simulate isolated individuals. We simulate human systems in interaction.</p>
-  </section>
-
   <!-- 03 O PROBLEMA -->
-  <section class="wrap reveal">
-    <div class="eyebrow"><b>03</b><span class="ln"></span>The Problem</div>
+  <section class="wrap reveal" id="problema">
+    <div class="eyebrow"><b>01</b><span class="ln"></span>The Problem</div>
     <h2>Every decision sets off reactions in a human system before it becomes a result.</h2>
     <p class="body">Between intention and execution there are people. There is behavior. Granovetter simulates those behaviors to anticipate outcomes, showing which scenarios are most likely to deliver the best return and which risks could compromise time, money and trust.</p>
     <p class="callout">Simulate critical scenarios before a decision costs too much.</p>
   </section>
 
   <!-- 04 A VIRADA -->
-  <section class="wrap reveal">
-    <div class="eyebrow"><b>04</b><span class="ln"></span>The Shift</div>
+  <section class="wrap reveal" id="virada">
+    <div class="eyebrow"><b>02</b><span class="ln"></span>The Shift</div>
     <h2>Granovetter lowers the cost of deciding wrong.</h2>
     <p class="body">We created the grano.protocol, a behavioral simulation method built on artificial intelligence and applied science to turn strategic decisions into testable scenarios. Simulating behavior is only the means. The end is showing which paths produce the best outcome before the decision burns time, money and trust.</p>
       <video class="gif" src="./assets/media/m2.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
@@ -302,8 +333,32 @@
     
   </section>
 
+  <!-- 09 COMO FUNCIONA -->
+  <section class="wrap reveal" id="como-funciona">
+    <div class="eyebrow"><b>03</b><span class="ln"></span>How it works</div>
+    <div class="flow-head">Input → Simulation → Output → Intervention</div>
+    <p class="body">Granovetter’s method, <strong>grano.protocol</strong>, turns strategic decisions into behavioral simulations: it takes in real data from the organization, builds synthetic agents for each group and delivers inferences to support the decision before execution.</p>
+    <div class="stack">
+      <div class="row"><div class="num">01</div><div><h3>Input</h3><p>Cultural data, group profiles, organizational context, external environment and the decision to be tested.</p></div></div>
+      <div class="row"><div class="num">02</div><div><h3>Simulation</h3><p>Synthetic agents interact with scenarios, pressures, narratives and strategic variables.</p></div></div>
+      <div class="row"><div class="num">03</div><div><h3>Output</h3><p>Likely scenarios, emerging risks, hidden tensions, patterns of buy-in and resistance, and recommendations for the decision.</p></div></div> <div class="row"><div class="num">04</div><div><h3>Intervention</h3><p>Actions tested before acting: communication, incentives and pace of change are simulated again to see which one reduces resistance.</p></div></div>
+    </div>
+    <h3 style="margin-top:2.4rem;">The engine is open source.</h3>
+    <p class="body">In round 1, each synthetic agent reacts alone. From round 2 on, it is exposed to the group consensus and to opposing views. The analysis measures adoption, resistance, conformism and anxiety, and locates the tipping point.</p>
+    <p class="body">Simulation is not prediction: it is decision support, to be validated against the organization's own data. <a href="https://github.com/Mangaba-ai/granovetter" target="_blank" rel="noopener" style="color:inherit;">See the code on GitHub →</a></p>
+  </section>
+
+  <!-- CASO -->
+  <section class="wrap reveal case" id="caso">
+    <div class="eyebrow"><b>04</b><span class="ln"></span>Case</div>
+    <h2>Moving 350 people to fully remote work.</h2>
+    <p class="body">An example with a fictional organization, included in the Granovetter engine: 6 groups, 3 simulation rounds. In the first, each group reacts alone; in the next ones, it also reacts to what the others think.</p>
+    <div class="casegrid"><div class="cstat"><span class="cn">62.5%</span><span class="cl">Adoption likelihood</span></div><div class="cstat"><span class="cn">85%</span><span class="cl">Junior engineering, the most favorable group</span></div><div class="cstat"><span class="cn">12%</span><span class="cl">Operations, the most resistant group</span></div><div class="cstat"><span class="cn">52%</span><span class="cl">Most likely scenario: slow adoption, with friction</span></div></div>
+    <p class="note">Simulation is not prediction: it is decision support, to be validated against the organization’s own data.</p>
+  </section>
+
   <!-- 06 A CIÊNCIA -->
-  <section class="wrap reveal">
+  <section class="wrap reveal" id="ciencia">
     <div class="eyebrow"><b>05</b><span class="ln"></span>The science</div>
     <h2>AI Behavioral Science.</h2>
     <p class="body lead">The convergence of behavioral science, complex systems and generative artificial intelligence.</p>
@@ -314,55 +369,21 @@
   </section>
 
   <!-- 07 AS PESSOAS -->
-  <section class="wrap reveal">
+  <section class="wrap reveal" id="pessoas">
     <div class="eyebrow"><b>06</b><span class="ln"></span>The people</div>
     <div class="person">
       <img class="photo" src="./assets/media/people2.webp" alt="Dheiver Santos, PhD" onerror="this.outerHTML='&lt;div class=&quot;ph-fallback&quot;&gt;Dheiver Santos, PhD&lt;/div&gt;'">
       <div class="who">
-        <h2>My name is Dheiver Santos, PhD.</h2>
+        <h2>My name is Dheiver Santos, PhD.</h2><dl class="creds"><div><dt>200+</dt><dd>papers</dd></div><div><dt>550+</dt><dd>citations</dd></div><div><dt>12</dt><dd>h-index</dd></div><div><dt>1</dt><dd>INPI patent</dd></div><div><dt>10</dt><dd>AI products</dd></div></dl>
         <p class="body">I am the founder of Granovetter. Machine learning engineer and AI researcher, with a PhD in Chemical Engineering with an emphasis on Artificial Intelligence (UFBA/UFRJ) and postdoctoral research at UNICAMP/UNIT (CNPq) and UFAL (FUNDEPES). I worked as Senior Staff Machine Learning Engineer at SX Negócios, Senior Scientist at Grupo Boticário and AI professor at UPE and Estácio.</p>
         <p class="body">I created Mangaba.AI, an open-source framework for teams of autonomous AI agents, and founded Cognai, a healthtech applying AI to cardiology. 200+ papers, 550+ citations, h-index 12, an INPI patent and 10 AI products delivered in real clinical and operational workflows.</p>
       </div>
     </div>
   </section>
 
-  <!-- 08 O MÉTODO -->
-  <section class="wrap reveal">
-    <div class="eyebrow"><b>07</b><span class="ln"></span>The method</div>
-    <h2>The grano.protocol turns strategic decisions into behavioral simulations.</h2>
-    <div class="wave-frame" aria-hidden="true">
-      <canvas class="wave" data-wave></canvas>
-    </div>
-    <p class="body">Every simulation begins by building synthetic agents based on real profiles from the organization: culture, context, demographics, territory, history and behavioral tendencies. Those agents are then exposed to critical scenarios, decisions and strategic variables. First they respond individually. Then they interact with the collective, adjusting positions, resisting, buying in or amplifying narratives.</p>
-    <p class="callout">The result is not a single prediction. It is a distribution of scenarios, risks and probabilities to support decisions before execution.</p>
-    <div class="stack">
-      <div class="row"><div class="num">01</div><div><h3>Synthetic agents</h3><p>Representative profiles based on real groups within the organization.</p></div></div>
-      <div class="row"><div class="num">02</div><div><h3>Organizational environment</h3><p>Culture, external context, leadership, social pressure and where the company stands.</p></div></div>
-      <div class="row"><div class="num">03</div><div><h3>Individual projection</h3><p>Each agent reacts to the scenario before knowing the group.</p></div></div>
-      <div class="row"><div class="num">04</div><div><h3>Collective interaction</h3><p>Agents confront each other's answers, narratives and social pressures.</p></div></div>
-      <div class="row"><div class="num">05</div><div><h3>Probabilistic synthesis</h3><p>The system reveals likely scenarios, emerging risks and decision paths.</p></div></div>
-    </div>
-  </section>
-
-  <!-- 09 COMO FUNCIONA -->
-  <section class="wrap reveal">
-    <div class="eyebrow"><b>08</b><span class="ln"></span>How it works</div>
-    <div class="flow-head">Input → Simulation → Output → Intervention</div>
-    <p class="body">Granovetter takes in real data from the organization, turns strategic decisions into simulatable scenarios and delivers behavioral inferences to support the decision before execution.</p>
-    <div class="stack">
-      <div class="row"><div class="num">01</div><div><h3>Input</h3><p>Cultural data, group profiles, organizational context, external environment and the decision to be tested.</p></div></div>
-      <div class="row"><div class="num">02</div><div><h3>Simulation</h3><p>Synthetic agents interact with scenarios, pressures, narratives and strategic variables.</p></div></div>
-      <div class="row"><div class="num">03</div><div><h3>Output</h3><p>Likely scenarios, emerging risks, hidden tensions, patterns of buy-in and resistance, and recommendations for the decision.</p></div></div> <div class="row"><div class="num">04</div><div><h3>Intervention</h3><p>Actions tested before acting: communication, incentives and pace of change are simulated again to see which one reduces resistance.</p></div></div>
-    </div>
-    <h3 style="margin-top:2.4rem;">The engine is open source.</h3>
-    <p class="body">In round 1, each synthetic agent reacts alone. From round 2 on, it is exposed to the group consensus and to opposing views. The analysis measures adoption, resistance, conformism and anxiety, and locates the tipping point.</p>
-    <p class="body">Repository example, with a fictional organization: 350 people moving to fully remote work. Predicted adoption of 62.5%: junior engineering at 85%, operations at 12%. Most likely scenario: slow adoption with friction (52%).</p>
-    <p class="body">Simulation is not prediction: it is decision support, to be validated against the organization's own data. <a href="https://github.com/Mangaba-ai/granovetter" target="_blank" rel="noopener" style="color:inherit;">See the code on GitHub →</a></p>
-  </section>
-
   <!-- 10 FECHAMENTO -->
-  <section class="wrap reveal">
-    <div class="eyebrow"><b>09</b><span class="ln"></span>Closing</div>
+  <section class="wrap reveal" id="fechamento">
+    <div class="eyebrow"><b>07</b><span class="ln"></span>Closing</div>
     <h2>A tool for deciding better.</h2>
       <video class="gif" src="./assets/media/m3.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
     <p class="body">We are a small team working at the frontier of multi-agent simulation, behavioral modeling and applied AI to solve the biggest problem in running a company: the lack of predictability.</p>
@@ -371,7 +392,7 @@
   <!-- CONTATO -->
   <section id="simular" class="reveal">
     <div class="wrap">
-      <div class="eyebrow"><b>10</b><span class="ln"></span>Contact</div>
+      <div class="eyebrow"><b>08</b><span class="ln"></span>Contact</div>
       <h2>Which future do you want to simulate?</h2>
       <form class="form" id="signup" novalidate>
         <div class="fields">
@@ -384,12 +405,12 @@
             <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required>
           </div>
           <div class="f">
-            <label for="whatsapp">WhatsApp</label>
-            <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(51) 99999-9999" required>
+            <label for="whatsapp">WhatsApp (optional)</label>
+            <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(51) 99999-9999">
           </div>
           <div class="f">
-            <label for="mensagem">Message</label>
-            <textarea id="mensagem" name="mensagem" rows="3" placeholder="What do you want to simulate? Brand, campaign, product, price, launch." required></textarea>
+            <label for="mensagem">Which decision do you want to simulate?</label>
+            <textarea id="mensagem" name="mensagem" rows="3" placeholder="E.g. return to office, new commission policy, team restructuring." required></textarea>
           </div>
           <p class="ferr" id="ferr"></p>
           <button type="submit">Get in touch</button>
@@ -402,7 +423,7 @@
   <!-- NEWSLETTER grano.Thesis -->
   <section id="opensource" class="reveal">
     <div class="wrap">
-      <div class="eyebrow"><b>11</b><span class="ln"></span>Open source</div>
+      <div class="eyebrow"><b>09</b><span class="ln"></span>Open source</div>
       <h2>Run it yourself.</h2>
       <p class="body">The Granovetter simulation engine is open. Run the example scenarios, adapt them to your organization's profile and follow the development.</p>
       <p class="body"><a href="https://github.com/Mangaba-ai/granovetter" target="_blank" rel="noopener" style="color:inherit;">github.com/Mangaba-ai/granovetter →</a></p>
@@ -535,7 +556,7 @@
 
       if(nome.length < 2){ fail(elNome, "Enter your name"); return; }
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ fail(elMail, "Enter a valid email"); return; }
-      if(digits(whats).length < 10){ fail(elWhats, "Enter a phone number with area code"); return; }
+      if(whats && digits(whats).length < 10){ fail(elWhats, "Enter a phone number with area code"); return; }
       if(texto.length < 10){ fail(elTexto, "Tell us what you want to simulate"); return; }
       if(elErr) elErr.classList.remove("on");
 
@@ -635,5 +656,15 @@ el.addEventListener("click",function(e){
 },true);})();</script>
 <script src="./assets/js/granovetter-media.js?v=1" defer></script>
 <script src="./assets/js/granovetter-music.js?v=7" defer></script>
+<script>
+/* menu mobile: fecha ao escolher um item, ao tocar fora e com Esc */
+(function(){
+  var d=document.querySelector('.mnav'); if(!d) return;
+  d.querySelectorAll('nav a').forEach(function(a){ a.addEventListener('click',function(){ d.open=false; }); });
+  document.addEventListener('click',function(e){ if(d.open && !d.contains(e.target)) d.open=false; });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && d.open){ d.open=false; d.querySelector('summary').focus(); } });
+})();
+</script>
+<a class="wa-fab" href="https://wa.me/5551989889898?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Granovetter." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3z"/></svg><span>Chat on WhatsApp</span></a>
 </body>
 </html>

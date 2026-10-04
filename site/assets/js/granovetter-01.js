@@ -321,6 +321,6 @@
     document.getElementById('granointro-hint')?.classList.add('show');
   }, 4000);
 
-  setTimeout(() => { if (phase === 'idle') doExplode(); }, 14000);
+  setTimeout(() => { if (phase === 'idle') doExplode(); }, 2800);
   requestAnimationFrame(loop);
 })();
