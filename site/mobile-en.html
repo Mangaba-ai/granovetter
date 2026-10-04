@@ -70,12 +70,12 @@
   <link rel="apple-touch-icon" href="./assets/media/granovetter-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Barlow:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0b0b0c; --bg-soft:#141417; --ink:#ededee; --muted:#8e8e94; --faint:#5a5a60;
     --line:#232327; --line-2:#33333a; --stroke:#b7b7b7;
-    --display:"Space Grotesk",system-ui,sans-serif;
+    --display:"Barlow",system-ui,sans-serif;
     --body:"Barlow",system-ui,sans-serif;
     --mono:"Space Mono",ui-monospace,monospace;
     --pad:1.5rem; --maxw:34rem;
@@ -350,6 +350,7 @@
   .faq details[open] summary::after{color:var(--accent)}
   .stack .num{color:var(--blue)}
   .body a{color:var(--blue) !important}
+  .shot{display:block;width:100%;height:auto;margin-top:.9rem;border-radius:12px;border:1px solid rgba(255,255,255,.1)}
 </style>
 </head>
 <body>
@@ -408,9 +409,9 @@
     <div class="flow-head">Input → Simulation → Output → Intervention</div>
     <p class="body">Granovetter’s method, <strong>grano.protocol</strong>, turns strategic decisions into behavioral simulations: it takes in real data from the organization, builds synthetic agents for each group and delivers inferences to support the decision before execution.</p>
     <div class="stack">
-      <div class="row"><div class="num">01</div><div><h3>Input</h3><p>Cultural data, group profiles, organizational context, external environment and the decision to be tested.</p></div></div>
-      <div class="row"><div class="num">02</div><div><h3>Simulation</h3><p>Synthetic agents interact with scenarios, pressures, narratives and strategic variables.</p></div></div>
-      <div class="row"><div class="num">03</div><div><h3>Output</h3><p>Likely scenarios, emerging risks, hidden tensions, patterns of buy-in and resistance, and recommendations for the decision.</p></div></div> <div class="row"><div class="num">04</div><div><h3>Intervention</h3><p>Actions tested before acting: communication, incentives and pace of change are simulated again to see which one reduces resistance.</p></div></div>
+      <div class="row"><div class="num">01</div><div><h3>Input</h3><p>Cultural data, group profiles, organizational context, external environment and the decision to be tested.</p><img class="shot" src="./assets/media/etapa-entrada-en.webp" alt="Granovetter input screen: decision to simulate, groups in the organization and context" loading="lazy" width="1200" height="810"></div></div>
+      <div class="row"><div class="num">02</div><div><h3>Simulation</h3><p>Synthetic agents interact with scenarios, pressures, narratives and strategic variables.</p><img class="shot" src="./assets/media/etapa-simulacao-en.webp" alt="Simulation screen: influence network between groups in round 2" loading="lazy" width="1200" height="810"></div></div>
+      <div class="row"><div class="num">03</div><div><h3>Output</h3><p>Likely scenarios, emerging risks, hidden tensions, patterns of buy-in and resistance, and recommendations for the decision.</p><img class="shot" src="./assets/media/etapa-saida-en.webp" alt="Output screen: adoption likelihood, most likely scenario and risk radar" loading="lazy" width="1200" height="810"></div></div> <div class="row"><div class="num">04</div><div><h3>Intervention</h3><p>Actions tested before acting: communication, incentives and pace of change are simulated again to see which one reduces resistance.</p><img class="shot" src="./assets/media/etapa-intervencao-en.webp" alt="Intervention screen: predicted adoption by group under each tested intervention" loading="lazy" width="1200" height="810"></div></div>
     </div>
     <h3 style="margin-top:2.4rem;">The engine is open source.</h3>
     <p class="body">In round 1, each synthetic agent reacts alone. From round 2 on, it is exposed to the group consensus and to opposing views. The analysis measures adoption, resistance, conformism and anxiety, and locates the tipping point.</p>
