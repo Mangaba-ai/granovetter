@@ -1883,3 +1883,12 @@ footer .granovetter-mail, footer a, footer p, footer span{font-family:"Space Mon
 html body #signup .granovetter-label, html body #signup .granovetter-submit, html body #signup .granovetter-input,
 html body #signup .granovetter-msg, html body #signup .granovetter-ok, html body footer .granovetter-mail{font-family:"Space Mono",ui-monospace,monospace !important}
 html body .footer-date, html body #granovetter-lang{font-family:"Space Mono",ui-monospace,monospace !important}
+/* foto do fundador: retrato colorido (a foto nova tem fundo, sem mesclagem) */
+@media screen and (min-width:750px){
+  .granovetter-people-media{inset:0 2.4rem 0 auto !important;width:min(38vw,56rem);align-items:center !important}
+  .granovetter-people-image{width:100% !important;height:auto !important;max-height:calc(100% - 4.8rem);aspect-ratio:4/5;object-fit:cover !important;object-position:center top !important;
+    filter:none !important;opacity:1 !important;mix-blend-mode:normal !important;border-radius:20px;box-shadow:0 24px 60px rgba(11,15,26,.18)}
+}
+@media screen and (max-width:749px){
+  .granovetter-people-image{filter:none !important;opacity:1 !important;mix-blend-mode:normal !important;object-fit:cover !important;border-radius:16px}
+}
