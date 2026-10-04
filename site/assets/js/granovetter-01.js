@@ -74,7 +74,7 @@
 
   const logoImg = new Image();
   logoImg.crossOrigin = "anonymous";
-  logoImg.src = "https://cdn.prod.website-files.com/69d94fc81078b0ea07475606/granovetter-logo.png";
+  logoImg.src = "./assets/media/granovetter-logo.png";
   let logoGrid = null, logoCols = 0, logoRows = 0, logoOffX = 0, logoOffY = 0, logoPx = null;
 
   function buildLogoGrid() {
@@ -217,7 +217,9 @@
     phase = 'spring';
     springElapsed = 0;
     document.getElementById('granointro-hint')?.classList.remove('show');
-    spawnSpringParticles();
+    // A formação do logo em ASCII desenha milhares de caracteres por quadro e,
+    // em aparelhos lentos, estendia a abertura para mais de 10 s. Entra direto.
+    springs = [];
   }
 
   function startReveal() {
@@ -248,8 +250,14 @@
   const SPRING_MAX = 1100;
   let prevT = 0, vidAlpha = 0, elapsed = 0;
 
+  let lastIdle = 0;
   function loop(now) {
+    // a abertura terminou: encerra o laço em vez de rodar vazio para sempre
+    if (phase === 'reveal') return;
     requestAnimationFrame(loop);
+    // ASCII a ~20 fps: combina com a estética de terminal e corta a CPU
+    if (phase === 'idle' && now - lastIdle < 50) return;
+    if (phase === 'idle') lastIdle = now;
     const dt = Math.min(now - prevT, 50); prevT = now;
     elapsed += dt;
 

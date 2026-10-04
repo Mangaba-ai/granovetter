@@ -1892,3 +1892,11 @@ html body .footer-date, html body #granovetter-lang{font-family:"Space Mono",ui-
 @media screen and (max-width:749px){
   .granovetter-people-image{filter:none !important;opacity:1 !important;mix-blend-mode:normal !important;object-fit:cover !important;border-radius:16px}
 }
+
+/* galeria do produto no Caso */
+.granovetter-case-shots-title{margin:5.6rem 0 2rem;font-family:"Barlow",system-ui,sans-serif !important;font-weight:600;font-size:26px;color:#0a0a0a}
+.granovetter-case-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.4rem}
+.granovetter-case-shots figure{margin:0;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;overflow:hidden;box-shadow:0 12px 32px rgba(11,15,26,.08)}
+.granovetter-case-shots img{display:block;width:100%;height:auto}
+.granovetter-case-shots figcaption{padding:1.2rem 1.6rem;font-family:"Space Mono",ui-monospace,monospace !important;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#374151;border-top:1px solid rgba(0,0,0,.06)}
+.granovetter-case-shots-note{margin-top:1.6rem;font-size:14px !important;color:#4b5563 !important}

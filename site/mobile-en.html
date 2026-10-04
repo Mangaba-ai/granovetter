@@ -70,10 +70,10 @@
   <link rel="apple-touch-icon" href="./assets/media/granovetter-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"></noscript>
 <style>
   :root{
-    --bg:#0b0b0c; --bg-soft:#141417; --ink:#ededee; --muted:#8e8e94; --faint:#5a5a60;
+    --bg:#0b0b0c; --bg-soft:#141417; --ink:#ededee; --muted:#8e8e94; --faint:#8b93a3;
     --line:#232327; --line-2:#33333a; --stroke:#b7b7b7;
     --display:"Barlow",system-ui,sans-serif;
     --body:"Barlow",system-ui,sans-serif;
@@ -350,6 +350,13 @@
   .faq details[open] summary::after{color:var(--accent)}
   .stack .num{color:var(--blue)}
   .body a{color:var(--blue) !important}
+  .case-shots-title{font-size:1.15rem;margin:2rem 0 .9rem;color:#0b0b0c}
+  .case-shots{display:flex;gap:.8rem;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -1.4rem;padding:0 1.4rem .6rem;-webkit-overflow-scrolling:touch}
+  .case-shots figure{flex:0 0 86%;scroll-snap-align:start;margin:0;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:12px;overflow:hidden}
+  .case-shots img{display:block;width:100%;height:auto}
+  .case-shots figcaption{padding:.6rem .8rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#374151}
+  .case-shots-note{margin-top:.6rem;font-size:.82rem;color:#3a3a3a}
+  .bar .cta{color:#000 !important}
 </style>
 </head>
 <body>
@@ -418,20 +425,21 @@
   </section>
 
   <!-- CASO -->
-  <section class="wrap reveal case" id="caso">
+  <!-- gv:caso --><section class="wrap reveal case" id="caso">
     <div class="eyebrow"><b>04</b><span class="ln"></span>Case</div>
     <h2>Moving 350 people to fully remote work.</h2>
     <p class="body">An example with a fictional organization, included in the Granovetter engine: 6 groups, 3 simulation rounds. In the first, each group reacts alone; in the next ones, it also reacts to what the others think.</p>
     <div class="casegrid"><div class="cstat"><span class="cn">62.5%</span><span class="cl">Adoption likelihood</span></div><div class="cstat"><span class="cn">85%</span><span class="cl">Junior engineering, the most favorable group</span></div><div class="cstat"><span class="cn">12%</span><span class="cl">Operations, the most resistant group</span></div><div class="cstat"><span class="cn">52%</span><span class="cl">Most likely scenario: slow adoption, with friction</span></div></div>
     <p class="note">Simulation is not prediction: it is decision support, to be validated against the organization’s own data.</p>
-  </section>
+    <h3 class="case-shots-title">How Granovetter shows this case</h3><div class="case-shots"><figure><img src="./assets/media/etapa-entrada-en.webp" alt="Input screen: decision to simulate, groups in the organization and context" loading="lazy" width="1200" height="810"><figcaption>01 · Input</figcaption></figure><figure><img src="./assets/media/etapa-simulacao-en.webp" alt="Simulation screen: influence network between groups in round 2" loading="lazy" width="1200" height="810"><figcaption>02 · Simulation</figcaption></figure><figure><img src="./assets/media/etapa-saida-en.webp" alt="Output screen: adoption likelihood, most likely scenario and risk radar" loading="lazy" width="1200" height="810"><figcaption>03 · Output</figcaption></figure><figure><img src="./assets/media/etapa-intervencao-en.webp" alt="Intervention screen: predicted adoption by group under each tested intervention" loading="lazy" width="1200" height="810"><figcaption>04 · Intervention</figcaption></figure></div><p class="case-shots-note">Screens use the fictional example’s data; the intervention table is illustrative.</p>
+  </section><!-- /gv:caso -->
 
   <!-- PARA QUEM É -->
-  <section class="wrap reveal" id="para-quem">
+  <!-- gv:para-quem --><section class="wrap reveal" id="para-quem">
     <div class="eyebrow"><b>05</b><span class="ln"></span>Who it is for</div>
     <h2>People who decide about people.</h2>
     <ul class="who"><li><h3>Board and executives</h3><p>Restructurings, mergers, changes in business model and leadership.</p></li><li><h3>HR and People</h3><p>Work model, policies, benefits, culture and climate.</p></li><li><h3>Sales</h3><p>Commission plans, targets, territories and sales incentives.</p></li><li><h3>Internal communication</h3><p>How, when and to whom to announce a change, with the right message for each group.</p></li></ul>
-  </section>
+  </section><!-- /gv:para-quem -->
 
   <!-- 06 A CIÊNCIA -->
   <section class="wrap reveal" id="ciencia">
@@ -450,7 +458,7 @@
     <div class="person">
       <img class="photo" src="./assets/media/dheiver-retrato.webp" alt="Portrait of Dheiver Santos, PhD" width="1000" height="1250" onerror="this.outerHTML='&lt;div class=&quot;ph-fallback&quot;&gt;Dheiver Santos, PhD&lt;/div&gt;'">
       <div class="who">
-        <h2>My name is Dheiver Santos, PhD.</h2><dl class="creds"><div><dt>200+</dt><dd>papers</dd></div><div><dt>550+</dt><dd>citations</dd></div><div><dt>12</dt><dd>h-index</dd></div><div><dt>1</dt><dd>INPI patent</dd></div><div><dt>10</dt><dd>AI products</dd></div></dl>
+        <h2>My name is Dheiver Santos, PhD.</h2><!-- gv:creds --><dl class="creds" aria-label="Credentials"><div><dt>200+</dt><dd>papers</dd></div><div><dt>550+</dt><dd>citations</dd></div><div><dt>12</dt><dd>h-index</dd></div><div><dt>1</dt><dd>INPI patent</dd></div><div><dt>10</dt><dd>AI products</dd></div></dl><!-- /gv:creds -->
         <p class="body">I am the founder of Granovetter. Machine learning engineer and AI researcher, with a PhD in Chemical Engineering with an emphasis on Artificial Intelligence (UFBA/UFRJ) and postdoctoral research at UNICAMP/UNIT (CNPq) and UFAL (FUNDEPES). I worked as Senior Staff Machine Learning Engineer at SX Negócios, Senior Scientist at Grupo Boticário and AI professor at UPE and Estácio.</p>
         <p class="body">I created Mangaba.AI, an open-source framework for teams of autonomous AI agents, and founded Cognai, a healthtech applying AI to cardiology. 200+ papers, 550+ citations, h-index 12, an INPI patent and 10 AI products delivered in real clinical and operational workflows.</p>
       </div>
@@ -458,11 +466,11 @@
   </section>
 
   <!-- FAQ -->
-  <section class="wrap reveal" id="faq">
+  <!-- gv:faq --><section class="wrap reveal" id="faq">
     <div class="eyebrow"><b>08</b><span class="ln"></span>FAQ</div>
     <h2>Frequently asked questions.</h2>
     <div class="faq"><details><summary>What is a synthetic society?</summary><p>A set of AI agents, each representing a real group in the organization, with its own values, risk tolerance and narrative. The agents react to the decision and then to each other.</p></details><details><summary>Does simulation replace research with people?</summary><p>No. Simulation is not prediction: it is decision support. It helps anticipate patterns, tensions and risks, and should be validated against the organization’s own data.</p></details><details><summary>What kind of decision can be simulated?</summary><p>Changes whose outcome depends on how people react: work model, pay and commission policies, restructurings, mergers and how each of them is communicated.</p></details><details><summary>What data does Granovetter need?</summary><p>Profiles of the groups involved, cultural data, the organizational and external context, and the decision to be tested.</p></details><details><summary>What do I get at the end?</summary><p>Likely scenarios, emerging risks, buy-in and resistance patterns by group, the tipping point and recommendations, plus testing interventions before acting.</p></details><details><summary>Is the engine open?</summary><p>Yes. The simulation engine is open source, and the research behind the method is on the research page.</p></details></div>
-  </section>
+  </section><!-- /gv:faq -->
 
   <!-- 10 FECHAMENTO -->
   <section class="wrap reveal" id="fechamento">
@@ -552,24 +560,36 @@
            + Math.cos(ny*5.0 - nx*2.1 - t*0.40 + 1.0)*0.95
            + Math.sin((nx+ny)*4.2 + t*0.30)*0.70;
     }
+    var BUCKETS=6, last=0, visible=true;
     function draw(ts){
+      raf=null;
+      if(!reduce && visible && !document.hidden){ raf=requestAnimationFrame(draw); }
+      /* 30 fps bastam para a onda e custam metade da CPU */
+      if(ts-last<33 && t0!==null) return; last=ts;
       if(t0===null) t0=ts; var t=(ts-t0)*0.001;
       ctx.clearRect(0,0,w,h);
       ctx.lineCap="round"; ctx.lineWidth=1.3;
-      var GAP=9, LEN=12;
+      var GAP=9, LEN=12, paths=[];
+      for(var b=0;b<BUCKETS;b++) paths.push(new Path2D());
       for(var y=GAP*0.6; y<h+GAP; y+=GAP){
         for(var x=GAP*0.6; x<w+GAP; x+=GAP){
           var a = field(x/w, y/h, t);
-          var br = 0.40 + 0.60*Math.abs(Math.sin(a*0.9 + t*0.18));   /* tracinhos com brilhos variados, como no gif */
+          var br = 0.40 + 0.60*Math.abs(Math.sin(a*0.9 + t*0.18));
           var cs = Math.cos(a)*LEN*0.5, sn = Math.sin(a)*LEN*0.5;
-          ctx.strokeStyle = "rgba(237,237,238,"+br.toFixed(3)+")";
-          ctx.beginPath(); ctx.moveTo(x-cs,y-sn); ctx.lineTo(x+cs,y+sn); ctx.stroke();
+          var p = paths[Math.min(BUCKETS-1, Math.floor((br-0.40)/0.60*BUCKETS))];
+          p.moveTo(x-cs,y-sn); p.lineTo(x+cs,y+sn);
         }
       }
-      if(!reduce) raf=requestAnimationFrame(draw);
+      /* um traço por faixa de brilho em vez de um por tracinho */
+      for(var k=0;k<BUCKETS;k++){ ctx.strokeStyle="rgba(237,237,238,"+(0.40+0.60*(k+0.5)/BUCKETS).toFixed(3)+")"; ctx.stroke(paths[k]); }
     }
+    function resume(){ if(raf===null && visible && !document.hidden && !reduce) raf=requestAnimationFrame(draw); }
     size();
-    requestAnimationFrame(draw);
+    raf=requestAnimationFrame(draw);
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(ents){ visible=ents[0].isIntersecting; resume(); }).observe(cv);
+    }
+    document.addEventListener("visibilitychange", resume);
     var rz; window.addEventListener("resize", function(){ clearTimeout(rz); rz=setTimeout(size,120); }, {passive:true});
   }
   var canvases = document.querySelectorAll("canvas[data-wave]");

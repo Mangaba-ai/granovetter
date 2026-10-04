@@ -1,0 +1,252 @@
+{
+  "pt": {
+    "case": {
+      "top": "Caso",
+      "title": "Migrar 350 pessoas para o trabalho 100% remoto.",
+      "lead": "Exemplo com organização fictícia, incluído no motor do Granovetter: 6 grupos, 3 rodadas de simulação. Na primeira, cada grupo reage sozinho; nas seguintes, reage também ao que os outros pensam.",
+      "stats": [
+        [
+          "62,5%",
+          "Probabilidade de adoção"
+        ],
+        [
+          "85%",
+          "Engenharia júnior, o grupo mais favorável"
+        ],
+        [
+          "12%",
+          "Operações, o grupo mais resistente"
+        ],
+        [
+          "52%",
+          "Cenário mais provável: adoção lenta, com atrito"
+        ]
+      ],
+      "note": "Simulação não é previsão: é apoio à decisão, a validar com dados reais da organização.",
+      "shots_title": "Como o Granovetter mostra este caso",
+      "shots": [
+        [
+          "entrada",
+          "01 · Entrada",
+          "Tela de entrada: decisão a simular, grupos da organização e contexto"
+        ],
+        [
+          "simulacao",
+          "02 · Simulação",
+          "Tela de simulação: rede de influência entre os grupos na rodada 2"
+        ],
+        [
+          "saida",
+          "03 · Saída",
+          "Tela de saída: probabilidade de adoção, cenário mais provável e radar de riscos"
+        ],
+        [
+          "intervencao",
+          "04 · Intervenção",
+          "Tela de intervenção: adoção prevista por grupo em cada intervenção testada"
+        ]
+      ],
+      "shots_note": "Telas com dados do exemplo fictício; a tabela de intervenções é ilustrativa."
+    },
+    "creds": [
+      [
+        "200+",
+        "artigos"
+      ],
+      [
+        "550+",
+        "citações"
+      ],
+      [
+        "12",
+        "h-index"
+      ],
+      [
+        "1",
+        "patente no INPI"
+      ],
+      [
+        "10",
+        "produtos de IA"
+      ]
+    ],
+    "creds_label": "Credenciais",
+    "who": {
+      "top": "Para quem é",
+      "title": "Quem decide sobre pessoas.",
+      "items": [
+        [
+          "Diretoria e conselho",
+          "Reestruturações, fusões, mudanças de modelo de negócio e de liderança."
+        ],
+        [
+          "RH e Pessoas",
+          "Modelo de trabalho, políticas, benefícios, cultura e clima."
+        ],
+        [
+          "Comercial",
+          "Comissionamento, metas, territórios e incentivos de vendas."
+        ],
+        [
+          "Comunicação interna",
+          "Como, quando e para quem anunciar uma mudança, com a mensagem certa para cada grupo."
+        ]
+      ]
+    },
+    "faq": {
+      "top": "Perguntas frequentes",
+      "title": "Perguntas frequentes.",
+      "items": [
+        [
+          "O que é uma sociedade sintética?",
+          "Um conjunto de agentes de IA, cada um representando um grupo real da organização, com valores, tolerância a risco e narrativa próprios. Os agentes reagem à decisão e, depois, uns aos outros."
+        ],
+        [
+          "A simulação substitui pesquisa com pessoas?",
+          "Não. Simulação não é previsão: é apoio à decisão. Ela ajuda a antecipar padrões, tensões e riscos, e deve ser validada com dados reais da organização."
+        ],
+        [
+          "Que tipo de decisão dá para simular?",
+          "Mudanças cujo resultado depende da reação das pessoas: modelo de trabalho, políticas de remuneração e comissão, reestruturações, fusões e a forma de comunicar cada uma delas."
+        ],
+        [
+          "De que dados o Granovetter precisa?",
+          "Perfis dos grupos envolvidos, dados culturais, o contexto da organização e do ambiente externo, e a decisão a ser testada."
+        ],
+        [
+          "O que eu recebo no fim?",
+          "Cenários prováveis, riscos emergentes, padrões de adesão e resistência por grupo, o ponto de virada e recomendações, além do teste de intervenções antes de agir."
+        ],
+        [
+          "O motor é aberto?",
+          "Sim. O motor de simulação é open source, e a bibliografia que fundamenta o método está na página de artigos."
+        ]
+      ]
+    }
+  },
+  "en": {
+    "case": {
+      "top": "Case",
+      "title": "Moving 350 people to fully remote work.",
+      "lead": "An example with a fictional organization, included in the Granovetter engine: 6 groups, 3 simulation rounds. In the first, each group reacts alone; in the next ones, it also reacts to what the others think.",
+      "stats": [
+        [
+          "62.5%",
+          "Adoption likelihood"
+        ],
+        [
+          "85%",
+          "Junior engineering, the most favorable group"
+        ],
+        [
+          "12%",
+          "Operations, the most resistant group"
+        ],
+        [
+          "52%",
+          "Most likely scenario: slow adoption, with friction"
+        ]
+      ],
+      "note": "Simulation is not prediction: it is decision support, to be validated against the organization’s own data.",
+      "shots_title": "How Granovetter shows this case",
+      "shots": [
+        [
+          "entrada",
+          "01 · Input",
+          "Input screen: decision to simulate, groups in the organization and context"
+        ],
+        [
+          "simulacao",
+          "02 · Simulation",
+          "Simulation screen: influence network between groups in round 2"
+        ],
+        [
+          "saida",
+          "03 · Output",
+          "Output screen: adoption likelihood, most likely scenario and risk radar"
+        ],
+        [
+          "intervencao",
+          "04 · Intervention",
+          "Intervention screen: predicted adoption by group under each tested intervention"
+        ]
+      ],
+      "shots_note": "Screens use the fictional example’s data; the intervention table is illustrative."
+    },
+    "creds": [
+      [
+        "200+",
+        "papers"
+      ],
+      [
+        "550+",
+        "citations"
+      ],
+      [
+        "12",
+        "h-index"
+      ],
+      [
+        "1",
+        "INPI patent"
+      ],
+      [
+        "10",
+        "AI products"
+      ]
+    ],
+    "creds_label": "Credentials",
+    "who": {
+      "top": "Who it is for",
+      "title": "People who decide about people.",
+      "items": [
+        [
+          "Board and executives",
+          "Restructurings, mergers, changes in business model and leadership."
+        ],
+        [
+          "HR and People",
+          "Work model, policies, benefits, culture and climate."
+        ],
+        [
+          "Sales",
+          "Commission plans, targets, territories and sales incentives."
+        ],
+        [
+          "Internal communication",
+          "How, when and to whom to announce a change, with the right message for each group."
+        ]
+      ]
+    },
+    "faq": {
+      "top": "FAQ",
+      "title": "Frequently asked questions.",
+      "items": [
+        [
+          "What is a synthetic society?",
+          "A set of AI agents, each representing a real group in the organization, with its own values, risk tolerance and narrative. The agents react to the decision and then to each other."
+        ],
+        [
+          "Does simulation replace research with people?",
+          "No. Simulation is not prediction: it is decision support. It helps anticipate patterns, tensions and risks, and should be validated against the organization’s own data."
+        ],
+        [
+          "What kind of decision can be simulated?",
+          "Changes whose outcome depends on how people react: work model, pay and commission policies, restructurings, mergers and how each of them is communicated."
+        ],
+        [
+          "What data does Granovetter need?",
+          "Profiles of the groups involved, cultural data, the organizational and external context, and the decision to be tested."
+        ],
+        [
+          "What do I get at the end?",
+          "Likely scenarios, emerging risks, buy-in and resistance patterns by group, the tipping point and recommendations, plus testing interventions before acting."
+        ],
+        [
+          "Is the engine open?",
+          "Yes. The simulation engine is open source, and the research behind the method is on the research page."
+        ]
+      ]
+    }
+  }
+}
