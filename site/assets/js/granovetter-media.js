@@ -2,7 +2,7 @@
    fora da tela e, com a rolagem virtual do site (transform), nem sempre os
    retoma; aqui eles tocam quando aparecem na tela e pausam quando saem. */
 (function () {
-  function videos() { return document.querySelectorAll("video.granovetter-process-gif, video.gif"); }
+  function videos() { return document.querySelectorAll("video.granovetter-process-gif, video.gif, video.gv-loop"); }
   function visible(v) {
     var r = v.getBoundingClientRect();
     return r.width > 0 && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;

@@ -27,9 +27,9 @@ def eyebrow(label):
 
 def shots(c, lang, cls):
     figs = ''.join(
-        f'<figure><img src="./assets/media/etapa-{key}-{lang}.webp" alt="{e(alt)}" loading="lazy" width="1200" height="810"><figcaption>{e(cap)}</figcaption></figure>'
-        for key, cap, alt in c['shots'])
-    return f'<h3 class="{cls}-shots-title">{e(c["shots_title"])}</h3><div class="{cls}-shots">{figs}</div><p class="{cls}-shots-note">{e(c["shots_note"])}</p>'
+        f'<figure><div class="{cls}-media"><video class="gv-loop" src="./assets/media/{video}" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div><figcaption>{e(cap)}</figcaption></figure>'
+        for key, cap, video in c['shots'])
+    return f'<h3 class="{cls}-shots-title">{e(c["shots_title"])}</h3><div class="{cls}-shots">{figs}</div>'
 
 
 def case(d, lang, variant):

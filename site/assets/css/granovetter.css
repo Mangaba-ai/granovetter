@@ -1900,3 +1900,10 @@ html body .footer-date, html body #granovetter-lang{font-family:"Space Mono",ui-
 .granovetter-case-shots img{display:block;width:100%;height:auto}
 .granovetter-case-shots figcaption{padding:1.2rem 1.6rem;font-family:"Space Mono",ui-monospace,monospace !important;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#374151;border-top:1px solid rgba(0,0,0,.06)}
 .granovetter-case-shots-note{margin-top:1.6rem;font-size:14px !important;color:#4b5563 !important}
+/* galeria do Caso com os 4 loops */
+.granovetter-case-shots{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:1.6rem !important}
+.granovetter-case-media{background:var(--navy);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.granovetter-case-media video{width:100%;height:100%;object-fit:contain;display:block;filter:grayscale(1) contrast(1.15)}
+@media screen and (max-width:1000px){.granovetter-case-shots{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+.granovetter-case-media{position:relative}
+.granovetter-case-media video{position:absolute;inset:0}
