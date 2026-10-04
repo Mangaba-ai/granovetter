@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera os blocos de conteúdo compartilhados nas 4 páginas a partir de content/content.json.
+"""Gera os blocos de conteúdo compartilhados (Para quem é, FAQ, credenciais) nas 4 páginas a partir de content/content.json.
 
 Edite o texto em content/content.json e rode:  python3 tools/build.py
 Os blocos ficam entre marcadores <!-- gv:nome --> ... <!-- /gv:nome --> em cada página;
@@ -23,28 +23,6 @@ def topbar(label):
 
 def eyebrow(label):
     return f'<div class="eyebrow"><b>00</b><span class="ln"></span>{e(label)}</div>'
-
-
-def shots(c, lang, cls):
-    figs = ''.join(
-        f'<figure><div class="{cls}-media"><video class="gv-loop" src="./assets/media/{video}" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div><figcaption>{e(cap)}</figcaption></figure>'
-        for key, cap, video in c['shots'])
-    return f'<h3 class="{cls}-shots-title">{e(c["shots_title"])}</h3><div class="{cls}-shots">{figs}</div>'
-
-
-def case(d, lang, variant):
-    c = d['case']
-    if variant == 'desktop':
-        stats = ''.join(f'<div class="granovetter-case-stat"><span class="granovetter-case-n">{e(n)}</span><span class="granovetter-case-l">{e(l)}</span></div>' for n, l in c['stats'])
-        return (f'<section class="granovetter-case module granovetter-light" data-bg="light" data-s-i="data-s-i" id="caso">\n'
-                f'<div class="-w granovetter-case-inner">\n{topbar(c["top"])}\n'
-                f'<h2 class="granovetter-case-title">{e(c["title"])}</h2>\n<p class="granovetter-case-lead">{e(c["lead"])}</p>\n'
-                f'<div class="granovetter-case-grid">{stats}</div>\n<p class="granovetter-case-note">{e(c["note"])}</p>\n'
-                f'{shots(c, lang, "granovetter-case")}\n</div>\n</section>')
-    stats = ''.join(f'<div class="cstat"><span class="cn">{e(n)}</span><span class="cl">{e(l)}</span></div>' for n, l in c['stats'])
-    return (f'<section class="wrap reveal case" id="caso">\n    {eyebrow(c["top"])}\n    <h2>{e(c["title"])}</h2>\n'
-            f'    <p class="body">{e(c["lead"])}</p>\n    <div class="casegrid">{stats}</div>\n    <p class="note">{e(c["note"])}</p>\n'
-            f'    {shots(c, lang, "case")}\n  </section>')
 
 
 def who(d, lang, variant):
@@ -81,7 +59,7 @@ def faq_jsonld(d):
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + '</script>'
 
 
-BLOCKS = {'caso': case, 'para-quem': who, 'faq': faq, 'creds': creds}
+BLOCKS = {'para-quem': who, 'faq': faq, 'creds': creds}
 
 
 def replace_block(s, name, new):
